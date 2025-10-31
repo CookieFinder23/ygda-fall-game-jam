@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2np3gcof7e6t"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s4lrb"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mgrm8"]
+color = Color(0.665604, 1.96133e-06, 4.33177e-07, 1)
+grow_end = 6.0
+thickness = 6
+
+[node name="HSlider" type="HSlider"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -115.0
+offset_right = 171.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_s4lrb")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_mgrm8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_mgrm8")

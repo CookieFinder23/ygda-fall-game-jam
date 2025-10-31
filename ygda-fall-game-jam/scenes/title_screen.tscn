@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://my4u2iu7jwcr"]
+
+[ext_resource type="Script" uid="uid://ddfgyxp4vn13y" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="2_s4lrb"]
+[ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="3_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://dgnty4geyyya" path="res://assets/audio/placeholder.mp3" id="3_s4lrb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sa3yf"]
+texture = ExtResource("2_s4lrb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4lrb"]
+bg_color = Color(0.74558, 0.74558, 0.74558, 1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgrm8"]
+bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgkus"]
+bg_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(0, 4)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgkus")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sa3yf")
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -60.0
+offset_right = 172.5
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Start Game
+"
+
+[node name="OptionsButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Options
+"
+
+[node name="QuitButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Quit"
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -283.5
+offset_top = 13.0
+offset_right = 283.5
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 64
+text = "Placeholder Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s4lrb")
+autoplay = true
+parameters/looping = true
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -79.0
+offset_right = 228.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsLabel" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -61.0
+offset_right = 108.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Back"
+
+[connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Options/BackButton" to="." method="_on_back_button_pressed"]

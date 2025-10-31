@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ro0m4lxemsly"]
+
+[ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_vy4ox"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nnsk1"]
+
+[node name="BattleRoom" type="StaticBody2D"]
+
+[node name="BattleRoomSprite" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_vy4ox")
+
+[node name="TopWall" type="CollisionShape2D" parent="."]
+position = Vector2(320, 16)
+shape = SubResource("WorldBoundaryShape2D_nnsk1")
+
+[node name="BottomWall" type="CollisionShape2D" parent="."]
+position = Vector2(320, 344)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_nnsk1")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+position = Vector2(484, 180)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_nnsk1")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+position = Vector2(156, 180)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_nnsk1")

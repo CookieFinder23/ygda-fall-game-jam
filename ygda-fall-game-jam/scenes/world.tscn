@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm4xggw0kp41b"]
+
+[ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
+
+[node name="World" type="Node"]
+
+[node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
