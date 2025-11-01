@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=4 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
+[ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
 
 [node name="World" type="Node"]
 
@@ -9,3 +10,8 @@
 
 [node name="Player" parent="." instance=ExtResource("2_rwgxs")]
 position = Vector2(320, 180)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4wyf3")
+autoplay = true
+parameters/looping = true

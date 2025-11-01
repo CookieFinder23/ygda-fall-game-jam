@@ -5,11 +5,11 @@ extends CharacterBody2D
 @onready var player_collision: CollisionShape2D = $PlayerCollision
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var movement_ability_cooldown: Timer = $MovementAbilityCooldown
-@onready var timer: Timer = $Timer
 @onready var movement_ability_in_action: Timer = $MovementAbilityInAction
+@onready var transformation_cooldown: Timer = $TransformationCooldown
 @onready var hunter_weapon_sprite: AnimatedSprite2D = $HunterWeaponSprite
 @onready var knight_weapon_sprite: AnimatedSprite2D = $KnightWeaponSprite
-
+const PROJECTILE = preload("res://scenes/projectile.tscn")
 const BASE_MOVEMENT_SPEED: int = 30
 
 var current_sprite: AnimatedSprite2D
@@ -115,39 +115,58 @@ func _on_movement_ability_in_action_timeout() -> void:
 		movement_ability_cooldown.start()
 
 func move_weapon_with_mouse() -> void:
-	current_weapon.position.x = 0
-	current_weapon.position.y = 0
+	current_weapon.position = Vector2(0, 0)
 	current_weapon.look_at(get_global_mouse_position())
 	current_weapon.position.x = (10 * cos(current_weapon.rotation))
 	current_weapon.position.y = (5 * sin(current_weapon.rotation))
+	
+	current_weapon.rotation_degrees = wrap(current_weapon.rotation_degrees, 0, 360)
+	if current_weapon.rotation_degrees > 90 and current_weapon.rotation_degrees < 270:
+		current_weapon.scale.y = -1
+	else:
+		current_weapon.scale.y = 1
+
+func determine_weapon_layer() -> void:
+	if current_sprite.animation == "up":
+		current_weapon.z_index = 0
+	elif current_sprite.animation == "down":
+		current_weapon.z_index = 1
+	elif current_weapon.position.y < 0:
+		current_weapon.z_index = 0
+	else:
+		current_weapon.z_index = 1
+
+func attack():
+	if current_character == Character.HUNTER:
+		var projectile_instance = PROJECTILE.instantiate()
+		get_tree().root.add_child(projectile_instance)
+		projectile_instance.global_position = current_weapon.global_position
+		projectile_instance.rotation = current_weapon.rotation
+		projectile_instance.speed = 800
+		projectile_instance.type = "crossbow"
 
 func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
 	if input_direction.y > 0:
 		play_animation("down")
-		current_weapon.z_index = 1
 	elif input_direction.y < 0:
 		play_animation("up")
-		current_weapon.z_index = 0
 	elif input_direction.x > 0:
 		play_animation("right")
-		current_weapon.z_index = 1
 	elif input_direction.x < 0:
 		play_animation("left")
-		current_weapon.z_index = 1
-		
+	determine_weapon_layer()
+	
 	if (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):
 		velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED * 2
 	else:
 		velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED
-
 	velocity *= 0.7
-	
 	
 	move_weapon_with_mouse()
 	if Input.is_action_just_pressed("attack") and attack_cooldown.is_stopped():
 		attack_cooldown.start()
+		attack()
 		print("attack")
 	
 	if Input.is_action_just_pressed("movement_ability") and movement_ability_cooldown.is_stopped() and movement_ability_in_action.is_stopped():
