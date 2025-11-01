@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=12 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dayj466egf3i" path="res://assets/images/characters/hunter/hunter_right.png" id="5_smehm"]
 [ext_resource type="Texture2D" uid="uid://6tasaxstw04i" path="res://assets/images/characters/hunter/hunter_up.png" id="6_ur7pv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -66,8 +66,105 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"lmb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"rmb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
@@ -75,13 +172,15 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_g2els")
 
-[node name="HunterAnimatedSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"rmb"
+[node name="HunterSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_fjrip")
+animation = &"left"
 
-[node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"death"
+[node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_smehm")
+animation = &"lmb"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qhqgy")
@@ -103,5 +202,14 @@ one_shot = true
 process_callback = 0
 wait_time = 2.0
 one_shot = true
+
+[node name="HunterWeaponSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+animation = &"idle"
+
+[node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+animation = &"idle"
 
 [connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
