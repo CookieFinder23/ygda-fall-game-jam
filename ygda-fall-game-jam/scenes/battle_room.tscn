@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ro0m4lxemsly"]
+[gd_scene load_steps=4 format=3 uid="uid://ro0m4lxemsly"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_vy4ox"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vy4ox"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nnsk1"]
 
 [node name="BattleRoom" type="StaticBody2D"]
+collision_mask = 0
 
 [node name="BattleRoomSprite" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
@@ -13,19 +16,19 @@ texture = ExtResource("1_vy4ox")
 
 [node name="TopWall" type="CollisionShape2D" parent="."]
 position = Vector2(320, 16)
-shape = SubResource("WorldBoundaryShape2D_nnsk1")
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_vy4ox")
 
 [node name="BottomWall" type="CollisionShape2D" parent="."]
 position = Vector2(320, 344)
-rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_nnsk1")
 
 [node name="RightWall" type="CollisionShape2D" parent="."]
 position = Vector2(484, 180)
-rotation = 1.5708
+rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_nnsk1")
 
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 position = Vector2(156, 180)
-rotation = 4.71239
+rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_nnsk1")

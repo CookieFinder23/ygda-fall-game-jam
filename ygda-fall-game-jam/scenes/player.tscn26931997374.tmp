@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=5 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://c3bf0upuga6b4" path="res://assets/images/characters/hunter/hunter_down.png" id="3_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://ccghpb16mwka7" path="res://assets/images/characters/hunter/hunter_left.png" id="4_fjrip"]
-[ext_resource type="Texture2D" uid="uid://dayj466egf3i" path="res://assets/images/characters/hunter/hunter_right.png" id="5_smehm"]
-[ext_resource type="Texture2D" uid="uid://6tasaxstw04i" path="res://assets/images/characters/hunter/hunter_up.png" id="6_ur7pv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -19,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tuyoq")
+"texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
 "name": &"down",
@@ -27,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_fjrip")
+"texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
 "name": &"left",
@@ -43,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_smehm")
+"texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
 "name": &"right",
@@ -59,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_ur7pv")
+"texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
 "name": &"up",
@@ -76,10 +72,12 @@ platform_on_leave = 2
 script = ExtResource("1_g2els")
 
 [node name="HunterAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.4)
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"rmb"
+animation = &"death"
 
 [node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.4)
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"death"
 
@@ -87,21 +85,3 @@ animation = &"death"
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AttackCooldown" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
-[node name="TransformationCooldown" type="Timer" parent="."]
-process_callback = 0
-wait_time = 7.0
-one_shot = true
-
-[node name="MovementAbilityCooldown" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
-[node name="MovementAbilityInAction" type="Timer" parent="."]
-process_callback = 0
-wait_time = 2.0
-one_shot = true
-
-[connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]

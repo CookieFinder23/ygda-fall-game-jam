@@ -87,7 +87,6 @@ animation = &"death"
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AttackCooldown" type="Timer" parent="."]
-process_callback = 0
 one_shot = true
 
 [node name="TransformationCooldown" type="Timer" parent="."]
@@ -96,12 +95,4 @@ wait_time = 7.0
 one_shot = true
 
 [node name="MovementAbilityCooldown" type="Timer" parent="."]
-process_callback = 0
 one_shot = true
-
-[node name="MovementAbilityInAction" type="Timer" parent="."]
-process_callback = 0
-wait_time = 2.0
-one_shot = true
-
-[connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
