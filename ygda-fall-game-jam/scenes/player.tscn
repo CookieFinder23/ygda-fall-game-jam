@@ -1,12 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=28 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://c3bf0upuga6b4" path="res://assets/images/characters/hunter/hunter_down.png" id="3_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://ccghpb16mwka7" path="res://assets/images/characters/hunter/hunter_left.png" id="4_fjrip"]
-[ext_resource type="Texture2D" uid="uid://dayj466egf3i" path="res://assets/images/characters/hunter/hunter_right.png" id="5_smehm"]
-[ext_resource type="Texture2D" uid="uid://6tasaxstw04i" path="res://assets/images/characters/hunter/hunter_up.png" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://brnhwio0m6rxl" path="res://assets/images/characters/hunter/Hunter_Down.png" id="3_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://cekv7e5hyxokp" path="res://assets/images/characters/hunter/legs1.png" id="4_fulsm"]
+[ext_resource type="Texture2D" uid="uid://q2dr1aevysgf" path="res://assets/images/characters/hunter/pixil-frame-0.png" id="4_oprun"]
+[ext_resource type="Texture2D" uid="uid://bwtnfwna8nhxp" path="res://assets/images/characters/hunter/legs2.png" id="5_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://yqhae6mvkp8d" path="res://assets/images/characters/hunter/pixil-frame-1.png" id="5_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://dqrxjdgg7x1b" path="res://assets/images/characters/hunter/legs3.png" id="6_60mlk"]
+[ext_resource type="Texture2D" uid="uid://dloc5bqs8ck1u" path="res://assets/images/characters/hunter/pixil-frame-2.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://be4syjkvwbik" path="res://assets/images/placeholder_gun.png" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://hvbyn310g3qj" path="res://assets/images/characters/hunter/pixil-frame-3.png" id="7_fulsm"]
+[ext_resource type="Texture2D" uid="uid://txv52aydxl7k" path="res://assets/images/characters/hunter/legs4.png" id="7_i4ail"]
+[ext_resource type="Texture2D" uid="uid://vs2263801k67" path="res://assets/images/characters/hunter/pixil-frame-4.png" id="8_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://cr46fdjftlhbv" path="res://assets/images/reload_bar_horizontal.png" id="8_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://de7i5rvgaexgo" path="res://assets/images/characters/hunter/pixil-frame-5.png" id="9_60mlk"]
+[ext_resource type="Texture2D" uid="uid://dmwywj47010fb" path="res://assets/images/reload_bar_vertical.png" id="9_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://cwp77l8pcqu7d" path="res://assets/images/characters/hunter/pixil-frame-6.png" id="10_i4ail"]
+[ext_resource type="Texture2D" uid="uid://n7ae4jakg3wi" path="res://assets/images/characters/hunter/pixil-frame-7.png" id="11_a38lo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
@@ -20,18 +31,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tuyoq")
+"texture": ExtResource("3_f1ej7")
 }],
 "loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_fjrip")
-}],
-"loop": true,
-"name": &"left",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -39,31 +42,91 @@ animations = [{
 "texture": ExtResource("1_3vyb7")
 }],
 "loop": false,
-"name": &"lmb",
+"name": &"movement",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_smehm")
+"texture": ExtResource("4_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_60mlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i4ail")
 }],
 "loop": true,
-"name": &"right",
+"name": &"walk",
 "speed": 5.0
-}, {
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ni07"]
+animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": false,
-"name": &"rmb",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_ur7pv")
+"texture": ExtResource("4_oprun")
 }],
 "loop": true,
-"name": &"up",
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a8ls1")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qfm1y")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fulsm")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4r5pv")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_60mlk")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_i4ail")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_a38lo")
+}],
+"loop": true,
+"name": &"7",
 "speed": 5.0
 }]
 
@@ -73,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_3vyb7")
 }],
-"loop": false,
+"loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -82,15 +145,7 @@ animations = [{
 "texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"left",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -98,7 +153,7 @@ animations = [{
 "texture": ExtResource("1_3vyb7")
 }],
 "loop": false,
-"name": &"lmb",
+"name": &"movement",
 "speed": 5.0
 }, {
 "frames": [{
@@ -106,23 +161,7 @@ animations = [{
 "texture": ExtResource("1_3vyb7")
 }],
 "loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": false,
-"name": &"rmb",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"up",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -167,23 +206,68 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_3v2ag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d2wvv"]
+resource_name = "slide_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7.5, 0), Vector2(7.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jej6c"]
+_data = {
+&"RESET": SubResource("Animation_3v2ag"),
+&"slide_right": SubResource("Animation_d2wvv")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_g2els")
 
-[node name="HunterSprite" type="AnimatedSprite2D" parent="."]
+[node name="HunterBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
-animation = &"left"
+animation = &"walk"
 
-[node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+[node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_4ni07")
+animation = &"0"
+
+[node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
-animation = &"lmb"
+animation = &"idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AttackCooldown" type="Timer" parent="."]
@@ -209,7 +293,23 @@ sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle"
 
 [node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"idle"
 
+[node name="ReloadBar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 20)
+texture = ExtResource("8_ur7pv")
+
+[node name="ReloadBarVertical" type="Sprite2D" parent="ReloadBar"]
+position = Vector2(-7.5, 0)
+texture = ExtResource("9_y4r1p")
+
+[node name="ReloadBarAnimationPlayer" type="AnimationPlayer" parent="ReloadBar/ReloadBarVertical"]
+libraries = {
+&"": SubResource("AnimationLibrary_jej6c")
+}
+
 [connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
+[connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]

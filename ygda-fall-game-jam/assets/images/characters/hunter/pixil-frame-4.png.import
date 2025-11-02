@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccghpb16mwka7"
-path="res://.godot/imported/hunter_left.png-eca2e8316a29e759eeaea4fc4b036c4c.ctex"
+uid="uid://vs2263801k67"
+path="res://.godot/imported/pixil-frame-4.png-a3efb8786feea5c248716294cf1bdf63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/hunter/hunter_left.png"
-dest_files=["res://.godot/imported/hunter_left.png-eca2e8316a29e759eeaea4fc4b036c4c.ctex"]
+source_file="res://assets/images/characters/hunter/pixil-frame-4.png"
+dest_files=["res://.godot/imported/pixil-frame-4.png-a3efb8786feea5c248716294cf1bdf63.ctex"]
 
 [params]
 

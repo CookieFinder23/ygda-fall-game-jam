@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brnhwio0m6rxl"
-path="res://.godot/imported/Hunter_Down.png-65b6788b52e4ea68e6cdf9642f36719b.ctex"
+uid="uid://txv52aydxl7k"
+path="res://.godot/imported/legs4.png-2ef116aa672fe4b2848c861c40bce116.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/hunter/Hunter_Down.png"
-dest_files=["res://.godot/imported/Hunter_Down.png-65b6788b52e4ea68e6cdf9642f36719b.ctex"]
+source_file="res://assets/images/characters/hunter/legs4.png"
+dest_files=["res://.godot/imported/legs4.png-2ef116aa672fe4b2848c861c40bce116.ctex"]
 
 [params]
 
