@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhom0tx7vqeop"]
+
+[ext_resource type="Script" uid="uid://c5p6wtggksam1" path="res://scripts/ghost.gd" id="1_bbnym"]
+[ext_resource type="Texture2D" uid="uid://cbcryd7fqjuqv" path="res://assets/images/enemies/ghost/ghost_attack.png" id="2_bbnym"]
+[ext_resource type="Texture2D" uid="uid://bhs28qj6xk3rv" path="res://assets/images/enemies/ghost/ghost_idle.png" id="3_veat2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_veat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"disappear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bbnym")
+}],
+"loop": true,
+"name": &"hunt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(6.5, 13)
+
+[node name="Ghost" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 0
+sync_to_physics = false
+script = ExtResource("1_bbnym")
+
+[node name="GhostSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
+self_modulate = Color(1, 1, 1, 0.498039)
+sprite_frames = SubResource("SpriteFrames_bbnym")
+animation = &"hunt"
+
+[node name="GhostCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i53qi")
+
+[node name="TeleportClock" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="WaitClock" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="InvisibleClock" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="GhostSprite" to="." method="_on_ghost_sprite_animation_finished"]
+[connection signal="timeout" from="TeleportClock" to="." method="_on_ghost_clock_timeout"]
+[connection signal="timeout" from="TeleportClock" to="." method="_on_teleport_clock_timeout"]
+[connection signal="timeout" from="WaitClock" to="." method="_on_wait_clock_timeout"]
+[connection signal="timeout" from="InvisibleClock" to="." method="_on_invisible_clock_timeout"]

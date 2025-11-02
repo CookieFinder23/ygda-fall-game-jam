@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c22cmwydia5s6"]
+[gd_scene load_steps=5 format=3 uid="uid://c22cmwydia5s6"]
 
+[ext_resource type="Script" uid="uid://colk6cujod2dp" path="res://scripts/imp.gd" id="1_65clq"]
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_i53qi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_giulp"]
@@ -16,22 +17,28 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_i53qi")
 }],
-"loop": true,
-"name": &"dart",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_i53qi")
-}],
-"loop": true,
-"name": &"idle",
+"loop": false,
+"name": &"dash",
 "speed": 5.0
 }]
 
-[node name="Imp" type="RigidBody2D"]
-gravity_scale = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(32, 32)
 
-[node name="ImpSprite" type="AnimatedSprite2D" parent="."]
+[node name="Imp" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_65clq")
+
+[node name="ImpSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_giulp")
-animation = &"idle"
+animation = &"attack"
+
+[node name="ImpCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i53qi")
+
+[node name="ImpClock" type="Timer" parent="."]
+autostart = true
+
+[connection signal="animation_finished" from="ImpSprite" to="." method="_on_imp_sprite_animation_finished"]
+[connection signal="timeout" from="ImpClock" to="." method="_on_imp_clock_timeout"]

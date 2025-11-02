@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvpoga07if6a3"]
+
+[ext_resource type="Script" uid="uid://bm4dls7h33t7a" path="res://scripts/slime.gd" id="1_n6pvg"]
+[ext_resource type="Texture2D" uid="uid://b5pc43r2vh2n2" path="res://assets/images/enemies/slime/big_slime_1.png" id="2_n6pvg"]
+[ext_resource type="Texture2D" uid="uid://cx6cuvqfmaihu" path="res://assets/images/enemies/slime/big_slime_2.png" id="3_pjw23"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n6pvg")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pjw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n6pvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pjw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n6pvg")
+}],
+"loop": false,
+"name": &"lunge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pjw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n6pvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pjw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n6pvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pjw23")
+}],
+"loop": false,
+"name": &"lunge_startup",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(32.25, 31.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6pvg"]
+radius = 68.0
+
+[node name="Slime" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 4
+sync_to_physics = false
+script = ExtResource("1_n6pvg")
+
+[node name="SlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
+sprite_frames = SubResource("SpriteFrames_bbnym")
+animation = &"lunge_startup"
+
+[node name="SlimeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_i53qi")
+
+[node name="LungeRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="LungeRangeCollision" type="CollisionShape2D" parent="LungeRange"]
+shape = SubResource("CircleShape2D_n6pvg")
+
+[node name="LungeCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="LungeInAction" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="SlimeSprite" to="." method="_on_slime_sprite_animation_finished"]
+[connection signal="body_entered" from="LungeRange" to="." method="_on_lunge_range_body_entered"]
+[connection signal="timeout" from="LungeInAction" to="." method="_on_lunge_in_action_timeout"]

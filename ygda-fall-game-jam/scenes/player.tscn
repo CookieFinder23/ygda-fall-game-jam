@@ -165,9 +165,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(16, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 animations = [{
 "frames": [{
@@ -242,33 +239,31 @@ _data = {
 &"slide_right": SubResource("Animation_d2wvv")
 }
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(16, 32)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_g2els")
 
 [node name="HunterBodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"walk"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -14)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4ni07")
-animation = &"0"
+animation = &"1"
 
 [node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
 visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"idle"
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 process_callback = 0
@@ -311,5 +306,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_jej6c")
 }
 
+[node name="ChangeSceenToStartScreen" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="IFrames" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
 [connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]
+[connection signal="timeout" from="ChangeSceenToStartScreen" to="." method="_on_change_sceen_to_start_screen_timeout"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

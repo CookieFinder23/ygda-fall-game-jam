@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://8vry8x3s6n0g"]
+
+[ext_resource type="Script" uid="uid://cttk4gaex5any" path="res://scripts/small_slime.gd" id="1_v470m"]
+[ext_resource type="Texture2D" uid="uid://cwwxwstgelni0" path="res://assets/images/enemies/slime/small_slime_1.png" id="2_sw212"]
+[ext_resource type="Texture2D" uid="uid://vwebogv4n27e" path="res://assets/images/enemies/slime/small_slime_2.png" id="3_y3kx0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sw212")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y3kx0")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(32.25, 31.25)
+
+[node name="SmallSlime" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 4
+sync_to_physics = false
+script = ExtResource("1_v470m")
+
+[node name="SmallSlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
+sprite_frames = SubResource("SpriteFrames_bbnym")
+animation = &"chase"
+
+[node name="SmallSlimeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_i53qi")
+
+[connection signal="animation_finished" from="SmallSlimeSprite" to="." method="_on_slime_sprite_animation_finished"]
