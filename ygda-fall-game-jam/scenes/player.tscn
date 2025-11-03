@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=58 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://iicfj16iejkl" path="res://assets/images/characters/ice_mage/w5.png" id="20_wqfne"]
 [ext_resource type="Texture2D" uid="uid://dcbaamgdgo2d" path="res://assets/images/characters/ice_mage/w6.png" id="21_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://dy2eywb1s4t8w" path="res://assets/images/characters/ice_mage/w7.png" id="22_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://joffbh84iexf" path="res://assets/images/characters/ice_mage/backside idle 2.png" id="22_t4otl"]
+[ext_resource type="Texture2D" uid="uid://dkwim0i34mkde" path="res://assets/images/characters/ice_mage/backside.png" id="23_j2b1d"]
 [ext_resource type="Texture2D" uid="uid://bkpwgs855sd12" path="res://assets/images/characters/hunter/crossbow5.png" id="29_jc3p3"]
 [ext_resource type="Texture2D" uid="uid://chfnxqykqv2ov" path="res://assets/images/characters/hunter/crossbow4.png" id="30_hax0n"]
 [ext_resource type="Texture2D" uid="uid://cm40qif3g0qqb" path="res://assets/images/characters/hunter/crossbow3.png" id="31_t4otl"]
@@ -203,6 +205,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_j2b1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_t4otl")
+}],
+"loop": true,
+"name": &"idle_back",
 "speed": 2.5
 }, {
 "frames": [{
@@ -419,11 +432,13 @@ platform_on_leave = 2
 script = ExtResource("1_g2els")
 
 [node name="HunterBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"movement"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(2, -11)
 sprite_frames = SubResource("SpriteFrames_4ni07")
@@ -436,14 +451,11 @@ sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"idle"
 
 [node name="IceMageBodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_t4otl")
-animation = &"idle"
-frame_progress = 0.63369
+animation = &"idle_back"
 
 [node name="IceMageHeadSprite" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"

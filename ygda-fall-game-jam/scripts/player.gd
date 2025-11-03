@@ -216,7 +216,11 @@ func set_head_direction() -> void:
 		current_head_sprite.flip_h = true
 		current_body_sprite.flip_h = true
 		if current_character == Character.ICE_MAGE:
-			current_body_sprite.position.x = -5
+			if (current_body_sprite.animation == "idle_back"):
+				if current_body_sprite.flip_h:
+					current_body_sprite.position.x = 5
+			else:
+				current_body_sprite.position.x = -5
 			current_head_sprite.position.x = -5
 		elif current_character == Character.HUNTER:
 			if current_body_sprite.animation == "walk":
@@ -228,7 +232,10 @@ func set_head_direction() -> void:
 		current_head_sprite.flip_h = false
 		current_body_sprite.flip_h = false
 		if current_character == Character.ICE_MAGE:
-			current_body_sprite.position.x = 3
+			if (current_body_sprite.animation == "idle_back"):
+				current_body_sprite.position.x = -8
+			else:
+				current_body_sprite.position.x = 3
 			current_head_sprite.position.x = 3
 		elif current_character == Character.HUNTER:
 			if current_body_sprite.animation == "walk":
@@ -238,7 +245,7 @@ func set_head_direction() -> void:
 	
 		
 	if current_character == Character.ICE_MAGE:
-		if current_body_sprite.animation == "idle" and current_body_sprite.frame == 1:
+		if (current_body_sprite.animation == "idle" or current_body_sprite.animation == "idle_back") and current_body_sprite.frame == 1:
 			current_head_sprite.position.y = -5
 		else:
 			current_head_sprite.position.y = -6
@@ -254,7 +261,10 @@ func _physics_process(delta: float) -> void:
 		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		if input_direction == Vector2.ZERO:
-			play_body_animation("idle")
+			if current_character == Character.ICE_MAGE and global_position.y > get_global_mouse_position().y:
+				play_body_animation("idle_back")
+			else:
+				play_body_animation("idle")
 		else:
 			if current_character == Character.HUNTER and not movement_ability_in_action.is_stopped():
 				play_body_animation("movement")
