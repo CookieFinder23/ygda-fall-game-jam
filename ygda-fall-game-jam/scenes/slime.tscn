@@ -1,14 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvpoga07if6a3"]
+[gd_scene load_steps=16 format=3 uid="uid://dvpoga07if6a3"]
 
 [ext_resource type="Script" uid="uid://bm4dls7h33t7a" path="res://scripts/slime.gd" id="1_n6pvg"]
+[ext_resource type="Texture2D" uid="uid://dp33n06xfrwjm" path="res://assets/images/enemies/slime/slime1.png" id="2_a02ik"]
 [ext_resource type="Texture2D" uid="uid://b5pc43r2vh2n2" path="res://assets/images/enemies/slime/big_slime_1.png" id="2_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://cx6cuvqfmaihu" path="res://assets/images/enemies/slime/big_slime_2.png" id="3_pjw23"]
+[ext_resource type="Texture2D" uid="uid://b24bcxkys6x4f" path="res://assets/images/enemies/slime/slime2.png" id="3_pu8ps"]
+[ext_resource type="Texture2D" uid="uid://ckjsb4bk44quo" path="res://assets/images/enemies/slime/slime3.png" id="4_g40cl"]
+[ext_resource type="Texture2D" uid="uid://dxklpo6ihvevr" path="res://assets/images/enemies/slime/slime4.png" id="5_cxm07"]
+[ext_resource type="Texture2D" uid="uid://cpwdjddnx8v6e" path="res://assets/images/enemies/slime/slime5.png" id="6_g2qvl"]
+[ext_resource type="Texture2D" uid="uid://b5li253n6u7f5" path="res://assets/images/enemies/slime/slime6.png" id="7_tyl0w"]
+[ext_resource type="Texture2D" uid="uid://bb3od0pydnxvh" path="res://assets/images/enemies/slime/slime7.png" id="8_fur4c"]
+[ext_resource type="Texture2D" uid="uid://bgiqqwxyuy668" path="res://assets/images/enemies/slime/slime8.png" id="9_2v7ff"]
+[ext_resource type="Texture2D" uid="uid://dq5usyo8vlfa5" path="res://assets/images/enemies/slime/slime9.png" id="10_35t6e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_n6pvg")
+"texture": ExtResource("2_a02ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pu8ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g40cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cxm07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g2qvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tyl0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fur4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2v7ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_35t6e")
 }],
 "loop": true,
 "name": &"chase",
@@ -53,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(32.25, 31.25)
+size = Vector2(18, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6pvg"]
 radius = 68.0
@@ -65,10 +98,11 @@ script = ExtResource("1_n6pvg")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
 sprite_frames = SubResource("SpriteFrames_bbnym")
-animation = &"lunge_startup"
+animation = &"chase"
+autoplay = "chase"
 
 [node name="SlimeCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.375)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="LungeRange" type="Area2D" parent="."]

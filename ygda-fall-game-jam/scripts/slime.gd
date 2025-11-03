@@ -47,6 +47,11 @@ func take_damage(damage: int) -> void:
 		get_tree().root.add_child(slow_small_slime_instance)
 		get_tree().root.add_child(fast_small_slime_instance)
 		queue_free()
+	else:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.death = false
+		explosion_instance.global_position = global_position
+		get_tree().root.add_child(explosion_instance)
 
 func _on_slime_sprite_animation_finished() -> void:
 	if slime_sprite.animation == "lunge_startup":
@@ -61,10 +66,7 @@ func _on_lunge_in_action_timeout() -> void:
 	lunge_cooldown.start()
 	slime_sprite.play("chase")
 	
-func stun() -> void:
-	phase = Phase.CHASE
-	slime_sprite.play("chase")
-	lunge_cooldown.stop()
-	lunge_in_action.stop()
+func stun(stun_time: int) -> void:
+	stun_timer.wait_time = stun_time
 	stun_timer.start()
 	

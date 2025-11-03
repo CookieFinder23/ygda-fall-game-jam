@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkj3yiynsd32x"]
+
+[ext_resource type="Texture2D" uid="uid://2mtseu10jeot" path="res://assets/images/placeholder_circle.png" id="1_devoi"]
+[ext_resource type="Script" uid="uid://wcwo6wwd1r7e" path="res://scripts/enemy_spawner.gd" id="2_xl0gr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vank4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_devoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_devoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_devoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_devoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_devoi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemySpawner" type="AnimatedSprite2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_vank4")
+script = ExtResource("2_xl0gr")
+
+[node name="RandomWait" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="RandomWait" to="." method="_on_random_wait_timeout"]

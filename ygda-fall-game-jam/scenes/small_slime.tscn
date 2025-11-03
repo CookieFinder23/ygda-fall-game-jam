@@ -19,9 +19,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(32.25, 31.25)
+size = Vector2(16, 16)
 
 [node name="SmallSlime" type="AnimatableBody2D" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 sync_to_physics = false
 script = ExtResource("1_v470m")
@@ -31,7 +32,6 @@ sprite_frames = SubResource("SpriteFrames_bbnym")
 animation = &"chase"
 
 [node name="SmallSlimeCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.375)
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="StunTimer" type="Timer" parent="."]

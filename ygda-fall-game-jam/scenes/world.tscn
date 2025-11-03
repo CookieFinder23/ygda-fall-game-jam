@@ -1,13 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=8 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="Script" uid="uid://wbw3or5rvqko" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
 [ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://dvpoga07if6a3" path="res://scenes/slime.tscn" id="5_i7141"]
+[ext_resource type="PackedScene" uid="uid://b1cd4x4mqh4ha" path="res://scenes/wave_number_display.tscn" id="3_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node"]
 script = ExtResource("1_71j4m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LeftBar" type="Panel" parent="CanvasLayer"]
+offset_left = 1.52588e-05
+offset_top = 6.10352e-05
+offset_right = 140.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mrxx")
+
+[node name="RightBar" type="Panel" parent="CanvasLayer"]
+offset_left = 500.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mrxx")
+
+[node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("8_4mrxx")]
+
+[node name="CurrentWaveDisplay" parent="CanvasLayer" instance=ExtResource("3_7r4gi")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = 16.0
+grow_vertical = 2
 
 [node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
 
@@ -19,5 +48,12 @@ stream = ExtResource("3_4wyf3")
 autoplay = true
 parameters/looping = true
 
-[node name="Slime" parent="." instance=ExtResource("5_i7141")]
-position = Vector2(183, 316)
+[node name="InbetweenWaveTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="WaveCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="InbetweenWaveTimer" to="." method="_on_inbetween_wave_timer_timeout"]

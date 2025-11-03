@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(6.5, 13)
+size = Vector2(16, 32)
 
 [node name="Ghost" type="AnimatableBody2D" groups=["Enemy"]]
 collision_layer = 0
@@ -89,16 +89,12 @@ animation = &"hunt"
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="TeleportClock" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 3.5
 autostart = true
 
 [node name="WaitClock" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="InvisibleClock" type="Timer" parent="."]
-one_shot = true
-autostart = true
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -108,4 +104,3 @@ one_shot = true
 [connection signal="timeout" from="TeleportClock" to="." method="_on_ghost_clock_timeout"]
 [connection signal="timeout" from="TeleportClock" to="." method="_on_teleport_clock_timeout"]
 [connection signal="timeout" from="WaitClock" to="." method="_on_wait_clock_timeout"]
-[connection signal="timeout" from="InvisibleClock" to="." method="_on_invisible_clock_timeout"]

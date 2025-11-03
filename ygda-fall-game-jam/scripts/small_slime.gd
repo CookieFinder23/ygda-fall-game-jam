@@ -13,7 +13,10 @@ func take_damage(damage: int) -> void:
 	var explosion_instance = EXPLOSION.instantiate()
 	get_tree().root.add_child(explosion_instance)
 	explosion_instance.global_position = global_position
+	Global.enemies_left -= 0.5
 	queue_free()
 
-func stun() -> void:
+func stun(stun_time: int) -> void:
+	stun_timer.wait_time = stun_time
 	stun_timer.start()
+	

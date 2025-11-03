@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1cd4x4mqh4ha"]
+
+[ext_resource type="Script" uid="uid://ce0yrtg3l7kqk" path="res://scripts/wave_number_display.gd" id="1_lxs01"]
+[ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="1_wwt2h"]
+
+[node name="CurrentWaveDisplay" type="Label"]
+offset_right = 140.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_wwt2h")
+text = "Current Wave:"
+horizontal_alignment = 1
+
+[node name="WaveNumberDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 140.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_wwt2h")
+theme_override_font_sizes/font_size = 32
+text = "1/5"
+horizontal_alignment = 1
+script = ExtResource("1_lxs01")

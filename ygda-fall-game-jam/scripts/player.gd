@@ -18,7 +18,6 @@ extends CharacterBody2D
 @onready var i_frames: Timer = $IFrames
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
-const EXPLOSION = preload("res://scenes/explosion.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const BASE_MOVEMENT_SPEED: int = 30
 const VERTICAL_WEAPON_OFFSET: int = 2
@@ -76,9 +75,6 @@ var character_data = {}
 
 func _enter_tree() -> void:
 	Global.player_reference = self
-	
-func _exit_tree() -> void:
-	Global.player_reference = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,8 +85,8 @@ func _ready() -> void:
 	}
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = hunter_body_sprite
-	set_character(Character.HUNTER)
+	current_body_sprite = ice_mage_body_sprite
+	set_character(Character.ICE_MAGE)
 	play_body_animation("idle")
 
 func set_movement_speed(character: Character) -> void:
@@ -135,6 +131,13 @@ func play_body_animation(animation: String) -> void:
 func do_movement_ability(character: Character) -> void:
 	if character == Character.HUNTER:
 		movement_ability_in_action.wait_time = 2
+		movement_ability_in_action.start()
+	if character == Character.ICE_MAGE:
+		var ice_circle_instance = ICE_CIRCLE.instantiate()
+		ice_circle_instance.global_position = global_position
+		ice_circle_instance.is_attack = false
+		get_tree().root.add_child(ice_circle_instance)
+		movement_ability_in_action.wait_time = 0
 		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
@@ -181,6 +184,7 @@ func attack():
 		var ice_circle_instance = ICE_CIRCLE.instantiate()
 		ice_circle_instance.global_position.x = clamp(get_global_mouse_position().x, 188, 452)
 		ice_circle_instance.global_position.y = clamp(get_global_mouse_position().y, 48, 312)
+		ice_circle_instance.is_attack = true
 		get_tree().root.add_child(ice_circle_instance)
 		
 func _on_reload_bar_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -274,15 +278,19 @@ func take_damage(damage: int) -> void:
 	if i_frames.is_stopped():
 		i_frames.start()
 		health -= 1
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.global_position = global_position
 		if health == 0:
-			var explosion_instance = EXPLOSION.instantiate()
-			get_tree().root.add_child(explosion_instance)
-			explosion_instance.global_position = global_position
+			explosion_instance.death = true
 			visible = false
 			change_sceen_to_start_screen.start()
+		else:
+			explosion_instance.death = false
+		get_tree().root.add_child(explosion_instance)
+
 
 func _on_change_sceen_to_start_screen_timeout() -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn") 
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	take_damage(1)
