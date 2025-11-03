@@ -4,6 +4,8 @@ extends AnimatableBody2D
 @onready var lunge_range: Area2D = $LungeRange
 @onready var lunge_cooldown: Timer = $LungeCooldown
 @onready var lunge_in_action: Timer = $LungeInAction
+@onready var stun_timer: Timer = $StunTimer
+
 const SMALL_SLIME = preload("res://scenes/small_slime.tscn")
 var health: int = 9
 var phase: Phase = Phase.CHASE
@@ -22,15 +24,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if phase == Phase.CHASE:
-		move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta)
-		if lunge_range.overlaps_body(Global.player_reference) and lunge_cooldown.is_stopped():
-			lunge_cooldown.start()
-			slime_sprite.play("lunge_startup")
-			phase = Phase.LUNGE_STARTUP
+	if stun_timer.is_stopped():
+		if phase == Phase.CHASE:
+			move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta)
+			if lunge_range.overlaps_body(Global.player_reference) and lunge_cooldown.is_stopped():
+				lunge_cooldown.start()
+				slime_sprite.play("lunge_startup")
+				phase = Phase.LUNGE_STARTUP
 
-	elif phase == Phase.LUNGE:
-		move_and_collide(lunge_direction * LUNGE_SPEED * delta)
+		elif phase == Phase.LUNGE:
+			move_and_collide(lunge_direction * LUNGE_SPEED * delta)
 
 func take_damage(damage: int) -> void:
 	health -= damage
@@ -57,3 +60,11 @@ func _on_lunge_in_action_timeout() -> void:
 	phase = Phase.CHASE
 	lunge_cooldown.start()
 	slime_sprite.play("chase")
+	
+func stun() -> void:
+	phase = Phase.CHASE
+	slime_sprite.play("chase")
+	lunge_cooldown.stop()
+	lunge_in_action.stop()
+	stun_timer.start()
+	

@@ -3,6 +3,7 @@ extends AnimatableBody2D
 @onready var imp_sprite: AnimatedSprite2D = $ImpSprite
 @onready var player: CharacterBody2D = $Player
 @onready var explosion: CPUParticles2D = $Explosion
+@onready var stun_timer: Timer = $StunTimer
 
 var health: int = 9
 var phase: int = 0
@@ -95,30 +96,31 @@ func _on_imp_clock_timeout() -> void:
 				imp_sprite.play("dash")
 
 func _physics_process(delta: float) -> void:
-	if current_action == Action.UP:
-		position.y -= DASH_DISTANCE / DASH_TIME * delta
-		if position.y <= 48:
-			position.y = 48
-			current_action = Action.ATTACK
-	if current_action == Action.DOWN:
-		position.y += DASH_DISTANCE / DASH_TIME * delta
-		if position.y >= 312:
-			position.y = 312
-			current_action = Action.ATTACK
-	if current_action == Action.LEFT:
-		position.x -= DASH_DISTANCE / DASH_TIME * delta
-		if position.x <= 188:
-			position.x = 188
-			current_action = Action.ATTACK
-	if current_action == Action.RIGHT:
-		position.x += DASH_DISTANCE / DASH_TIME * delta
-		if position.x >= 452:
-			position.x = 452
-			current_action = Action.ATTACK
+	if stun_timer.is_stopped():
+		if current_action == Action.UP:
+			position.y -= DASH_DISTANCE / DASH_TIME * delta
+			if position.y <= 48:
+				position.y = 48
+				current_action = Action.ATTACK
+		if current_action == Action.DOWN:
+			position.y += DASH_DISTANCE / DASH_TIME * delta
+			if position.y >= 312:
+				position.y = 312
+				current_action = Action.ATTACK
+		if current_action == Action.LEFT:
+			position.x -= DASH_DISTANCE / DASH_TIME * delta
+			if position.x <= 188:
+				position.x = 188
+				current_action = Action.ATTACK
+		if current_action == Action.RIGHT:
+			position.x += DASH_DISTANCE / DASH_TIME * delta
+			if position.x >= 452:
+				position.x = 452
+				current_action = Action.ATTACK
 		
 
 func _on_imp_sprite_animation_finished() -> void:
-	if imp_sprite.animation == "attack":
+	if imp_sprite.animation == "attack" and stun_timer.is_stopped():
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = global_position
 		projectile_instance.rotation = position.angle_to_point(Global.player_reference.position) + deg_to_rad(randf_range(-15, 15))
@@ -134,3 +136,6 @@ func take_damage(damage: int) -> void:
 		get_tree().root.add_child(explosion_instance)
 		explosion_instance.global_position = global_position
 		queue_free()
+		
+func stun() -> void:
+	stun_timer.start()

@@ -4,6 +4,8 @@ extends AnimatableBody2D
 @onready var ghost_collision: CollisionShape2D = $GhostCollision
 @onready var wait_clock: Timer = $WaitClock
 @onready var invisible_clock: Timer = $InvisibleClock
+@onready var stun_timer: Timer = $StunTimer
+
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 var health: int = 9
 var phase: Phase = Phase.TELEPORT
@@ -21,7 +23,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if phase == Phase.HUNT and health > 0:
+	if phase == Phase.HUNT and health > 0 and stun_timer.is_stopped():
 		move_and_collide(position.direction_to(Global.player_reference.position) * SPEED * delta)
 
 func _on_teleport_clock_timeout() -> void:
@@ -72,3 +74,6 @@ func take_damage(damage: int) -> void:
 		get_tree().root.add_child(explosion_instance)
 		explosion_instance.global_position = global_position
 		queue_free()
+
+func stun() -> void:
+	stun_timer.start()

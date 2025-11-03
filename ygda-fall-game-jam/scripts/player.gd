@@ -21,7 +21,7 @@ const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const BASE_MOVEMENT_SPEED: int = 30
-const VERTICAL_WEAPON_OFFSET: int = -5
+const VERTICAL_WEAPON_OFFSET: int = 2
 
 var current_body_sprite: AnimatedSprite2D
 var current_head_sprite: AnimatedSprite2D
@@ -89,8 +89,8 @@ func _ready() -> void:
 	}
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = ice_mage_body_sprite
-	set_character(Character.ICE_MAGE)
+	current_body_sprite = hunter_body_sprite
+	set_character(Character.HUNTER)
 	play_body_animation("idle")
 
 func set_movement_speed(character: Character) -> void:
@@ -134,7 +134,7 @@ func play_body_animation(animation: String) -> void:
 
 func do_movement_ability(character: Character) -> void:
 	if character == Character.HUNTER:
-		movement_ability_in_action.wait_time = 1
+		movement_ability_in_action.wait_time = 2
 		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
@@ -145,11 +145,11 @@ func move_weapon_with_mouse() -> void:
 	current_weapon.position = Vector2.ZERO
 	current_weapon.look_at(get_global_mouse_position())
 	if get_global_mouse_position().x > position.x:
-		current_weapon.position.x = 12
-		current_weapon.position.y = (3 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+		current_weapon.position.x = 10
+		current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
 	else:
-		current_weapon.position.x = -12
-		current_weapon.position.y = (3 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+		current_weapon.position.x = -10
+		current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
 	
 	current_weapon.rotation_degrees = wrap(current_weapon.rotation_degrees, 0, 360)
 	if current_weapon.rotation_degrees > 90 and current_weapon.rotation_degrees < 270:
@@ -172,24 +172,17 @@ func attack():
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = current_weapon.global_position
 		projectile_instance.rotation = current_weapon.rotation
-		projectile_instance.speed = 800
+		projectile_instance.speed = 600
 		projectile_instance.type = "crossbow"
 		projectile_instance.is_player_owned = true
 		projectile_instance.damage = 3
 		get_tree().root.add_child(projectile_instance)
 	elif current_character == Character.ICE_MAGE:
-		#if get_global_mouse_position().x > 172 and get_global_mouse_position().x < 468 and get_global_mouse_position().y < 328 and get_global_mouse_position().y > 32:
 		var ice_circle_instance = ICE_CIRCLE.instantiate()
-		ice_circle_instance.global_position.x = clamp(get_global_mouse_position().x, 172, 468)
-		ice_circle_instance.global_position.y = clamp(get_global_mouse_position().y, 32, 328)
+		ice_circle_instance.global_position.x = clamp(get_global_mouse_position().x, 188, 452)
+		ice_circle_instance.global_position.y = clamp(get_global_mouse_position().y, 48, 312)
 		get_tree().root.add_child(ice_circle_instance)
-		#else:
-			#attack_cooldown.stop()
-			#reload_bar_animation_player.stop()
-			#reload_bar.visible = false
-
-
-
+		
 func _on_reload_bar_animation_player_animation_finished(anim_name: StringName) -> void:
 	reload_bar.visible = false
 	
@@ -219,10 +212,11 @@ func set_head_direction() -> void:
 			current_body_sprite.position.x = 3
 			current_head_sprite.position.x = 3
 		
-	if current_character == Character.ICE_MAGE and current_body_sprite.animation == "idle" and current_body_sprite.frame == 1:
-		current_head_sprite.position.y = -5
-	else:
-		current_head_sprite.position.y = -6
+	if current_character == Character.ICE_MAGE:
+		if current_body_sprite.animation == "idle" and current_body_sprite.frame == 1:
+			current_head_sprite.position.y = -5
+		else:
+			current_head_sprite.position.y = -6
 	
 func _physics_process(delta: float) -> void:
 	if health > 0:
@@ -237,8 +231,11 @@ func _physics_process(delta: float) -> void:
 		if input_direction == Vector2.ZERO:
 			play_body_animation("idle")
 		else:
-			play_body_animation("walk")
-			
+			if current_character == Character.HUNTER and not movement_ability_in_action.is_stopped():
+				play_body_animation("movement")
+			else:
+				play_body_animation("walk")
+
 		if input_direction.y > 0:
 			movement_direction = MovementDirection.DOWN
 		elif input_direction.y < 0:
@@ -250,7 +247,7 @@ func _physics_process(delta: float) -> void:
 
 		if (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):
 			current_weapon.visible = false
-			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED * 2.5
+			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED * 1.75
 		else:
 			if (current_weapon != null):
 				current_weapon.visible = true

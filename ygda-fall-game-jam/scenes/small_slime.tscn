@@ -34,4 +34,8 @@ animation = &"chase"
 position = Vector2(0, 0.375)
 shape = SubResource("RectangleShape2D_i53qi")
 
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="SmallSlimeSprite" to="." method="_on_slime_sprite_animation_finished"]

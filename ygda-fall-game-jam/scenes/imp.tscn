@@ -40,5 +40,9 @@ shape = SubResource("RectangleShape2D_i53qi")
 [node name="ImpClock" type="Timer" parent="."]
 autostart = true
 
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="ImpSprite" to="." method="_on_imp_sprite_animation_finished"]
 [connection signal="timeout" from="ImpClock" to="." method="_on_imp_clock_timeout"]
