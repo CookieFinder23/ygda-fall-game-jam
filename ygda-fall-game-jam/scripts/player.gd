@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var hunter_body_sprite: AnimatedSprite2D = $HunterBodySprite
 @onready var hunter_head_sprite: AnimatedSprite2D = $HunterHeadSprite
 @onready var knight_body_sprite: AnimatedSprite2D = $KnightBodySprite
-
 @onready var player_collision: CollisionShape2D = $PlayerCollision
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var movement_ability_cooldown: Timer = $MovementAbilityCooldown
@@ -13,9 +12,12 @@ extends CharacterBody2D
 @onready var reload_bar_animation_player: AnimationPlayer = $ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer
 @onready var hunter_weapon_sprite: AnimatedSprite2D = $HunterWeaponSprite
 @onready var knight_weapon_sprite: AnimatedSprite2D = $KnightWeaponSprite
+@onready var ice_mage_body_sprite: AnimatedSprite2D = $IceMageBodySprite
+@onready var ice_mage_head_sprite: AnimatedSprite2D = $IceMageHeadSprite
 @onready var change_sceen_to_start_screen: Timer = $ChangeSceenToStartScreen
 @onready var i_frames: Timer = $IFrames
 
+const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const BASE_MOVEMENT_SPEED: int = 30
@@ -40,42 +42,36 @@ enum MovementSpeed {
 	NORMAL,
 	SLOW
 }
-
 var movement_speed_to_number = {
 	MovementSpeed.FAST: 125,
 	MovementSpeed.NORMAL: 100,
 	MovementSpeed.SLOW: 75,
 }
-
 enum AttackCooldownLength {
 	FAST,
 	NORMAL,
 	SLOW
 }
-
 var attack_cooldown_length_to_number = {
 	AttackCooldownLength.FAST: 0.5,
 	AttackCooldownLength.NORMAL: 2,
 	AttackCooldownLength.SLOW: 3
 }
-
 enum MovementAbilityCooldownLength {
 	FAST,
 	NORMAL,
 	SLOW
 }
-
 var movement_ability_cooldown_length_to_number = {
 	MovementAbilityCooldownLength.FAST: 0.5,
 	MovementAbilityCooldownLength.NORMAL: 2,
 	MovementAbilityCooldownLength.SLOW: 3
 }
-
 enum Character {
 	HUNTER,
-	KNIGHT
+	KNIGHT,
+	ICE_MAGE
 }
-
 var character_data = {}
 
 func _enter_tree() -> void:
@@ -88,12 +84,13 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
-	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8]
+	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8],
+	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
 	}
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = hunter_body_sprite
-	set_character(Character.HUNTER)
+	current_body_sprite = ice_mage_body_sprite
+	set_character(Character.ICE_MAGE)
 	play_body_animation("idle")
 
 func set_movement_speed(character: Character) -> void:
@@ -115,7 +112,8 @@ func set_sprite(new_sprite: Character) -> void:
 
 func set_weapon(new_weapon: Character) -> void:
 	for character in character_data:
-		character_data[character][4].visible = character == new_weapon
+		if character_data[character][5] != null:
+			character_data[character][5].visible = character == new_weapon
 	current_weapon = character_data[new_weapon][5]
 
 func set_character(character: Character) -> void:
@@ -168,7 +166,6 @@ func determine_weapon_layer() -> void:
 		current_weapon.z_index = 0
 	else:
 		current_weapon.z_index = 1
-		
 
 func attack():
 	if current_character == Character.HUNTER:
@@ -180,6 +177,17 @@ func attack():
 		projectile_instance.is_player_owned = true
 		projectile_instance.damage = 3
 		get_tree().root.add_child(projectile_instance)
+	elif current_character == Character.ICE_MAGE:
+		#if get_global_mouse_position().x > 172 and get_global_mouse_position().x < 468 and get_global_mouse_position().y < 328 and get_global_mouse_position().y > 32:
+		var ice_circle_instance = ICE_CIRCLE.instantiate()
+		ice_circle_instance.global_position.x = clamp(get_global_mouse_position().x, 172, 468)
+		ice_circle_instance.global_position.y = clamp(get_global_mouse_position().y, 32, 328)
+		get_tree().root.add_child(ice_circle_instance)
+		#else:
+			#attack_cooldown.stop()
+			#reload_bar_animation_player.stop()
+			#reload_bar.visible = false
+
 
 
 func _on_reload_bar_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -200,14 +208,24 @@ func set_head_direction() -> void:
 			current_head_sprite.play(str((amount_of_heads - 1) - (head_direction - amount_of_heads)))
 		current_head_sprite.flip_h = true
 		current_body_sprite.flip_h = true
+		if current_character == Character.ICE_MAGE:
+			current_body_sprite.position.x = -5
+			current_head_sprite.position.x = -5
 	else:
 		current_head_sprite.play(str(head_direction))
 		current_head_sprite.flip_h = false
 		current_body_sprite.flip_h = false
+		if current_character == Character.ICE_MAGE:
+			current_body_sprite.position.x = 3
+			current_head_sprite.position.x = 3
+		
+	if current_character == Character.ICE_MAGE and current_body_sprite.animation == "idle" and current_body_sprite.frame == 1:
+		current_head_sprite.position.y = -5
+	else:
+		current_head_sprite.position.y = -6
 	
 func _physics_process(delta: float) -> void:
 	if health > 0:
-		
 		if i_frames.is_stopped():
 			current_body_sprite.self_modulate.a = 1
 			current_head_sprite.self_modulate.a = 1
@@ -234,13 +252,15 @@ func _physics_process(delta: float) -> void:
 			current_weapon.visible = false
 			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED * 2.5
 		else:
-			current_weapon.visible = true
-			determine_weapon_layer()
+			if (current_weapon != null):
+				current_weapon.visible = true
+				determine_weapon_layer()
 			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED
 		velocity *= 0.7
-		
-		move_weapon_with_mouse()
+		if (current_weapon != null):
+			move_weapon_with_mouse()
 		set_head_direction()
+		
 		if Input.is_action_just_pressed("attack") and attack_cooldown.is_stopped() and not (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):
 			attack_cooldown.start()
 			reload_bar.visible = true

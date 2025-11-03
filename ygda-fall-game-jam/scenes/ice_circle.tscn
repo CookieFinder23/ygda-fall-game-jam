@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf6y5ns3pye31"]
+
+[ext_resource type="Script" uid="uid://djgcu6pcpje6o" path="res://scripts/ice_circle.gd" id="1_3t4hb"]
+[ext_resource type="Texture2D" uid="uid://bkc4f3r3674su" path="res://assets/images/characters/ice_mage/outline.png" id="1_r16ak"]
+[ext_resource type="Texture2D" uid="uid://d30ypvnns4c8r" path="res://assets/images/characters/ice_mage/base.png" id="2_s2on2"]
+[ext_resource type="Texture2D" uid="uid://bpjyfxu8wmdwd" path="res://assets/images/characters/ice_mage/3d_layer.png" id="3_s2on2"]
+
+[sub_resource type="Animation" id="Animation_s2on2"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3t4hb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uyu1"]
+_data = {
+&"RESET": SubResource("Animation_3t4hb"),
+&"spin": SubResource("Animation_s2on2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t4hb"]
+radius = 28.0179
+
+[node name="IceCircle" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_3t4hb")
+
+[node name="Outline" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_r16ak")
+
+[node name="Base" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_s2on2")
+
+[node name="3D" type="Sprite2D" parent="."]
+texture = ExtResource("3_s2on2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5uyu1")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_3t4hb")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
