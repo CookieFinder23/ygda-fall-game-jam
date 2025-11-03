@@ -5,13 +5,14 @@ extends AnimatableBody2D
 @onready var lunge_cooldown: Timer = $LungeCooldown
 @onready var lunge_in_action: Timer = $LungeInAction
 @onready var stun_timer: Timer = $StunTimer
+@onready var world: Node = $".."
 
 const SMALL_SLIME = preload("res://scenes/small_slime.tscn")
 var health: int = 9
 var phase: Phase = Phase.CHASE
 var lunge_direction
 const CHASE_SPEED: int = 60
-const LUNGE_SPEED: int = 200
+const LUNGE_SPEED: int = 190
 
 enum Phase {
 	CHASE,
@@ -44,14 +45,14 @@ func take_damage(damage: int) -> void:
 		var fast_small_slime_instance = SMALL_SLIME.instantiate()
 		fast_small_slime_instance.global_position = global_position
 		fast_small_slime_instance.speed = 90
-		get_tree().root.add_child(slow_small_slime_instance)
-		get_tree().root.add_child(fast_small_slime_instance)
+		world.add_child(slow_small_slime_instance)
+		world.add_child(fast_small_slime_instance)
 		queue_free()
 	else:
 		var explosion_instance = Global.EXPLOSION.instantiate()
 		explosion_instance.death = false
 		explosion_instance.global_position = global_position
-		get_tree().root.add_child(explosion_instance)
+		world.add_child(explosion_instance)
 
 func _on_slime_sprite_animation_finished() -> void:
 	if slime_sprite.animation == "lunge_startup":
@@ -59,7 +60,6 @@ func _on_slime_sprite_animation_finished() -> void:
 		lunge_in_action.start()
 		slime_sprite.play("lunge")
 		lunge_direction = position.direction_to(Global.player_reference.position)
-		
 
 func _on_lunge_in_action_timeout() -> void:
 	phase = Phase.CHASE

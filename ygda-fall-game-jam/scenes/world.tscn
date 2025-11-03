@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=9 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="Script" uid="uid://wbw3or5rvqko" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
 [ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://b1cd4x4mqh4ha" path="res://scenes/wave_number_display.tscn" id="3_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://celfj717qxisv" path="res://scenes/movement_ability_cooldown_notch.tscn" id="4_i7141"]
 [ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
@@ -37,6 +38,12 @@ anchor_bottom = 0.5
 offset_top = -16.0
 offset_bottom = 16.0
 grow_vertical = 2
+
+[node name="MovementAbilityCooldown" parent="CanvasLayer" instance=ExtResource("4_i7141")]
+offset_left = 10.0
+offset_top = 48.0
+offset_right = 130.0
+offset_bottom = 75.0
 
 [node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
 

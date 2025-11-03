@@ -1,9 +1,8 @@
 extends AnimatableBody2D
 
 @onready var imp_sprite: AnimatedSprite2D = $ImpSprite
-@onready var player: CharacterBody2D = $Player
-@onready var explosion: CPUParticles2D = $Explosion
 @onready var stun_timer: Timer = $StunTimer
+@onready var world: Node = $".."
 
 var health: int = 9
 var phase: int = 3
@@ -123,10 +122,10 @@ func _on_imp_sprite_animation_finished() -> void:
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = global_position
 		projectile_instance.rotation = position.angle_to_point(Global.player_reference.position) + deg_to_rad(randf_range(-15, 15))
-		projectile_instance.speed = 200
+		projectile_instance.speed = 180
 		projectile_instance.type = "fireball"
 		projectile_instance.is_player_owned = false
-		get_tree().root.add_child(projectile_instance)
+		world.add_child(projectile_instance)
 
 func take_damage(damage: int) -> void:
 	health -= damage
@@ -134,12 +133,12 @@ func take_damage(damage: int) -> void:
 	explosion_instance.global_position = global_position
 	if health <= 0:
 		explosion_instance.death = true
-		get_tree().root.add_child(explosion_instance)
+		world.add_child(explosion_instance)
 		Global.enemies_left -= 1
 		queue_free()
 	else:
 		explosion_instance.death = false
-		get_tree().root.add_child(explosion_instance)
+		world.add_child(explosion_instance)
 		
 func stun(stun_time: int) -> void:
 	stun_timer.wait_time = stun_time

@@ -4,8 +4,8 @@ const HEART_GUI = preload("res://scenes/heart_gui.tscn")
 func _ready() -> void:
 	set_max_hearts(3)
 
-func set_max_hearts(max: int):
-	for i in range(max):
+func set_max_hearts(max_hearts: int):
+	for i in range(max_hearts):
 		add_child(HEART_GUI.instantiate())
 
 func update_hearts(health: int):

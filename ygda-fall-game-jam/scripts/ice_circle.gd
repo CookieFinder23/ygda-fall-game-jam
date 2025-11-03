@@ -3,7 +3,7 @@ extends Node2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var _3d: Sprite2D = $"3D"
 var is_attack: bool
-var stun_time: int
+var stun_time: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,5 +23,5 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		stun_time = 1
 	body.stun(stun_time)
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

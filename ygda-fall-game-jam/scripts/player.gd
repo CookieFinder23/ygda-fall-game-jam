@@ -1,5 +1,7 @@
 extends CharacterBody2D
+@onready var hearts_container: HBoxContainer = $"../CanvasLayer/HeartsContainer"
 
+@onready var world: Node = $".."
 @onready var hunter_body_sprite: AnimatedSprite2D = $HunterBodySprite
 @onready var hunter_head_sprite: AnimatedSprite2D = $HunterHeadSprite
 @onready var knight_body_sprite: AnimatedSprite2D = $KnightBodySprite
@@ -29,7 +31,7 @@ var current_character: Character
 var movement_speed: int
 var movement_direction: MovementDirection
 var health = 3
-
+var transformation_cycle = []
 enum MovementDirection {
 	UP,
 	DOWN,
@@ -76,6 +78,11 @@ var character_data = {}
 func _enter_tree() -> void:
 	Global.player_reference = self
 
+func add_character(character: String) -> void:
+	if character == "ice_mage":
+		transformation_cycle.append(Character.ICE_MAGE)
+	if character == "knight":
+		transformation_cycle.append(Character.KNIGHT)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	character_data = {
@@ -83,12 +90,13 @@ func _ready() -> void:
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
 	}
+	transformation_cycle = [Character.ICE_MAGE]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
 	current_body_sprite = ice_mage_body_sprite
 	set_character(Character.ICE_MAGE)
 	play_body_animation("idle")
-
+	
 func set_movement_speed(character: Character) -> void:
 	movement_speed = movement_speed_to_number[character_data[character][0]]
 
@@ -115,6 +123,7 @@ func set_weapon(new_weapon: Character) -> void:
 func set_character(character: Character) -> void:
 	current_character = character
 	attack_cooldown.stop()
+	movement_ability_in_action.stop()
 	movement_ability_cooldown.stop()
 	var old_animation = current_body_sprite.animation
 	set_movement_speed(character)
@@ -137,12 +146,11 @@ func do_movement_ability(character: Character) -> void:
 		ice_circle_instance.global_position = global_position
 		ice_circle_instance.is_attack = false
 		get_tree().root.add_child(ice_circle_instance)
-		movement_ability_in_action.wait_time = 0
+		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
-	if current_character == Character.HUNTER:
-		movement_ability_cooldown.start()
+	movement_ability_cooldown.start()
 
 func move_weapon_with_mouse() -> void:
 	current_weapon.position = Vector2.ZERO
@@ -187,14 +195,16 @@ func attack():
 		ice_circle_instance.is_attack = true
 		get_tree().root.add_child(ice_circle_instance)
 		
-func _on_reload_bar_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_reload_bar_animation_player_animation_finished(_anim_name: StringName) -> void:
 	reload_bar.visible = false
 	
 func set_head_direction() -> void:
 	var head_angle_degrees: float = rad_to_deg(get_angle_to(get_global_mouse_position()))
 	var amount_of_heads: int = character_data[current_character][6]
-	var head_increment: float = 180 / amount_of_heads
+	var head_increment: float = 180 / float(amount_of_heads)
 	var head_direction: int = snapped(wrap(head_angle_degrees + 270, 0, 360), head_increment) / head_increment
+	if head_direction == 16:
+		head_direction = 15
 	if head_direction > amount_of_heads - 1:
 		if head_direction == head_increment:
 			if amount_of_heads == 8:
@@ -208,6 +218,11 @@ func set_head_direction() -> void:
 		if current_character == Character.ICE_MAGE:
 			current_body_sprite.position.x = -5
 			current_head_sprite.position.x = -5
+		elif current_character == Character.HUNTER:
+			if current_body_sprite.animation == "walk":
+				current_head_sprite.position.x = -2
+			else:
+				current_head_sprite.position.x = -1
 	else:
 		current_head_sprite.play(str(head_direction))
 		current_head_sprite.flip_h = false
@@ -215,6 +230,12 @@ func set_head_direction() -> void:
 		if current_character == Character.ICE_MAGE:
 			current_body_sprite.position.x = 3
 			current_head_sprite.position.x = 3
+		elif current_character == Character.HUNTER:
+			if current_body_sprite.animation == "walk":
+				current_head_sprite.position.x = 2
+			else:
+				current_head_sprite.position.x = 1
+	
 		
 	if current_character == Character.ICE_MAGE:
 		if current_body_sprite.animation == "idle" and current_body_sprite.frame == 1:
@@ -274,7 +295,7 @@ func _physics_process(delta: float) -> void:
 				
 		move_and_slide()
 
-func take_damage(damage: int) -> void:
+func take_damage(_damage: int) -> void:
 	if i_frames.is_stopped():
 		i_frames.start()
 		health -= 1
@@ -290,7 +311,17 @@ func take_damage(damage: int) -> void:
 
 
 func _on_change_sceen_to_start_screen_timeout() -> void:
+	for child in world.get_children():
+		child.queue_free()
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
-
-func _on_hurtbox_body_entered(body: Node2D) -> void:
+	
+func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	take_damage(1)
+
+
+func _on_transformation_cooldown_timeout() -> void:
+	if transformation_cycle.size() > 1:
+		if transformation_cycle.find(current_character) == transformation_cycle.size() - 1:
+			set_character(transformation_cycle[0])
+		else:
+			set_character(transformation_cycle[transformation_cycle.find(current_character) + 1])

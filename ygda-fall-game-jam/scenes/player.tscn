@@ -21,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://cwp77l8pcqu7d" path="res://assets/images/characters/hunter/pixil-frame-6.png" id="10_i4ail"]
 [ext_resource type="Texture2D" uid="uid://n7ae4jakg3wi" path="res://assets/images/characters/hunter/pixil-frame-7.png" id="11_a38lo"]
 [ext_resource type="Texture2D" uid="uid://dh2ehicmgqip3" path="res://assets/images/characters/hunter/emptyLegs4.png" id="11_md1ol"]
-[ext_resource type="Texture2D" uid="uid://b4v2vm5teuydk" path="res://assets/images/characters/ice_mage/idle 1 body.png" id="16_pf23h"]
+[ext_resource type="Texture2D" uid="uid://bjvvaco4sw3p6" path="res://assets/images/characters/ice_mage/idle 1 body.png" id="16_pf23h"]
 [ext_resource type="Texture2D" uid="uid://da0hd67yx38w4" path="res://assets/images/characters/ice_mage/w1.png" id="16_ujl30"]
 [ext_resource type="Texture2D" uid="uid://c6dmhrow3a0aw" path="res://assets/images/characters/ice_mage/w2.png" id="17_31cv2"]
-[ext_resource type="Texture2D" uid="uid://787s61o3uf0c" path="res://assets/images/characters/ice_mage/idle 2 body.png" id="17_dt7fs"]
+[ext_resource type="Texture2D" uid="uid://byt35ek2wginj" path="res://assets/images/characters/ice_mage/idle 2 body.png" id="17_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://btwcfq62a76v5" path="res://assets/images/characters/ice_mage/w3.png" id="18_pf23h"]
 [ext_resource type="Texture2D" uid="uid://bst37m80tauqd" path="res://assets/images/characters/ice_mage/w4.png" id="19_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://iicfj16iejkl" path="res://assets/images/characters/ice_mage/w5.png" id="20_wqfne"]
@@ -425,7 +425,7 @@ animation = &"movement"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -11)
+position = Vector2(2, -11)
 sprite_frames = SubResource("SpriteFrames_4ni07")
 animation = &"0"
 
@@ -439,7 +439,8 @@ animation = &"idle"
 visible = false
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_t4otl")
-animation = &"walk"
+animation = &"idle"
+frame_progress = 0.63369
 
 [node name="IceMageHeadSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -453,8 +454,8 @@ one_shot = true
 
 [node name="TransformationCooldown" type="Timer" parent="."]
 process_callback = 0
-wait_time = 7.0
-one_shot = true
+wait_time = 6.0
+autostart = true
 
 [node name="MovementAbilityCooldown" type="Timer" parent="."]
 process_callback = 0
@@ -510,6 +511,7 @@ shape = SubResource("RectangleShape2D_qhqgy")
 [node name="IFrames" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]
 [connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
 [connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]
 [connection signal="timeout" from="ChangeSceenToStartScreen" to="." method="_on_change_sceen_to_start_screen_timeout"]

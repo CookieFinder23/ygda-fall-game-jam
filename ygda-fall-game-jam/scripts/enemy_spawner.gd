@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 @onready var random_wait: Timer = $RandomWait
+@onready var world: Node = $".."
 
 var type
 
@@ -15,5 +16,5 @@ func _on_animation_finished() -> void:
 	Global.enemies_left += 1
 	var enemy = type.instantiate()
 	enemy.global_position = global_position
-	get_tree().root.add_child(enemy)
+	world.add_child(enemy)
 	queue_free()
