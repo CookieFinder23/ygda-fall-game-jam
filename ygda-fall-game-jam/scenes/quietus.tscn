@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckk1maci1or0u"]
+
+[ext_resource type="Script" uid="uid://cy63oovoy8vvo" path="res://scripts/queitus.gd" id="1_cniuu"]
+[ext_resource type="Texture2D" uid="uid://c155mi3ninwow" path="res://assets/images/enemies/queitus/quietus_1.png" id="2_mdhng"]
+[ext_resource type="Texture2D" uid="uid://dxs3knt7xaw2p" path="res://assets/images/enemies/queitus/quietus_2.png" id="3_3d7nf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mdhng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3d7nf")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mdhng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3d7nf")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(26, 48)
+
+[node name="Quietus" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 4
+sync_to_physics = false
+script = ExtResource("1_cniuu")
+
+[node name="QuietusSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_odggn")
+animation = &"shoot"
+
+[node name="QuietusCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_i53qi")
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ModeCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="RotateTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ModeCooldownTimer" to="." method="_on_update_mode_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

@@ -18,7 +18,7 @@ animations = [{
 "texture": ExtResource("1_i53qi")
 }],
 "loop": false,
-"name": &"dash",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -33,11 +33,13 @@ script = ExtResource("1_65clq")
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_giulp")
 animation = &"attack"
+autoplay = "idle"
 
 [node name="ImpCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="ImpClock" type="Timer" parent="."]
+wait_time = 0.75
 autostart = true
 
 [node name="StunTimer" type="Timer" parent="."]

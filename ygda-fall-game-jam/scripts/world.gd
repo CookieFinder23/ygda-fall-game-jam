@@ -10,6 +10,7 @@ const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
 const IMP = preload("res://scenes/imp.tscn")
 const GHOST = preload("res://scenes/ghost.tscn")
 const SLIME = preload("res://scenes/slime.tscn")
+const QUIETUS = preload("res://scenes/quietus.tscn")
 const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
 
 var remaining_characters = ["ice_mage", "knight"]
@@ -35,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 		Global.begin_next_wave = false
 		inbetween_wave_timer.start()
 		wave_cooldown_timer.start()
-	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false and Global.player_reference.position.y > 96:
+	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false and Global.player_reference.position.y > 128:
 		Global.picking_character = true
 		create_character_choice()
 		
@@ -65,6 +66,7 @@ func get_corner(corner: int) -> Vector2:
 		return Vector2(452, 312)
 		
 func wave_1():
+	return
 	var enemy_selection = [IMP, GHOST, SLIME]
 	var corner_selection = [1, 2, 3, 4]
 	var enemy
@@ -80,16 +82,17 @@ func wave_1():
 		add_child(enemy_instance)
 
 func wave_2():
-	var enemy_selection = [IMP, GHOST, SLIME]
+	var enemy_selection = [IMP, GHOST, SLIME, QUIETUS]
 	var corner_selection = [1, 2, 3, 4]
 	var enemy
 	var corner: int
+	var picked_enemies = []
 	for i in range(3):
 		enemy = enemy_selection.pick_random()
+		picked_enemies.append(enemy)
 		corner = corner_selection.pick_random()
 		corner_selection.erase(corner)
-		if enemy == IMP:
-			enemy_selection.erase(enemy)
+		enemy_selection.erase(enemy)
 		var enemy_instance = ENEMY_SPAWNER.instantiate()
 		enemy_instance.global_position = get_corner(corner)
 		enemy_instance.type = enemy

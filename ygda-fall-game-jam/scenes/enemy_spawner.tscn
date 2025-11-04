@@ -61,7 +61,6 @@ animations = [{
 [node name="EnemySpawner" type="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vank4")
-autoplay = "default"
 frame = 11
 frame_progress = 1.0
 script = ExtResource("2_xl0gr")

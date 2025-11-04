@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bojqiwewsvnfy"]
+[gd_scene load_steps=8 format=3 uid="uid://bojqiwewsvnfy"]
 
 [ext_resource type="Script" uid="uid://cwe2k8f5qxi06" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://duxoqipkdddb3" path="res://assets/images/characters/hunter/arrow.png" id="1_softn"]
@@ -21,18 +21,29 @@ animations = [{
 "loop": true,
 "name": &"fireball",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_softn")
+}],
+"loop": true,
+"name": &"quietus",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_softn"]
 size = Vector2(16, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q2a6"]
-radius = 8.0
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_softn"]
+radius = 4.0
 
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_q3m7n")
-animation = &"crossbow"
+animation = &"quietus"
 script = ExtResource("1_c8fcr")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -44,5 +55,8 @@ shape = SubResource("RectangleShape2D_softn")
 
 [node name="FireballProjectileCollision" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_6q2a6")
+
+[node name="QuietusProjectileCollossion" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_softn")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

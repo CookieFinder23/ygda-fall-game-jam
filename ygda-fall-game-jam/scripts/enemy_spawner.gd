@@ -5,7 +5,7 @@ extends AnimatedSprite2D
 var type
 
 func _ready() -> void:
-	random_wait.wait_time = randf_range(0, 1)
+	random_wait.wait_time = randf_range(0, 2)
 	random_wait.start()
 	
 func _on_random_wait_timeout() -> void:

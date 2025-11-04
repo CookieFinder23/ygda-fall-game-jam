@@ -8,7 +8,7 @@ var health: int = 9
 var phase: int = 3
 var quadrant_x: int
 var quadrant_y: int
-var current_action: Action
+var current_action: Action = Action.ATTACK
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const DASH_TIME = 0.5
@@ -21,12 +21,6 @@ enum Action {
 	DOWN,
 	ATTACK
 }
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	stun(1)
-	imp_sprite.play("attack")
-
 
 func attack() -> void:
 	imp_sprite.play("attack") # there is a function for on animation finished
@@ -82,17 +76,17 @@ func _on_imp_clock_timeout() -> void:
 		if dash_horizontal == true:
 			if quadrant_x == 1:
 				current_action = Action.LEFT
-				imp_sprite.play("dash")
+				imp_sprite.play("idle")
 			else:
 				current_action = Action.RIGHT
-				imp_sprite.play("dash")
+				imp_sprite.play("idle")
 		else:
 			if quadrant_y == 1:
 				current_action = Action.UP
-				imp_sprite.play("dash")
+				imp_sprite.play("idle")
 			else:
 				current_action = Action.DOWN
-				imp_sprite.play("dash")
+				imp_sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
 	if stun_timer.is_stopped():

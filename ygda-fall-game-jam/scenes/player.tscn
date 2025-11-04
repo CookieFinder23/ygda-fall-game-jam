@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=60 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
@@ -426,7 +426,10 @@ _data = {
 &"slide_right": SubResource("Animation_d2wvv")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2b1d"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs1tg"]
 size = Vector2(16, 32)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -510,19 +513,15 @@ libraries = {
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_qhqgy")
+shape = SubResource("RectangleShape2D_j2b1d")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_qhqgy")
+shape = SubResource("RectangleShape2D_cs1tg")
 
 [node name="IFrames" type="Timer" parent="."]
 one_shot = true

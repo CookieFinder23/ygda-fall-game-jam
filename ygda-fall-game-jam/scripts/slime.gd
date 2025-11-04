@@ -46,7 +46,7 @@ func _on_slime_sprite_animation_finished() -> void:
 	if slime_sprite.animation == "lunge_startup":
 		phase = Phase.LUNGE
 		slime_sprite.play("lunge")
-		lunge_direction = position.direction_to(Global.player_reference.position)
+		lunge_direction = position.direction_to(Global.player_reference.position) + Vector2(randf_range(-0.5, 0.5), randf_range(-0.5, 0.5))
 	elif slime_sprite.animation == "lunge":
 		phase = Phase.CHASE
 		slime_sprite.play("chase")

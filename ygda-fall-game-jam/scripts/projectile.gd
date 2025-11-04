@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 @onready var crossbow_projectile_collision: CollisionShape2D = $Hitbox/CrossbowProjectileCollision
 @onready var fireball_projectile_collision: CollisionShape2D = $Hitbox/FireballProjectileCollision
+@onready var quietus_projectile_collossion: CollisionShape2D = $Hitbox/QuietusProjectileCollossion
 
 var speed: int
 var type: String
@@ -10,14 +11,16 @@ var is_player_owned: bool
 func _ready() -> void:
 	var projectiles = {
 		"crossbow": crossbow_projectile_collision,
-		"fireball": fireball_projectile_collision
+		"fireball": fireball_projectile_collision,
+		"quietus": quietus_projectile_collossion
 	}
 	for projectile in projectiles:
-		projectiles[projectile].disabled = type == projectile
-	self.play(type)
+		projectiles[projectile].disabled = type != projectile
+	play(type)
+
 	
 func _physics_process(delta: float) -> void:
-	self.position += self.transform.x * speed * delta
+	position += transform.x * speed * delta
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Wall"):

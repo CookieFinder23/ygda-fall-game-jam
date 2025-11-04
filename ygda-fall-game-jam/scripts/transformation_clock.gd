@@ -1,11 +1,8 @@
-extends Timer
+extends AnimatedSprite2D
 
+const TOTAL_FRAMES = 33
+const TOTAL_SECONDS = 6
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	frame = roundi((1 - (Global.player_reference.transformation_cooldown.time_left / TOTAL_SECONDS)) * TOTAL_FRAMES)
+	visible = Global.wave_number > 1

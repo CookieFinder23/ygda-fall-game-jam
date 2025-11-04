@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctgcbrf8g882i"]
+
+[ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_ag0xj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}],
+"loop": false,
+"name": &"attack_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}],
+"loop": false,
+"name": &"attack_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}],
+"loop": false,
+"name": &"attack_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ag0xj")
+}],
+"loop": false,
+"name": &"attack_up_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
+size = Vector2(26, 48)
+
+[node name="Cultist" type="AnimatableBody2D" groups=["Enemy"]]
+collision_layer = 4
+sync_to_physics = false
+
+[node name="CultistSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_odggn")
+animation = &"attack_down_right"
+
+[node name="CultistCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_i53qi")
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TeleportCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="WaitToShootTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_update_mode_timer_timeout"]
+[connection signal="timeout" from="WaitToShootTimer" to="." method="_on_shoot_timer_timeout"]
