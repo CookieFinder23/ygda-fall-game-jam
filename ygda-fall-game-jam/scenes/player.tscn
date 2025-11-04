@@ -1,8 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=59 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://brnhwio0m6rxl" path="res://assets/images/characters/hunter/Hunter_Down.png" id="3_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://c48nr5ltl4cnv" path="res://assets/images/characters/hunter/idle2.png" id="4_cs1tg"]
 [ext_resource type="Texture2D" uid="uid://cekv7e5hyxokp" path="res://assets/images/characters/hunter/legs1.png" id="4_fulsm"]
 [ext_resource type="Texture2D" uid="uid://q2dr1aevysgf" path="res://assets/images/characters/hunter/pixil-frame-0.png" id="4_oprun"]
 [ext_resource type="Texture2D" uid="uid://bwtnfwna8nhxp" path="res://assets/images/characters/hunter/legs2.png" id="5_4r5pv"]
@@ -51,11 +52,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_f1ej7")
+"texture": ExtResource("3_j2b1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cs1tg")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -435,7 +439,7 @@ script = ExtResource("1_g2els")
 visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
-animation = &"movement"
+animation = &"idle"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
 visible = false

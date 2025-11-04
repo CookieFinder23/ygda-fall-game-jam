@@ -21,4 +21,3 @@ func take_damage(_damage: int) -> void:
 func stun(stun_time: int) -> void:
 	stun_timer.wait_time = stun_time
 	stun_timer.start()
-	

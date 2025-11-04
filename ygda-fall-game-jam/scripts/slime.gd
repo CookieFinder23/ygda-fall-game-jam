@@ -38,21 +38,21 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage: int) -> void:
 	health -= damage
+	var explosion_instance = Global.EXPLOSION.instantiate()
+	explosion_instance.death = false
+	explosion_instance.global_position = global_position
+	world.add_child(explosion_instance)
 	if health <= 0:
 		var slow_small_slime_instance = SMALL_SLIME.instantiate()
-		slow_small_slime_instance.global_position = global_position
+		slow_small_slime_instance.global_position = global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
 		slow_small_slime_instance.speed = 70
 		var fast_small_slime_instance = SMALL_SLIME.instantiate()
-		fast_small_slime_instance.global_position = global_position
+		fast_small_slime_instance.global_position = global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
 		fast_small_slime_instance.speed = 90
 		world.add_child(slow_small_slime_instance)
 		world.add_child(fast_small_slime_instance)
 		queue_free()
-	else:
-		var explosion_instance = Global.EXPLOSION.instantiate()
-		explosion_instance.death = false
-		explosion_instance.global_position = global_position
-		world.add_child(explosion_instance)
+
 
 func _on_slime_sprite_animation_finished() -> void:
 	if slime_sprite.animation == "lunge_startup":

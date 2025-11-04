@@ -90,11 +90,11 @@ func _ready() -> void:
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
 	}
-	transformation_cycle = [Character.ICE_MAGE]
+	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = ice_mage_body_sprite
-	set_character(Character.ICE_MAGE)
+	current_body_sprite = hunter_body_sprite
+	set_character(Character.HUNTER)
 	play_body_animation("idle")
 	
 func set_movement_speed(character: Character) -> void:
@@ -241,7 +241,7 @@ func set_head_direction() -> void:
 			if current_body_sprite.animation == "walk":
 				current_head_sprite.position.x = 2
 			else:
-				current_head_sprite.position.x = 1
+				current_head_sprite.position.x = 0
 	
 		
 	if current_character == Character.ICE_MAGE:
@@ -280,7 +280,7 @@ func _physics_process(delta: float) -> void:
 		elif input_direction.x < 0:
 			movement_direction = MovementDirection.LEFT
 
-		if (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):
+		if (current_character == Character.HUNTER and (not movement_ability_in_action.is_stopped() or current_body_sprite.animation == "idle")):
 			current_weapon.visible = false
 			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED * 1.75
 		else:

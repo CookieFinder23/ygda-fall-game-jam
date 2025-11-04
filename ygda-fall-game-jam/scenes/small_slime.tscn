@@ -1,25 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://8vry8x3s6n0g"]
+[gd_scene load_steps=13 format=3 uid="uid://8vry8x3s6n0g"]
 
 [ext_resource type="Script" uid="uid://cttk4gaex5any" path="res://scripts/small_slime.gd" id="1_v470m"]
-[ext_resource type="Texture2D" uid="uid://cwwxwstgelni0" path="res://assets/images/enemies/slime/small_slime_1.png" id="2_sw212"]
-[ext_resource type="Texture2D" uid="uid://vwebogv4n27e" path="res://assets/images/enemies/slime/small_slime_2.png" id="3_y3kx0"]
+[ext_resource type="Texture2D" uid="uid://dp33n06xfrwjm" path="res://assets/images/enemies/slime/slime1.png" id="2_d3ari"]
+[ext_resource type="Texture2D" uid="uid://b24bcxkys6x4f" path="res://assets/images/enemies/slime/slime2.png" id="3_fqjf5"]
+[ext_resource type="Texture2D" uid="uid://ckjsb4bk44quo" path="res://assets/images/enemies/slime/slime3.png" id="4_jpxw1"]
+[ext_resource type="Texture2D" uid="uid://dxklpo6ihvevr" path="res://assets/images/enemies/slime/slime4.png" id="5_66n03"]
+[ext_resource type="Texture2D" uid="uid://cpwdjddnx8v6e" path="res://assets/images/enemies/slime/slime5.png" id="6_td6ch"]
+[ext_resource type="Texture2D" uid="uid://b5li253n6u7f5" path="res://assets/images/enemies/slime/slime6.png" id="7_kv5fl"]
+[ext_resource type="Texture2D" uid="uid://bb3od0pydnxvh" path="res://assets/images/enemies/slime/slime7.png" id="8_0qgbe"]
+[ext_resource type="Texture2D" uid="uid://bgiqqwxyuy668" path="res://assets/images/enemies/slime/slime8.png" id="9_0bj3t"]
+[ext_resource type="Texture2D" uid="uid://dq5usyo8vlfa5" path="res://assets/images/enemies/slime/slime9.png" id="10_n4d68"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_sw212")
+"texture": ExtResource("2_d3ari")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_y3kx0")
+"texture": ExtResource("3_fqjf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jpxw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_66n03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_td6ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kv5fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0qgbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0bj3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n4d68")
 }],
 "loop": true,
 "name": &"chase",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(16, 16)
+size = Vector2(18, 12)
 
 [node name="SmallSlime" type="AnimatableBody2D" groups=["Enemy"]]
 scale = Vector2(0.5, 0.5)
@@ -28,10 +56,13 @@ sync_to_physics = false
 script = ExtResource("1_v470m")
 
 [node name="SmallSlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_bbnym")
 animation = &"chase"
+autoplay = "chase"
 
 [node name="SmallSlimeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="StunTimer" type="Timer" parent="."]
