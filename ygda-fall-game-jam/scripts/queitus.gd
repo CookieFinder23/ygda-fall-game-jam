@@ -10,11 +10,12 @@ extends AnimatableBody2D
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
-var health: int = 12
+var health: int = 9
 var phase: Phase = Phase.SLASH
 var has_shot: bool = false
 const SLASH_SPEED = 80
 const SHOOT_SPEED = 1200
+
 
 enum Phase {
 	SLASH,
@@ -24,18 +25,15 @@ enum Phase {
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print(has_shot)
 	if stun_timer.is_stopped():
 		look_at(Global.player_reference.position)
 		rotation_degrees += 115
 		if phase == Phase.SLASH:
-			if quietus_sprite.animation == "shoot":
+			if quietus_sprite.animation != "slash":
 				quietus_sprite.play("slash")
 			rotation_degrees += get_rotation_offset(rotate_timer)
 			move_and_collide(position.direction_to(Global.player_reference.position) * SLASH_SPEED * delta)
 		else:
-			if quietus_sprite.animation == "slash":
-				quietus_sprite.play("shoot")
 			move_and_collide(position.direction_to(Global.player_reference.position) * get_shoot_speed_offset(shoot_timer) * delta)
 
 func _on_update_mode_timer_timeout() -> void:
@@ -67,7 +65,8 @@ func get_shoot_speed_offset(timer: Timer) -> float:
 		used_time = timer.time_left
 	
 	var final_speed = ((used_time - max_time) + max_time / 2)
-	if final_speed < 0:
+	if final_speed < -0.1:
+		quietus_sprite.play("before_shoot")
 		has_shot = false
 	if final_speed > 0.1 and has_shot == false:
 		has_shot = true
@@ -75,6 +74,7 @@ func get_shoot_speed_offset(timer: Timer) -> float:
 	return SHOOT_SPEED * final_speed
 
 func shoot():
+	quietus_sprite.play("shoot")
 	var projectile_instance = PROJECTILE.instantiate()
 	projectile_instance.rotation = position.angle_to_point(Global.player_reference.position)
 	projectile_instance.speed = 230

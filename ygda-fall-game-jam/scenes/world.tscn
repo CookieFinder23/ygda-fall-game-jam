@@ -47,6 +47,7 @@ offset_right = 130.0
 offset_bottom = 75.0
 
 [node name="TransformationClock" parent="CanvasLayer" instance=ExtResource("5_4mrxx")]
+visible = false
 position = Vector2(571, 274)
 scale = Vector2(0.1, 0.1)
 

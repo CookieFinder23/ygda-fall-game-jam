@@ -36,7 +36,7 @@ size = Vector2(16, 32)
 
 [node name="CharacterOptionSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_lf5i1")
-animation = &"ice_mage"
+animation = &"knight"
 script = ExtResource("1_shq8t")
 
 [node name="CharacterOptionArea" type="Area2D" parent="."]

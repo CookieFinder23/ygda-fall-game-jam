@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctgcbrf8g882i"]
+[gd_scene load_steps=9 format=3 uid="uid://ctgcbrf8g882i"]
 
+[ext_resource type="Script" uid="uid://dkrj45mu623v3" path="res://scripts/cultist.gd" id="1_6kwtl"]
 [ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_ag0xj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
@@ -18,7 +19,7 @@ animations = [{
 "texture": ExtResource("1_ag0xj")
 }],
 "loop": false,
-"name": &"attack_down_left",
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -35,7 +36,7 @@ animations = [{
 "texture": ExtResource("1_ag0xj")
 }],
 "loop": false,
-"name": &"attack_down_right",
+"name": &"left",
 "speed": 5.0
 }, {
 "frames": [{
@@ -52,7 +53,7 @@ animations = [{
 "texture": ExtResource("1_ag0xj")
 }],
 "loop": false,
-"name": &"attack_up_left",
+"name": &"right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -69,22 +70,79 @@ animations = [{
 "texture": ExtResource("1_ag0xj")
 }],
 "loop": false,
-"name": &"attack_up_right",
+"name": &"up",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
 size = Vector2(26, 48)
 
+[sub_resource type="Animation" id="Animation_ag0xj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CultistSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6kwtl"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CultistSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4o0s8"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CultistSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4o0s8"]
+_data = {
+&"RESET": SubResource("Animation_ag0xj"),
+&"appear": SubResource("Animation_6kwtl"),
+&"disappear": SubResource("Animation_4o0s8")
+}
+
 [node name="Cultist" type="AnimatableBody2D" groups=["Enemy"]]
 collision_layer = 4
 sync_to_physics = false
+script = ExtResource("1_6kwtl")
 
 [node name="CultistSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
-rotation = -0.523599
+scale = Vector2(0.325, 0.6)
 sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"attack_down_right"
+animation = &"right"
+frame = 3
+frame_progress = 1.0
 
 [node name="CultistCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -95,12 +153,20 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TeleportCooldownTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.75
+one_shot = true
 autostart = true
 
 [node name="WaitToShootTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
-[connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_update_mode_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4o0s8")
+}
+
+[connection signal="animation_finished" from="CultistSprite" to="." method="_on_cultist_sprite_animation_finished"]
+[connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_teleport_cooldown_timer_timeout"]
 [connection signal="timeout" from="WaitToShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

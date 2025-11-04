@@ -7,6 +7,7 @@ var speed: int
 var type: String
 var damage: int
 var is_player_owned: bool
+var old_rotation
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var projectiles = {
@@ -17,10 +18,15 @@ func _ready() -> void:
 	for projectile in projectiles:
 		projectiles[projectile].disabled = type != projectile
 	play(type)
+	old_rotation = rotation
 
 	
 func _physics_process(delta: float) -> void:
+	if type == "fireball":
+		rotation = old_rotation
 	position += transform.x * speed * delta
+	if type == "fireball":
+		rotation = 0
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Wall"):

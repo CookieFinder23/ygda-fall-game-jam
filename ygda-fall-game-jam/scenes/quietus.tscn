@@ -9,13 +9,18 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_mdhng")
+}],
+"loop": false,
+"name": &"before_shoot",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_3d7nf")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
-"speed": 2.5
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -26,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"slash",
-"speed": 2.5
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
@@ -41,7 +46,8 @@ script = ExtResource("1_cniuu")
 position = Vector2(0, -2)
 rotation = -0.523599
 sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"shoot"
+animation = &"before_shoot"
+autoplay = "slash"
 
 [node name="QuietusCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

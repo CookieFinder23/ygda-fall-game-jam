@@ -23,7 +23,13 @@ enum Action {
 }
 
 func attack() -> void:
-	imp_sprite.play("attack") # there is a function for on animation finished
+		var projectile_instance = PROJECTILE.instantiate()
+		projectile_instance.global_position = global_position
+		projectile_instance.rotation = position.angle_to_point(Global.player_reference.position) + deg_to_rad(randf_range(-15, 15))
+		projectile_instance.speed = 180
+		projectile_instance.type = "fireball"
+		projectile_instance.is_player_owned = false
+		world.add_child(projectile_instance)
 		
 func _on_imp_clock_timeout() -> void:
 	phase = (phase + 1) % 4
@@ -76,17 +82,13 @@ func _on_imp_clock_timeout() -> void:
 		if dash_horizontal == true:
 			if quadrant_x == 1:
 				current_action = Action.LEFT
-				imp_sprite.play("idle")
 			else:
 				current_action = Action.RIGHT
-				imp_sprite.play("idle")
 		else:
 			if quadrant_y == 1:
 				current_action = Action.UP
-				imp_sprite.play("idle")
 			else:
 				current_action = Action.DOWN
-				imp_sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
 	if stun_timer.is_stopped():
@@ -111,16 +113,6 @@ func _physics_process(delta: float) -> void:
 				position.x = 452
 				current_action = Action.ATTACK
 		
-
-func _on_imp_sprite_animation_finished() -> void:
-	if imp_sprite.animation == "attack" and stun_timer.is_stopped():
-		var projectile_instance = PROJECTILE.instantiate()
-		projectile_instance.global_position = global_position
-		projectile_instance.rotation = position.angle_to_point(Global.player_reference.position) + deg_to_rad(randf_range(-15, 15))
-		projectile_instance.speed = 180
-		projectile_instance.type = "fireball"
-		projectile_instance.is_player_owned = false
-		world.add_child(projectile_instance)
 
 func take_damage(damage: int) -> void:
 	health -= damage

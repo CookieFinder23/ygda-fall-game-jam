@@ -11,12 +11,13 @@ const IMP = preload("res://scenes/imp.tscn")
 const GHOST = preload("res://scenes/ghost.tscn")
 const SLIME = preload("res://scenes/slime.tscn")
 const QUIETUS = preload("res://scenes/quietus.tscn")
+const CULTIST = preload("res://scenes/cultist.tscn")
 const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
 
 var remaining_characters = ["ice_mage", "knight"]
 
 func _ready() -> void:
-	Global.wave_number = 0
+	Global.wave_number = 2
 	Global.picking_character = false
 	Global.enemies_left = 0
 	Global.begin_next_wave = true
@@ -24,9 +25,13 @@ func _ready() -> void:
 func _on_inbetween_wave_timer_timeout() -> void:
 	Global.wave_number += 1
 	if Global.wave_number == 1:
-		wave_1()
+		make_wave([IMP, SLIME, GHOST], 2)
 	elif Global.wave_number == 2:
-		wave_2()
+		make_wave([IMP, SLIME, GHOST, QUIETUS], 3)
+	elif Global.wave_number == 3:
+		var wave_three_enemy_selection = [CULTIST, QUIETUS]
+		wave_three_enemy_selection.append([IMP, SLIME, GHOST].pick_random())
+		make_wave(wave_three_enemy_selection, 3)
 
 func _physics_process(_delta: float) -> void:
 	hearts_container.update_hearts(player.health)
@@ -64,30 +69,13 @@ func get_corner(corner: int) -> Vector2:
 		return Vector2(188, 312)
 	else:
 		return Vector2(452, 312)
-		
-func wave_1():
-	return
-	var enemy_selection = [IMP, GHOST, SLIME]
-	var corner_selection = [1, 2, 3, 4]
-	var enemy
-	var corner: int
-	for i in range(2):
-		enemy = enemy_selection.pick_random()
-		corner = corner_selection.pick_random()
-		corner_selection.erase(corner)
-		enemy_selection.erase(enemy)
-		var enemy_instance = ENEMY_SPAWNER.instantiate()
-		enemy_instance.global_position = get_corner(corner)
-		enemy_instance.type = enemy
-		add_child(enemy_instance)
 
-func wave_2():
-	var enemy_selection = [IMP, GHOST, SLIME, QUIETUS]
+func make_wave(enemy_selection: Array, amount_of_enemies: int):
 	var corner_selection = [1, 2, 3, 4]
 	var enemy
 	var corner: int
 	var picked_enemies = []
-	for i in range(3):
+	for i in range(amount_of_enemies):
 		enemy = enemy_selection.pick_random()
 		picked_enemies.append(enemy)
 		corner = corner_selection.pick_random()
@@ -97,3 +85,35 @@ func wave_2():
 		enemy_instance.global_position = get_corner(corner)
 		enemy_instance.type = enemy
 		add_child(enemy_instance)
+
+#func wave_1():
+	#var enemy_selection = [IMP, GHOST, SLIME]
+	#var corner_selection = [1, 2, 3, 4]
+	#var enemy
+	#var corner: int
+	#for i in range(2):
+		#enemy = enemy_selection.pick_random()
+		#corner = corner_selection.pick_random()
+		#corner_selection.erase(corner)
+		#enemy_selection.erase(enemy)
+		#var enemy_instance = ENEMY_SPAWNER.instantiate()
+		#enemy_instance.global_position = get_corner(corner)
+		#enemy_instance.type = enemy
+		#add_child(enemy_instance)
+#
+#func wave_2():
+	#var enemy_selection = [IMP, GHOST, SLIME, QUIETUS]
+	#var corner_selection = [1, 2, 3, 4]
+	#var enemy
+	#var corner: int
+	#var picked_enemies = []
+	#for i in range(3):
+		#enemy = enemy_selection.pick_random()
+		#picked_enemies.append(enemy)
+		#corner = corner_selection.pick_random()
+		#corner_selection.erase(corner)
+		#enemy_selection.erase(enemy)
+		#var enemy_instance = ENEMY_SPAWNER.instantiate()
+		#enemy_instance.global_position = get_corner(corner)
+		#enemy_instance.type = enemy
+		#add_child(enemy_instance)

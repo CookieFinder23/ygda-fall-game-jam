@@ -1,6 +1,5 @@
-[gd_scene load_steps=60 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=73 format=3 uid="uid://dqvdu3dys7bvv"]
 
-[ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
 [ext_resource type="Texture2D" uid="uid://c48nr5ltl4cnv" path="res://assets/images/characters/hunter/idle2.png" id="4_cs1tg"]
@@ -29,27 +28,32 @@
 [ext_resource type="Texture2D" uid="uid://btwcfq62a76v5" path="res://assets/images/characters/ice_mage/w3.png" id="18_pf23h"]
 [ext_resource type="Texture2D" uid="uid://bst37m80tauqd" path="res://assets/images/characters/ice_mage/w4.png" id="19_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://iicfj16iejkl" path="res://assets/images/characters/ice_mage/w5.png" id="20_wqfne"]
+[ext_resource type="Texture2D" uid="uid://qgvv1kvrtwnv" path="res://assets/images/characters/knight/legs1.png" id="21_fdfoy"]
 [ext_resource type="Texture2D" uid="uid://dcbaamgdgo2d" path="res://assets/images/characters/ice_mage/w6.png" id="21_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://dy2eywb1s4t8w" path="res://assets/images/characters/ice_mage/w7.png" id="22_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://bp74c0tmt0jp3" path="res://assets/images/characters/knight/legs2.png" id="22_hhpqf"]
 [ext_resource type="Texture2D" uid="uid://joffbh84iexf" path="res://assets/images/characters/ice_mage/backside idle 2.png" id="22_t4otl"]
+[ext_resource type="Texture2D" uid="uid://c2huvbvkbu2n7" path="res://assets/images/characters/knight/legs3.png" id="23_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://dkwim0i34mkde" path="res://assets/images/characters/ice_mage/backside.png" id="23_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://bliencyniatd5" path="res://assets/images/characters/knight/legs4.png" id="24_holxr"]
+[ext_resource type="Texture2D" uid="uid://8ejdkbhp5jdi" path="res://assets/images/characters/knight/head1.png" id="25_u2ulf"]
+[ext_resource type="Texture2D" uid="uid://dm5mm3tbplnqd" path="res://assets/images/characters/knight/head2.png" id="26_6e8lb"]
+[ext_resource type="Texture2D" uid="uid://dir5xwo5swkyc" path="res://assets/images/characters/knight/head3.png" id="27_2gdjj"]
+[ext_resource type="Texture2D" uid="uid://bnj0knfjxet2o" path="res://assets/images/characters/knight/head4.png" id="28_sc3ue"]
 [ext_resource type="Texture2D" uid="uid://bkpwgs855sd12" path="res://assets/images/characters/hunter/crossbow5.png" id="29_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://bsc7xx6oycq8n" path="res://assets/images/characters/knight/head5.png" id="29_lxlsd"]
+[ext_resource type="Texture2D" uid="uid://dcbof87fn7cqa" path="res://assets/images/characters/knight/head6.png" id="30_ha2mi"]
 [ext_resource type="Texture2D" uid="uid://chfnxqykqv2ov" path="res://assets/images/characters/hunter/crossbow4.png" id="30_hax0n"]
+[ext_resource type="Texture2D" uid="uid://3jwsk8kofimj" path="res://assets/images/characters/knight/head7.png" id="31_2gdjj"]
 [ext_resource type="Texture2D" uid="uid://cm40qif3g0qqb" path="res://assets/images/characters/hunter/crossbow3.png" id="31_t4otl"]
+[ext_resource type="Texture2D" uid="uid://dxs3knt7xaw2p" path="res://assets/images/enemies/queitus/quietus_2.png" id="32_2gdjj"]
 [ext_resource type="Texture2D" uid="uid://h57t4ljvhn2f" path="res://assets/images/characters/hunter/crossbow2.png" id="32_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://3qbi2o0tadhu" path="res://assets/images/characters/knight/head8.png" id="32_sc3ue"]
 [ext_resource type="Texture2D" uid="uid://c33dndtd4pbff" path="res://assets/images/characters/hunter/crossbow1.png" id="33_cs1tg"]
 [ext_resource type="Texture2D" uid="uid://ci7lijspvmknc" path="res://assets/images/characters/hunter/crossbowEmpty.png" id="34_2dvfe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": false,
-"name": &"death",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_j2b1d")
@@ -167,15 +171,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"texture": ExtResource("21_fdfoy")
 }],
 "loop": true,
 "name": &"idle",
@@ -183,18 +179,105 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"texture": ExtResource("21_fdfoy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hhpqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_g5jhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_holxr")
 }],
-"loop": false,
-"name": &"movement",
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apa73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_u2ulf")
+}],
+"loop": true,
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"texture": ExtResource("26_6e8lb")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_2gdjj")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_sc3ue")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_lxlsd")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_ha2mi")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_2gdjj")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_sc3ue")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_2gdjj")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_2gdjj")
+}],
+"loop": false,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -371,25 +454,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": false,
-"name": &"fire",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [sub_resource type="Animation" id="Animation_3v2ag"]
 length = 0.001
 tracks/0/type = "value"
@@ -442,7 +506,7 @@ script = ExtResource("1_g2els")
 visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
-animation = &"idle"
+animation = &"movement"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -452,17 +516,27 @@ sprite_frames = SubResource("SpriteFrames_4ni07")
 animation = &"0"
 
 [node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"idle"
 
+[node name="KnightHeadSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11.5)
+sprite_frames = SubResource("SpriteFrames_apa73")
+animation = &"1"
+
+[node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+animation = &"idle"
+
 [node name="IceMageBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_t4otl")
 animation = &"idle_back"
 
 [node name="IceMageHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
@@ -490,11 +564,6 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"fire"
 
-[node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"idle"
-
 [node name="ReloadBar" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 20)
@@ -513,6 +582,7 @@ libraries = {
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

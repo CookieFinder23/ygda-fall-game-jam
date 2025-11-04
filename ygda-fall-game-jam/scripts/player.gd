@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var reload_bar_animation_player: AnimationPlayer = $ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer
 @onready var hunter_weapon_sprite: AnimatedSprite2D = $HunterWeaponSprite
 @onready var knight_weapon_sprite: AnimatedSprite2D = $KnightWeaponSprite
+@onready var knight_head_sprite: AnimatedSprite2D = $KnightHeadSprite
 @onready var ice_mage_body_sprite: AnimatedSprite2D = $IceMageBodySprite
 @onready var ice_mage_head_sprite: AnimatedSprite2D = $IceMageHeadSprite
 @onready var change_sceen_to_start_screen: Timer = $ChangeSceenToStartScreen
@@ -89,14 +90,14 @@ func add_character(character: String) -> void:
 func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
-	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8],
+	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
 	}
-	transformation_cycle = [Character.HUNTER]
+	transformation_cycle = [Character.KNIGHT]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = hunter_body_sprite
-	set_character(Character.HUNTER)
+	current_body_sprite = knight_body_sprite
+	set_character(Character.KNIGHT)
 	play_body_animation("idle")
 	
 func set_movement_speed(character: Character) -> void:
