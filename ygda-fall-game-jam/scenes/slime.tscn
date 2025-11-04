@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvpoga07if6a3"]
+[gd_scene load_steps=35 format=3 uid="uid://dvpoga07if6a3"]
 
 [ext_resource type="Script" uid="uid://bm4dls7h33t7a" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://dp33n06xfrwjm" path="res://assets/images/enemies/slime/slime1.png" id="2_a02ik"]
@@ -10,6 +10,27 @@
 [ext_resource type="Texture2D" uid="uid://bb3od0pydnxvh" path="res://assets/images/enemies/slime/slime7.png" id="8_fur4c"]
 [ext_resource type="Texture2D" uid="uid://bgiqqwxyuy668" path="res://assets/images/enemies/slime/slime8.png" id="9_2v7ff"]
 [ext_resource type="Texture2D" uid="uid://dq5usyo8vlfa5" path="res://assets/images/enemies/slime/slime9.png" id="10_35t6e"]
+[ext_resource type="Texture2D" uid="uid://kbt2gm52tdb3" path="res://assets/images/enemies/slime/slimeAttack1.png" id="11_w8bnk"]
+[ext_resource type="Texture2D" uid="uid://b48p0l1u4x3q8" path="res://assets/images/enemies/slime/slimeAttack2.png" id="12_1kmbt"]
+[ext_resource type="Texture2D" uid="uid://dff181324r5uj" path="res://assets/images/enemies/slime/slimeAttack3.png" id="13_a8sfj"]
+[ext_resource type="Texture2D" uid="uid://3qocpwoadabe" path="res://assets/images/enemies/slime/slimeAttack4.png" id="14_kwlqs"]
+[ext_resource type="Texture2D" uid="uid://ypv2ix5tclkk" path="res://assets/images/enemies/slime/slimeAttack5.png" id="15_qwlg4"]
+[ext_resource type="Texture2D" uid="uid://ki8kxv14dbqg" path="res://assets/images/enemies/slime/slimeAttack6.png" id="16_1sdgb"]
+[ext_resource type="Texture2D" uid="uid://duhjidenw0qjf" path="res://assets/images/enemies/slime/slimeAttack7.png" id="17_rrr3x"]
+[ext_resource type="Texture2D" uid="uid://cu58wi0b2unwc" path="res://assets/images/enemies/slime/slimeAttack8.png" id="18_eyfvk"]
+[ext_resource type="Texture2D" uid="uid://dqpl76776jwd8" path="res://assets/images/enemies/slime/slimeAttack9.png" id="19_iscye"]
+[ext_resource type="Texture2D" uid="uid://d0hlu26vhe3by" path="res://assets/images/enemies/slime/slimeAttack10.png" id="20_aq06o"]
+[ext_resource type="Texture2D" uid="uid://7o3eda570fyh" path="res://assets/images/enemies/slime/slimeAttack11.png" id="21_3tc40"]
+[ext_resource type="Texture2D" uid="uid://lh8snnjxwhw0" path="res://assets/images/enemies/slime/slimeAttack12.png" id="22_klxi6"]
+[ext_resource type="Texture2D" uid="uid://yguplbube3vm" path="res://assets/images/enemies/slime/slimeAttack13.png" id="23_0yeyc"]
+[ext_resource type="Texture2D" uid="uid://dq6eo3wiqbj22" path="res://assets/images/enemies/slime/split1.png" id="24_iscye"]
+[ext_resource type="Texture2D" uid="uid://duik77k5pj0qx" path="res://assets/images/enemies/slime/split2.png" id="25_aq06o"]
+[ext_resource type="Texture2D" uid="uid://dw1yxlht7bn43" path="res://assets/images/enemies/slime/split3.png" id="26_3tc40"]
+[ext_resource type="Texture2D" uid="uid://bi0s7qlgeekmm" path="res://assets/images/enemies/slime/split4.png" id="27_klxi6"]
+[ext_resource type="Texture2D" uid="uid://dtuxxtbrk6qdh" path="res://assets/images/enemies/slime/split5.png" id="28_0yeyc"]
+[ext_resource type="Texture2D" uid="uid://hi5vebtffulo" path="res://assets/images/enemies/slime/split6.png" id="29_t6mwi"]
+[ext_resource type="Texture2D" uid="uid://cvaa50871tksw" path="res://assets/images/enemies/slime/split7.png" id="30_7d6fo"]
+[ext_resource type="Texture2D" uid="uid://fkfxa0ila1n7" path="res://assets/images/enemies/slime/split8.png" id="31_rewg1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
 animations = [{
@@ -47,25 +68,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_g40cl")
+"texture": ExtResource("17_rrr3x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_cxm07")
+"texture": ExtResource("18_eyfvk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_g2qvl")
+"texture": ExtResource("19_iscye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_tyl0w")
+"texture": ExtResource("20_aq06o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_fur4c")
+"texture": ExtResource("21_3tc40")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_2v7ff")
+"texture": ExtResource("22_klxi6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_35t6e")
+"texture": ExtResource("23_0yeyc")
 }],
 "loop": false,
 "name": &"lunge",
@@ -73,26 +94,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_a02ik")
+"texture": ExtResource("11_w8bnk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_pu8ps")
+"texture": ExtResource("12_1kmbt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_g40cl")
+"texture": ExtResource("13_a8sfj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_g40cl")
+"texture": ExtResource("14_kwlqs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_pu8ps")
+"texture": ExtResource("15_qwlg4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_a02ik")
+"texture": ExtResource("16_1sdgb")
 }],
 "loop": false,
 "name": &"lunge_startup",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_iscye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_aq06o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_3tc40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_klxi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0yeyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_t6mwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7d6fo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_rewg1")
+}],
+"loop": false,
+"name": &"split",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
@@ -108,7 +158,7 @@ script = ExtResource("1_n6pvg")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
 sprite_frames = SubResource("SpriteFrames_bbnym")
-animation = &"lunge_startup"
+animation = &"split"
 autoplay = "chase"
 
 [node name="SlimeCollision" type="CollisionShape2D" parent="."]
@@ -126,14 +176,9 @@ shape = SubResource("CircleShape2D_n6pvg")
 wait_time = 2.0
 one_shot = true
 
-[node name="LungeInAction" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="animation_finished" from="SlimeSprite" to="." method="_on_slime_sprite_animation_finished"]
 [connection signal="body_entered" from="LungeRange" to="." method="_on_lunge_range_body_entered"]
-[connection signal="timeout" from="LungeInAction" to="." method="_on_lunge_in_action_timeout"]

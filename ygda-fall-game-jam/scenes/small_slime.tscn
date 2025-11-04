@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://8vry8x3s6n0g"]
 
 [ext_resource type="Script" uid="uid://cttk4gaex5any" path="res://scripts/small_slime.gd" id="1_v470m"]
-[ext_resource type="Texture2D" uid="uid://dp33n06xfrwjm" path="res://assets/images/enemies/slime/slime1.png" id="2_d3ari"]
-[ext_resource type="Texture2D" uid="uid://b24bcxkys6x4f" path="res://assets/images/enemies/slime/slime2.png" id="3_fqjf5"]
-[ext_resource type="Texture2D" uid="uid://ckjsb4bk44quo" path="res://assets/images/enemies/slime/slime3.png" id="4_jpxw1"]
-[ext_resource type="Texture2D" uid="uid://dxklpo6ihvevr" path="res://assets/images/enemies/slime/slime4.png" id="5_66n03"]
-[ext_resource type="Texture2D" uid="uid://cpwdjddnx8v6e" path="res://assets/images/enemies/slime/slime5.png" id="6_td6ch"]
-[ext_resource type="Texture2D" uid="uid://b5li253n6u7f5" path="res://assets/images/enemies/slime/slime6.png" id="7_kv5fl"]
-[ext_resource type="Texture2D" uid="uid://bb3od0pydnxvh" path="res://assets/images/enemies/slime/slime7.png" id="8_0qgbe"]
-[ext_resource type="Texture2D" uid="uid://bgiqqwxyuy668" path="res://assets/images/enemies/slime/slime8.png" id="9_0bj3t"]
-[ext_resource type="Texture2D" uid="uid://dq5usyo8vlfa5" path="res://assets/images/enemies/slime/slime9.png" id="10_n4d68"]
+[ext_resource type="Texture2D" uid="uid://be7ughiair0c3" path="res://assets/images/enemies/slime/miniSlimeWalk1.png" id="2_d3ari"]
+[ext_resource type="Texture2D" uid="uid://d3v2rwld8o6gh" path="res://assets/images/enemies/slime/miniSlimeWalk2.png" id="3_fqjf5"]
+[ext_resource type="Texture2D" uid="uid://com3e30r02n1x" path="res://assets/images/enemies/slime/miniSlimeWalk3.png" id="4_jpxw1"]
+[ext_resource type="Texture2D" uid="uid://bge5gt3mgg2mi" path="res://assets/images/enemies/slime/miniSlimeWalk4.png" id="5_66n03"]
+[ext_resource type="Texture2D" uid="uid://c14oqa43lsvr0" path="res://assets/images/enemies/slime/miniSlimeWalk5.png" id="6_td6ch"]
+[ext_resource type="Texture2D" uid="uid://dawj8rlx084rd" path="res://assets/images/enemies/slime/miniSlimeWalk6.png" id="7_kv5fl"]
+[ext_resource type="Texture2D" uid="uid://bu143r334vh2e" path="res://assets/images/enemies/slime/miniSlimeWalk7.png" id="8_0qgbe"]
+[ext_resource type="Texture2D" uid="uid://p6e7gjwjnpw2" path="res://assets/images/enemies/slime/miniSlimeWalk8.png" id="9_0bj3t"]
+[ext_resource type="Texture2D" uid="uid://d0anjyjdj51lw" path="res://assets/images/enemies/slime/miniSlimeWalk9.png" id="10_n4d68"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
 animations = [{
@@ -44,25 +44,31 @@ animations = [{
 "loop": true,
 "name": &"chase",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d3ari")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(18, 12)
+size = Vector2(10, 8)
 
 [node name="SmallSlime" type="AnimatableBody2D" groups=["Enemy"]]
-scale = Vector2(0.5, 0.5)
 collision_layer = 4
 sync_to_physics = false
 script = ExtResource("1_v470m")
 
 [node name="SmallSlimeSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
-position = Vector2(0, -2)
+position = Vector2(0, -3.5)
 sprite_frames = SubResource("SpriteFrames_bbnym")
 animation = &"chase"
 autoplay = "chase"
 
 [node name="SmallSlimeCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="StunTimer" type="Timer" parent="."]

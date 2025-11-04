@@ -21,8 +21,6 @@ func _ready() -> void:
 	Global.begin_next_wave = true
 
 func _on_inbetween_wave_timer_timeout() -> void:
-	if player.health < 3:
-		player.health += 1
 	Global.wave_number += 1
 	if Global.wave_number == 1:
 		wave_1()
@@ -37,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		Global.begin_next_wave = false
 		inbetween_wave_timer.start()
 		wave_cooldown_timer.start()
-	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false:
+	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false and Global.player_reference.position.y > 96:
 		Global.picking_character = true
 		create_character_choice()
 		
@@ -47,10 +45,10 @@ func create_character_choice() -> void:
 	while right_character == left_character:
 		right_character = remaining_characters.pick_random()
 	var left_character_instance = CHARACTER_OPTION.instantiate()
-	left_character_instance.position = Vector2(220, 60)
+	left_character_instance.position = Vector2(240, 60)
 	left_character_instance.type = left_character
 	var right_character_instance = CHARACTER_OPTION.instantiate()
-	right_character_instance.position = Vector2(420, 60)
+	right_character_instance.position = Vector2(400, 60)
 	right_character_instance.type = right_character
 	add_child(left_character_instance)
 	add_child(right_character_instance)

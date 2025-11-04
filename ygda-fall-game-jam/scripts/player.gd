@@ -65,8 +65,8 @@ enum MovementAbilityCooldownLength {
 }
 var movement_ability_cooldown_length_to_number = {
 	MovementAbilityCooldownLength.FAST: 0.5,
-	MovementAbilityCooldownLength.NORMAL: 2,
-	MovementAbilityCooldownLength.SLOW: 3
+	MovementAbilityCooldownLength.NORMAL: 1,
+	MovementAbilityCooldownLength.SLOW: 2
 }
 enum Character {
 	HUNTER,
@@ -79,6 +79,8 @@ func _enter_tree() -> void:
 	Global.player_reference = self
 
 func add_character(character: String) -> void:
+	if health < 3:
+		health += 1
 	if character == "ice_mage":
 		transformation_cycle.append(Character.ICE_MAGE)
 	if character == "knight":
@@ -88,7 +90,7 @@ func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_body_sprite, knight_weapon_sprite, 8],
-	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
+	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
 	}
 	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
@@ -139,7 +141,7 @@ func play_body_animation(animation: String) -> void:
 
 func do_movement_ability(character: Character) -> void:
 	if character == Character.HUNTER:
-		movement_ability_in_action.wait_time = 2
+		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
 	if character == Character.ICE_MAGE:
 		var ice_circle_instance = ICE_CIRCLE.instantiate()

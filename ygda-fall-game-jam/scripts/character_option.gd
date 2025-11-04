@@ -16,3 +16,4 @@ func _on_character_option_area_body_entered(body: Node2D) -> void:
 	Global.player_reference.add_character(type)
 	Global.picking_character = false
 	Global.begin_next_wave = true
+	

@@ -1,34 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkj3yiynsd32x"]
+[gd_scene load_steps=15 format=3 uid="uid://bkj3yiynsd32x"]
 
-[ext_resource type="Texture2D" uid="uid://2mtseu10jeot" path="res://assets/images/placeholder_circle.png" id="1_devoi"]
+[ext_resource type="Texture2D" uid="uid://nl86ygvjdv0r" path="res://assets/images/enemies/spawner/summon1.png" id="1_5g07m"]
+[ext_resource type="Texture2D" uid="uid://bplgbddqmoeqa" path="res://assets/images/enemies/spawner/summon2.png" id="2_fxy1y"]
 [ext_resource type="Script" uid="uid://wcwo6wwd1r7e" path="res://scripts/enemy_spawner.gd" id="2_xl0gr"]
+[ext_resource type="Texture2D" uid="uid://dwnk3l8pyqfv6" path="res://assets/images/enemies/spawner/summon3.png" id="3_1x7gh"]
+[ext_resource type="Texture2D" uid="uid://cyq2vnixvieyt" path="res://assets/images/enemies/spawner/summon4.png" id="4_87vjv"]
+[ext_resource type="Texture2D" uid="uid://b7cb6vglvmjtv" path="res://assets/images/enemies/spawner/summon5.png" id="5_y5v0o"]
+[ext_resource type="Texture2D" uid="uid://cefoeou6sd3v4" path="res://assets/images/enemies/spawner/summon6.png" id="6_dk6ib"]
+[ext_resource type="Texture2D" uid="uid://dbw2cikar8xpx" path="res://assets/images/enemies/spawner/summon7.png" id="7_wl0om"]
+[ext_resource type="Texture2D" uid="uid://bpjroug436atx" path="res://assets/images/enemies/spawner/summon8.png" id="8_44w4t"]
+[ext_resource type="Texture2D" uid="uid://byd4sl6i71mko" path="res://assets/images/enemies/spawner/summon9.png" id="9_s5vy6"]
+[ext_resource type="Texture2D" uid="uid://cbuo3oskwxko4" path="res://assets/images/enemies/spawner/summon10.png" id="10_flr7w"]
+[ext_resource type="Texture2D" uid="uid://c36smdb5dxd4n" path="res://assets/images/enemies/spawner/summon11.png" id="11_w04m4"]
+[ext_resource type="Texture2D" uid="uid://dxs6f3n4hflvv" path="res://assets/images/enemies/spawner/summon12.png" id="12_xtavd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vank4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_devoi")
+"texture": ExtResource("1_5g07m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_devoi")
+"texture": ExtResource("2_fxy1y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_devoi")
+"texture": ExtResource("3_1x7gh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_devoi")
+"texture": ExtResource("4_87vjv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_devoi")
+"texture": ExtResource("5_y5v0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dk6ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wl0om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_44w4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s5vy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_flr7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w04m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xtavd")
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="EnemySpawner" type="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vank4")
+autoplay = "default"
+frame = 11
+frame_progress = 1.0
 script = ExtResource("2_xl0gr")
 
 [node name="RandomWait" type="Timer" parent="."]

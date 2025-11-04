@@ -1,106 +1,191 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhom0tx7vqeop"]
+[gd_scene load_steps=28 format=3 uid="uid://bhom0tx7vqeop"]
 
 [ext_resource type="Script" uid="uid://c5p6wtggksam1" path="res://scripts/ghost.gd" id="1_bbnym"]
-[ext_resource type="Texture2D" uid="uid://cbcryd7fqjuqv" path="res://assets/images/enemies/ghost/ghost_attack.png" id="2_bbnym"]
-[ext_resource type="Texture2D" uid="uid://bhs28qj6xk3rv" path="res://assets/images/enemies/ghost/ghost_idle.png" id="3_veat2"]
+[ext_resource type="Texture2D" uid="uid://di6vhjl16152e" path="res://assets/images/enemies/ghost/ghostDown1.png" id="2_6jpmw"]
+[ext_resource type="Texture2D" uid="uid://b6fqoeq0mjrmt" path="res://assets/images/enemies/ghost/ghostDown2.png" id="3_p3330"]
+[ext_resource type="Texture2D" uid="uid://bxrmb75ecs2pq" path="res://assets/images/enemies/ghost/ghostDown3.png" id="4_wev76"]
+[ext_resource type="Texture2D" uid="uid://dma2kmvp0mylt" path="res://assets/images/enemies/ghost/ghostDown4.png" id="5_68ei1"]
+[ext_resource type="Texture2D" uid="uid://qeuyubdlm5sd" path="res://assets/images/enemies/ghost/ghostDown5.png" id="6_gpdgq"]
+[ext_resource type="Texture2D" uid="uid://bntkqkfxc7mb3" path="res://assets/images/enemies/ghost/ghostLeft1.png" id="7_yl51g"]
+[ext_resource type="Texture2D" uid="uid://cf1je1pgup56t" path="res://assets/images/enemies/ghost/ghostLeft2.png" id="8_vbenq"]
+[ext_resource type="Texture2D" uid="uid://bbxle8frseeyd" path="res://assets/images/enemies/ghost/ghostLeft3.png" id="9_ttyq4"]
+[ext_resource type="Texture2D" uid="uid://bvsxnbyau8du" path="res://assets/images/enemies/ghost/ghostLeft4.png" id="10_jp2xn"]
+[ext_resource type="Texture2D" uid="uid://vig6ni0ac21n" path="res://assets/images/enemies/ghost/ghostLeft5.png" id="11_arbqe"]
+[ext_resource type="Texture2D" uid="uid://bliwbyif3j2kf" path="res://assets/images/enemies/ghost/ghostRight1.png" id="12_ss6w1"]
+[ext_resource type="Texture2D" uid="uid://cypdvipdet7bt" path="res://assets/images/enemies/ghost/ghostRight2.png" id="13_fbv3q"]
+[ext_resource type="Texture2D" uid="uid://2wg6gquwx5el" path="res://assets/images/enemies/ghost/ghostRight3.png" id="14_n85ul"]
+[ext_resource type="Texture2D" uid="uid://cnu748lwdre36" path="res://assets/images/enemies/ghost/ghostRight4.png" id="15_ky4e2"]
+[ext_resource type="Texture2D" uid="uid://ybq4a4i5re5k" path="res://assets/images/enemies/ghost/ghostRight5.png" id="16_aq7ho"]
+[ext_resource type="Texture2D" uid="uid://dsqa8w4ucbrng" path="res://assets/images/enemies/ghost/ghostUp1.png" id="17_o0gou"]
+[ext_resource type="Texture2D" uid="uid://54y78oqr1vff" path="res://assets/images/enemies/ghost/ghostUp2.png" id="18_dqth2"]
+[ext_resource type="Texture2D" uid="uid://dngk37odkiay7" path="res://assets/images/enemies/ghost/ghostUp3.png" id="19_1nutd"]
+[ext_resource type="Texture2D" uid="uid://daok1wy0i7myp" path="res://assets/images/enemies/ghost/ghostUp4.png" id="20_hgue5"]
+[ext_resource type="Texture2D" uid="uid://d2f4bxgbosrdl" path="res://assets/images/enemies/ghost/ghostUp5.png" id="21_5quw8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbnym"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("2_6jpmw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_bbnym")
+"texture": ExtResource("3_p3330")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_veat2")
+"texture": ExtResource("4_wev76")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_veat2")
+"texture": ExtResource("5_68ei1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_bbnym")
-}],
-"loop": false,
-"name": &"appear",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_veat2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_bbnym")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_veat2")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_veat2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_bbnym")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_veat2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_bbnym")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"disappear",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_bbnym")
+"texture": ExtResource("6_gpdgq")
 }],
 "loop": true,
-"name": &"hunt",
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yl51g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vbenq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ttyq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jp2xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_arbqe")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ss6w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fbv3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_n85ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ky4e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_aq7ho")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_o0gou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dqth2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1nutd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hgue5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_5quw8")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
 size = Vector2(16, 32)
 
+[sub_resource type="Animation" id="Animation_6jpmw"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GhostSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p3330"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GhostSprite:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wev76"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GhostSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wev76"]
+_data = {
+&"RESET": SubResource("Animation_p3330"),
+&"appear": SubResource("Animation_6jpmw"),
+&"disappear": SubResource("Animation_wev76")
+}
+
 [node name="Ghost" type="AnimatableBody2D" groups=["Enemy"]]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 0
 sync_to_physics = false
 script = ExtResource("1_bbnym")
 
 [node name="GhostSprite" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
-self_modulate = Color(1, 1, 1, 0.498039)
 sprite_frames = SubResource("SpriteFrames_bbnym")
-animation = &"hunt"
+animation = &"down"
 
 [node name="GhostCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i53qi")
 
-[node name="TeleportClock" type="Timer" parent="."]
+[node name="TeleportCooldown" type="Timer" parent="."]
 wait_time = 3.5
 autostart = true
-
-[node name="WaitClock" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wev76")
+}
+
 [connection signal="animation_finished" from="GhostSprite" to="." method="_on_ghost_sprite_animation_finished"]
-[connection signal="timeout" from="TeleportClock" to="." method="_on_ghost_clock_timeout"]
-[connection signal="timeout" from="TeleportClock" to="." method="_on_teleport_clock_timeout"]
-[connection signal="timeout" from="WaitClock" to="." method="_on_wait_clock_timeout"]
+[connection signal="timeout" from="TeleportCooldown" to="." method="_on_teleport_cooldown_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
