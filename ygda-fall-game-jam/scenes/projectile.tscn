@@ -1,10 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bojqiwewsvnfy"]
+[gd_scene load_steps=23 format=3 uid="uid://bojqiwewsvnfy"]
 
 [ext_resource type="Script" uid="uid://cwe2k8f5qxi06" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://duxoqipkdddb3" path="res://assets/images/characters/hunter/arrow.png" id="1_softn"]
+[ext_resource type="Texture2D" uid="uid://ceddoakxr0xfa" path="res://assets/images/enemies/cultist/Dark Wizard Projectile-1.png.png" id="2_6c2e5"]
 [ext_resource type="Texture2D" uid="uid://b8cfgstj1sclx" path="res://assets/images/enemies/imp/fireball1.png" id="2_byeak"]
 [ext_resource type="Texture2D" uid="uid://2mtseu10jeot" path="res://assets/images/placeholder_circle.png" id="2_softn"]
 [ext_resource type="Texture2D" uid="uid://dcgiwhq24x47t" path="res://assets/images/enemies/imp/fireball2.png" id="3_jxwu6"]
+[ext_resource type="Texture2D" uid="uid://dqit3k8tmin6e" path="res://assets/images/enemies/cultist/Dark Wizard Projectile-2.png.png" id="3_pl1gp"]
+[ext_resource type="Texture2D" uid="uid://bayadt2smx5yi" path="res://assets/images/enemies/cultist/Dark Wizard Projectile-3.png.png" id="4_ejmht"]
+[ext_resource type="Texture2D" uid="uid://cmn82eujglymt" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-5.png.png" id="5_mxgir"]
+[ext_resource type="Texture2D" uid="uid://omsjwbagqec5" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-6.png.png" id="6_rimnf"]
+[ext_resource type="Texture2D" uid="uid://ylcblts3ov6x" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-7.png.png" id="7_l47rv"]
+[ext_resource type="Texture2D" uid="uid://25mheejs2u3f" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-8.png.png" id="8_fooc5"]
+[ext_resource type="Texture2D" uid="uid://dkwlg3xxwukrw" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-9.png.png" id="9_sbbd4"]
+[ext_resource type="Texture2D" uid="uid://c2w1h8vxwbmmn" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-1.png.png" id="12_sbbd4"]
+[ext_resource type="Texture2D" uid="uid://cokycp4kt4ml" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-2.png.png" id="13_g1ida"]
+[ext_resource type="Texture2D" uid="uid://70x73pbp36u4" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-3.png.png" id="14_xfonq"]
+[ext_resource type="Texture2D" uid="uid://chfa2dylatehi" path="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-4.png.png" id="15_m0b1s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3m7n"]
 animations = [{
@@ -12,9 +24,55 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_softn")
 }],
-"loop": false,
+"loop": true,
 "name": &"crossbow",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6c2e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pl1gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ejmht")
+}],
+"loop": true,
+"name": &"dark_energy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_sbbd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g1ida")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xfonq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m0b1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mxgir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rimnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l47rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fooc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sbbd4")
+}],
+"loop": false,
+"name": &"dark_energy_impact",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -26,6 +84,38 @@ animations = [{
 "loop": true,
 "name": &"fireball",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_sbbd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g1ida")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xfonq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m0b1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mxgir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rimnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l47rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fooc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sbbd4")
+}],
+"loop": true,
+"name": &"fireball_impact",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -45,13 +135,17 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_softn"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c2e5"]
+size = Vector2(13, 16)
+
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_q3m7n")
-animation = &"crossbow"
+animation = &"fireball"
 script = ExtResource("1_c8fcr")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 7
 
@@ -66,4 +160,9 @@ shape = SubResource("CircleShape2D_6q2a6")
 visible = false
 shape = SubResource("CircleShape2D_softn")
 
+[node name="DarkEnergyCollissionShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 5.00002)
+shape = SubResource("RectangleShape2D_6c2e5")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

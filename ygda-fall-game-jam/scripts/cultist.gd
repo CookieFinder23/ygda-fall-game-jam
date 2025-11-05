@@ -32,12 +32,12 @@ func attack(direction: String) -> void:
 	if direction == "right":
 		starting_degrees = 180
 		
-	for i in range(starting_degrees - ATTACK_SPREAD/2, starting_degrees + ATTACK_SPREAD/2 + 1, ATTACK_SPREAD/4):
+	for i in range(starting_degrees - ATTACK_SPREAD/2, starting_degrees + ATTACK_SPREAD/2 + 1, ATTACK_SPREAD/2):
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = global_position
 		projectile_instance.rotation = deg_to_rad(i)
 		projectile_instance.speed = 150
-		projectile_instance.type = "fireball"
+		projectile_instance.type = "dark_energy"
 		projectile_instance.is_player_owned = false
 		world.add_child(projectile_instance)
 	
