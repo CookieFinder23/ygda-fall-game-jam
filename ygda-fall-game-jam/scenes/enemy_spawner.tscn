@@ -65,7 +65,7 @@ frame = 11
 frame_progress = 1.0
 script = ExtResource("2_xl0gr")
 
-[node name="RandomWait" type="Timer" parent="."]
+[node name="WaveStagger" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="timeout" from="RandomWait" to="." method="_on_random_wait_timeout"]
+[connection signal="timeout" from="WaveStagger" to="." method="_on_wave_stagger_timeout"]

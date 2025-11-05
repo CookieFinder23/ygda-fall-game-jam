@@ -19,10 +19,7 @@ func _ready() -> void:
 		"quietus": quietus_projectile_collossion,
 		"dark_energy": dark_energy_collission_shape
 	}
-	if type == "fireball" or type == "dark_energy":
-		right_rotation = true
-	else:
-		right_rotation = false
+	right_rotation = type == "fireball" or type == "dark_energy"
 	for projectile in projectiles:
 		projectiles[projectile].disabled = type != projectile
 	play(type)

@@ -167,6 +167,37 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_jc3p3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_hax0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_t4otl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_j2b1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_cs1tg")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_2dvfe")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
 animations = [{
 "frames": [{
@@ -423,37 +454,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_jc3p3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_hax0n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_t4otl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_j2b1d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_cs1tg")
-}],
-"loop": false,
-"name": &"fire",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("34_2dvfe")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [sub_resource type="Animation" id="Animation_3v2ag"]
 length = 0.001
 tracks/0/type = "value"
@@ -515,6 +515,11 @@ position = Vector2(2, -11)
 sprite_frames = SubResource("SpriteFrames_4ni07")
 animation = &"0"
 
+[node name="HunterWeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+animation = &"fire"
+
 [node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
@@ -541,6 +546,10 @@ position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
 
+[node name="NinjaHeadSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="NinjaBodySprite" type="AnimatedSprite2D" parent="."]
+
 [node name="AttackCooldown" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
@@ -558,11 +567,6 @@ one_shot = true
 process_callback = 0
 wait_time = 2.0
 one_shot = true
-
-[node name="HunterWeaponSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"fire"
 
 [node name="ReloadBar" type="Sprite2D" parent="."]
 visible = false

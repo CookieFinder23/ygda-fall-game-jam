@@ -1,5 +1,4 @@
 extends AnimatedSprite2D
-@onready var character_option_sprite: AnimatedSprite2D = $CharacterOptionSprite
 @onready var character_option_area: Area2D = $CharacterOptionArea
 
 var type: String
@@ -8,12 +7,13 @@ func _ready() -> void:
 	play(type)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Global.picking_character == false:
 		queue_free()
 
-func _on_character_option_area_body_entered(body: Node2D) -> void:
+func _on_character_option_area_body_entered(_body: Node2D) -> void:
 	Global.player_reference.add_character(type)
+	Global.remaining_characters.erase(type)
 	Global.picking_character = false
 	Global.begin_next_wave = true
 	

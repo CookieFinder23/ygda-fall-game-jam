@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://25mheejs2u3f"
-path="res://.godot/imported/Dark Wizard Projectile Impact-8.png.png-cb2e3580d1277b127c003eac0a0ca513.ctex"
+path="res://.godot/imported/Dark Wizard Projectile Impact-8.png.png-1152ca748f13e3cc4badbb23dd288852.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/cultist/Dark Wizard Projectile Impact-8.png.png"
-dest_files=["res://.godot/imported/Dark Wizard Projectile Impact-8.png.png-cb2e3580d1277b127c003eac0a0ca513.ctex"]
+source_file="res://assets/images/enemies/final_boss/Dark Wizard Projectile Impact-8.png.png"
+dest_files=["res://.godot/imported/Dark Wizard Projectile Impact-8.png.png-1152ca748f13e3cc4badbb23dd288852.ctex"]
 
 [params]
 

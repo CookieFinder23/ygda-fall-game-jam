@@ -19,6 +19,8 @@ extends CharacterBody2D
 @onready var ice_mage_head_sprite: AnimatedSprite2D = $IceMageHeadSprite
 @onready var change_sceen_to_start_screen: Timer = $ChangeSceenToStartScreen
 @onready var i_frames: Timer = $IFrames
+@onready var ninja_head_sprite: AnimatedSprite2D = $NinjaHeadSprite
+@onready var ninja_body_sprite: AnimatedSprite2D = $NinjaBodySprite
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -32,6 +34,7 @@ var current_character: Character
 var movement_speed: int
 var movement_direction: MovementDirection
 var health = 3
+var next_character: Character
 var transformation_cycle = []
 enum MovementDirection {
 	UP,
@@ -72,7 +75,8 @@ var movement_ability_cooldown_length_to_number = {
 enum Character {
 	HUNTER,
 	KNIGHT,
-	ICE_MAGE
+	ICE_MAGE,
+	NINJA
 }
 var character_data = {}
 
@@ -91,13 +95,15 @@ func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
-	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8]
+	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
+	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, movement_ability_cooldown.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
 	}
-	transformation_cycle = [Character.KNIGHT]
+	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = knight_body_sprite
-	set_character(Character.KNIGHT)
+	current_body_sprite = hunter_body_sprite
+	set_character(Character.HUNTER)
+	next_character = current_character
 	play_body_animation("idle")
 	
 func set_movement_speed(character: Character) -> void:
@@ -334,7 +340,8 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 
 func _on_transformation_cooldown_timeout() -> void:
 	if transformation_cycle.size() > 1:
+		set_character(next_character)
 		if transformation_cycle.find(current_character) == transformation_cycle.size() - 1:
-			set_character(transformation_cycle[0])
+			next_character = transformation_cycle[0]
 		else:
-			set_character(transformation_cycle[transformation_cycle.find(current_character) + 1])
+			next_character = transformation_cycle[transformation_cycle.find(current_character) + 1]

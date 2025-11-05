@@ -1,81 +1,240 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctgcbrf8g882i"]
+[gd_scene load_steps=24 format=3 uid="uid://ctgcbrf8g882i"]
 
 [ext_resource type="Script" uid="uid://dkrj45mu623v3" path="res://scripts/cultist.gd" id="1_6kwtl"]
-[ext_resource type="Texture2D" uid="uid://h14ghngddip4" path="res://assets/images/placeholder.png" id="1_ag0xj"]
+[ext_resource type="Texture2D" uid="uid://ceaqvgl6taxal" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-1.png.png" id="2_bd6yb"]
+[ext_resource type="Texture2D" uid="uid://b6kv8g826yqy1" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-2.png.png" id="3_666iw"]
+[ext_resource type="Texture2D" uid="uid://x5pm1gtkiess" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-3.png.png" id="4_h54gi"]
+[ext_resource type="Texture2D" uid="uid://cu5fs50dli7l2" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-4.png.png" id="5_hmxcc"]
+[ext_resource type="Texture2D" uid="uid://bcmkvl85nis5x" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-5.png.png" id="6_b20iv"]
+[ext_resource type="Texture2D" uid="uid://dvs271uqfpcmf" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-6.png.png" id="7_4jiy2"]
+[ext_resource type="Texture2D" uid="uid://ckqxad257jgdq" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-7.png.png" id="8_1hmqt"]
+[ext_resource type="Texture2D" uid="uid://bvegm4q1mhv2w" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-8.png.png" id="9_yke46"]
+[ext_resource type="Texture2D" uid="uid://dcy4gxn11vxu" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-9.png.png" id="10_5qvbf"]
+[ext_resource type="Texture2D" uid="uid://bgsybf8umwafm" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-10.png.png" id="11_tss7g"]
+[ext_resource type="Texture2D" uid="uid://dkn1fa3urkyab" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-11.png.png" id="12_pmrom"]
+[ext_resource type="Texture2D" uid="uid://dmpvdw6pljsus" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-12.png.png" id="13_bbgki"]
+[ext_resource type="Texture2D" uid="uid://d3xjuepkue14a" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-13.png.png" id="14_frob4"]
+[ext_resource type="Texture2D" uid="uid://bw8khjuqfvrd" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-14.png.png" id="15_s8suq"]
+[ext_resource type="Texture2D" uid="uid://4ktwsw1dabmk" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-15.png.png" id="16_1vtg4"]
+[ext_resource type="Texture2D" uid="uid://cf7o5n4k47m52" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-16.png.png" id="17_itete"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("2_bd6yb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("3_666iw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("4_h54gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("5_hmxcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b20iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4jiy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1hmqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yke46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5qvbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tss7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pmrom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bbgki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_frob4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s8suq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1vtg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_itete")
 }],
 "loop": false,
 "name": &"down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("2_bd6yb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("3_666iw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("4_h54gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("5_hmxcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b20iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4jiy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1hmqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yke46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5qvbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tss7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pmrom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bbgki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_frob4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s8suq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1vtg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_itete")
 }],
 "loop": false,
 "name": &"left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("2_bd6yb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("3_666iw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("4_h54gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("5_hmxcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b20iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4jiy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1hmqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yke46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5qvbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tss7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pmrom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bbgki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_frob4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s8suq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1vtg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_itete")
 }],
 "loop": false,
 "name": &"right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("2_bd6yb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("3_666iw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("4_h54gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ag0xj")
+"texture": ExtResource("5_hmxcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b20iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4jiy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1hmqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yke46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5qvbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tss7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pmrom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bbgki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_frob4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s8suq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1vtg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_itete")
 }],
 "loop": false,
 "name": &"up",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53qi"]
-size = Vector2(26, 48)
+size = Vector2(21, 32)
 
 [sub_resource type="Animation" id="Animation_ag0xj"]
 length = 0.001
@@ -138,11 +297,8 @@ script = ExtResource("1_6kwtl")
 
 [node name="CultistSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
-scale = Vector2(0.325, 0.6)
 sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"right"
-frame = 3
-frame_progress = 1.0
+animation = &"up"
 
 [node name="CultistCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -153,7 +309,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TeleportCooldownTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.05
 one_shot = true
 autostart = true
 
@@ -166,7 +322,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_4o0s8")
 }
 
+[node name="TimeFromAnimationStartToShoot" type="Timer" parent="."]
+wait_time = 0.9
+one_shot = true
+
 [connection signal="animation_finished" from="CultistSprite" to="." method="_on_cultist_sprite_animation_finished"]
 [connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_teleport_cooldown_timer_timeout"]
 [connection signal="timeout" from="WaitToShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="TimeFromAnimationStartToShoot" to="." method="_on_time_from_animation_start_to_shoot_timeout"]

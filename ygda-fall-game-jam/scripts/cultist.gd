@@ -7,6 +7,7 @@ extends AnimatableBody2D
 @onready var cultist_sprite: AnimatedSprite2D = $CultistSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cultist_collision: CollisionShape2D = $CultistCollision
+@onready var time_from_animation_start_to_shoot: Timer = $TimeFromAnimationStartToShoot
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
@@ -40,9 +41,11 @@ func attack(direction: String) -> void:
 		projectile_instance.type = "dark_energy"
 		projectile_instance.is_player_owned = false
 		world.add_child(projectile_instance)
-	
-func _on_cultist_sprite_animation_finished() -> void:
+
+func _on_time_from_animation_start_to_shoot_timeout() -> void:
 	attack(cultist_sprite.animation)
+
+func _on_cultist_sprite_animation_finished() -> void:
 	teleport_cooldown_timer.start()
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -63,8 +66,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			else:
 				global_position.y = Global.player_reference.position.y - 100
 				cultist_sprite.play("up")
+		time_from_animation_start_to_shoot.start()
 		animation_player.play("appear")
-
+		
 func _on_teleport_cooldown_timer_timeout() -> void:
 	animation_player.play("disappear")
 

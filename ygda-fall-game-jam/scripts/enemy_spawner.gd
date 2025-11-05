@@ -1,17 +1,24 @@
 extends AnimatedSprite2D
-@onready var random_wait: Timer = $RandomWait
+@onready var wave_stagger: Timer = $WaveStagger
 @onready var world: Node = $".."
 
 var type
+var wave_stagger_time
 
 func _ready() -> void:
-	random_wait.wait_time = randf_range(0, 2)
-	random_wait.start()
-	
-func _on_random_wait_timeout() -> void:
+	if wave_stagger_time > 0:
+		spawn()
+	else:
+		wave_stagger.wait_time = wave_stagger_time
+		wave_stagger.start()
+
+func _on_wave_stagger_timeout() -> void:
+	spawn()
+
+func spawn() -> void:
 	visible = true
 	play("default")
-
+	
 func _on_animation_finished() -> void:
 	Global.enemies_left += 1
 	var enemy = type.instantiate()

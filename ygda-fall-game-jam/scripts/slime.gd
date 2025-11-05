@@ -7,7 +7,7 @@ extends AnimatableBody2D
 @onready var world: Node = $".."
 
 const SMALL_SLIME = preload("res://scenes/small_slime.tscn")
-var health: int = 9
+var health: int = 6
 var phase: Phase = Phase.CHASE
 var lunge_direction
 const CHASE_SPEED: int = 60
