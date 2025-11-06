@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=77 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -569,6 +569,9 @@ size = Vector2(10, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs1tg"]
 size = Vector2(16, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc3ue"]
+size = Vector2(20, 32)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 motion_mode = 1
@@ -680,6 +683,14 @@ one_shot = true
 [node name="SlashTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ShieldCollisionArea" type="Area2D" parent="." groups=["shield"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="ShieldCollisionArea"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_sc3ue")
 
 [connection signal="animation_finished" from="HunterWeaponSprite" to="." method="_on_hunter_weapon_sprite_animation_finished"]
 [connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]

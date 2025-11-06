@@ -22,6 +22,8 @@ extends CharacterBody2D
 @onready var ninja_head_sprite: AnimatedSprite2D = $NinjaHeadSprite
 @onready var ninja_body_sprite: AnimatedSprite2D = $NinjaBodySprite
 @onready var slash_timer: Timer = $SlashTimer
+@onready var shield_collision: CollisionShape2D = $ShieldCollisionArea/ShieldCollision
+@onready var shield_collision_area: Area2D = $ShieldCollisionArea
 
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
@@ -38,6 +40,7 @@ var movement_direction: MovementDirection
 var health = 3
 var next_character: Character
 var transformation_cycle = []
+var slash_start_degrees: int
 enum MovementDirection {
 	UP,
 	DOWN,
@@ -146,48 +149,62 @@ func set_character(character: Character) -> void:
 	set_weapon(character)
 	play_body_animation(old_animation)
 	
-	
 func play_body_animation(animation: String) -> void:
 	current_body_sprite.play(animation)
 
 func do_movement_ability(character: Character) -> void:
-	if character == Character.HUNTER or character == Character.KNIGHT:
+	if character == Character.HUNTER:
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
-	if character == Character.ICE_MAGE:
+	elif character == Character.ICE_MAGE:
 		var ice_circle_instance = ICE_CIRCLE.instantiate()
 		ice_circle_instance.global_position = global_position
 		ice_circle_instance.is_attack = false
 		get_tree().root.add_child(ice_circle_instance)
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
+	elif character == Character.KNIGHT:
+		movement_ability_in_action.wait_time = 2
+		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
 	movement_ability_cooldown.start()
 
+func do_knight_slash() -> void:
+	current_weapon.rotation_degrees = slash_start_degrees + (slash_timer.wait_time -slash_timer.time_left) * 2 * 100
+
 func move_weapon_with_mouse() -> void:
+		
+	shield_collision.disabled = true
 	if current_character == Character.KNIGHT:
 		if movement_ability_in_action.is_stopped():
 			current_weapon.play("sword")
 		else:
 			current_weapon.play("shield")
+			shield_collision.disabled = false
+			
 	current_weapon.position = Vector2.ZERO
 	current_weapon.look_at(get_global_mouse_position())
-	if current_character == Character.KNIGHT:
+	if current_character == Character.KNIGHT and current_weapon.animation == "sword":
 		current_weapon.rotation_degrees = clamp(current_weapon.rotation_degrees, 0, 180)
-	if get_global_mouse_position().x > position.x:
-		current_weapon.position.x = 10
-		current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+	if current_character == Character.KNIGHT and current_weapon.animation == "shield":
+			current_weapon.position.x = (30 * cos(current_weapon.rotation))
+			current_weapon.position.y = (35 * sin(current_weapon.rotation))
+			current_weapon.rotation = 0
+			shield_collision_area.position = current_weapon.position
 	else:
-		current_weapon.position.x = -10
-		current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+		if get_global_mouse_position().x > position.x:
+				current_weapon.position.x = 10
+				current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+		else:
+			current_weapon.position.x = -10
+			current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
 	
 	current_weapon.rotation_degrees = wrap(current_weapon.rotation_degrees, 0, 360)
 	if current_weapon.rotation_degrees > 90 and current_weapon.rotation_degrees < 270:
-		current_weapon.scale.y = -1
+		current_weapon.scale = Vector2(1, -1)
 	else:
-		current_weapon.scale.y = 1
-	
+		current_weapon.scale = Vector2(1, 1)
 
 func determine_weapon_layer() -> void:
 	if movement_direction == MovementDirection.UP:
@@ -218,6 +235,7 @@ func attack():
 		get_tree().root.add_child(ice_circle_instance)
 	elif current_character == Character.KNIGHT:
 		slash_timer.start()
+		slash_start_degrees = current_weapon.rotation_degrees
 		
 func _on_reload_bar_animation_player_animation_finished(_anim_name: StringName) -> void:
 	reload_bar.visible = false
@@ -314,7 +332,10 @@ func _physics_process(delta: float) -> void:
 			velocity += input_direction * delta * movement_speed * BASE_MOVEMENT_SPEED
 		velocity *= 0.7
 		if (current_weapon != null):
-			move_weapon_with_mouse()
+			if current_character == Character.KNIGHT and not slash_timer.is_stopped():
+				do_knight_slash()
+			else:
+				move_weapon_with_mouse()
 		set_head_direction()
 		
 		if Input.is_action_just_pressed("attack") and attack_cooldown.is_stopped() and not (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):

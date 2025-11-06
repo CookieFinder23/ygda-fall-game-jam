@@ -15,7 +15,7 @@ const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
 const FINAL_BOSS = preload("res://scenes/final_boss.tscn")
 
 func _ready() -> void:
-	Global.wave_number = 3
+	Global.wave_number = 0
 	Global.picking_character = false
 	Global.enemies_left = 0
 	Global.begin_next_wave = true
