@@ -3,6 +3,7 @@ extends AnimatableBody2D
 @onready var imp_sprite: AnimatedSprite2D = $ImpSprite
 @onready var stun_timer: Timer = $StunTimer
 @onready var world: Node = $".."
+@onready var imp_clock: Timer = $ImpClock
 
 var health: int = 9
 var phase: int = 3
@@ -13,6 +14,7 @@ var current_action: Action = Action.ATTACK
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const DASH_TIME = 0.5
 const DASH_DISTANCE = 312
+var weak: bool = false
 
 enum Action {
 	LEFT,
@@ -21,6 +23,11 @@ enum Action {
 	DOWN,
 	ATTACK
 }
+
+func _ready() -> void:
+	if weak:
+		health = 6
+		imp_clock.wait_time = imp_clock.wait_time * 2
 
 func attack() -> void:
 		var projectile_instance = PROJECTILE.instantiate()

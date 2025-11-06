@@ -4,9 +4,10 @@ extends AnimatedSprite2D
 
 var type
 var wave_stagger_time
+var weak
 
 func _ready() -> void:
-	if wave_stagger_time > 0:
+	if wave_stagger_time == 0:
 		spawn()
 	else:
 		wave_stagger.wait_time = wave_stagger_time
@@ -23,5 +24,6 @@ func _on_animation_finished() -> void:
 	Global.enemies_left += 1
 	var enemy = type.instantiate()
 	enemy.global_position = global_position
+	enemy.weak = weak
 	world.add_child(enemy)
 	queue_free()

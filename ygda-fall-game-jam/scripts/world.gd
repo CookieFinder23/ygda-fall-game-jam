@@ -12,25 +12,26 @@ const SLIME = preload("res://scenes/slime.tscn")
 const QUIETUS = preload("res://scenes/quietus.tscn")
 const CULTIST = preload("res://scenes/cultist.tscn")
 const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
-
+const FINAL_BOSS = preload("res://scenes/final_boss.tscn")
 
 func _ready() -> void:
 	Global.wave_number = 0
 	Global.picking_character = false
-	Global.enemies_left = 0
+	Global.enemies_left = 1
 	Global.begin_next_wave = true
 	Global.remaining_characters =  ["ice_mage", "knight", "ninja"]
 
 func _on_inbetween_wave_timer_timeout() -> void:
-	Global.wave_number += 1
-	if Global.wave_number == 1:
-		make_wave([IMP, SLIME, GHOST], 2)
-	elif Global.wave_number == 2:
-		make_wave([IMP, SLIME, GHOST, QUIETUS], 3)
-	elif Global.wave_number == 3:
-		var wave_three_enemy_selection = [CULTIST, QUIETUS]
-		wave_three_enemy_selection.append([IMP, SLIME, GHOST].pick_random())
-		make_wave(wave_three_enemy_selection, 3)
+	return
+	#Global.wave_number += 1
+	#if Global.wave_number == 1:
+		#make_wave([IMP, SLIME, GHOST], 2)
+	#elif Global.wave_number == 2:
+		#make_wave([IMP, SLIME, GHOST, QUIETUS], 3)
+	#elif Global.wave_number == 3:
+		#var wave_three_enemy_selection = [CULTIST, QUIETUS]
+		#wave_three_enemy_selection.append([IMP, SLIME, GHOST].pick_random())
+		#make_wave(wave_three_enemy_selection, 3)
 
 func _physics_process(_delta: float) -> void:
 	hearts_container.update_hearts(player.health)

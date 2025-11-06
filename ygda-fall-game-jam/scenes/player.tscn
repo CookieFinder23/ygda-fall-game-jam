@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=75 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -172,30 +172,33 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("29_jc3p3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_hax0n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_t4otl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_j2b1d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_cs1tg")
 }],
-"loop": false,
-"name": &"fire",
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("34_2dvfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_cs1tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_j2b1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_t4otl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_hax0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jc3p3")
 }],
 "loop": false,
-"name": &"idle",
-"speed": 5.0
+"name": &"reload",
+"speed": 2.5
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
@@ -300,7 +303,7 @@ animations = [{
 "texture": ExtResource("32_2gdjj")
 }],
 "loop": false,
-"name": &"fire",
+"name": &"shield",
 "speed": 5.0
 }, {
 "frames": [{
@@ -308,7 +311,7 @@ animations = [{
 "texture": ExtResource("32_2gdjj")
 }],
 "loop": false,
-"name": &"idle",
+"name": &"sword",
 "speed": 5.0
 }]
 
@@ -454,6 +457,75 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gdjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_u2ulf")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_6e8lb")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_2gdjj")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_sc3ue")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_lxlsd")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_ha2mi")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_2gdjj")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_sc3ue")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc3ue"]
+
 [sub_resource type="Animation" id="Animation_3v2ag"]
 length = 0.001
 tracks/0/type = "value"
@@ -518,7 +590,8 @@ animation = &"0"
 [node name="HunterWeaponSprite" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"fire"
+animation = &"reload"
+autoplay = "idle"
 
 [node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -532,7 +605,7 @@ animation = &"1"
 
 [node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"idle"
+animation = &"shield"
 
 [node name="IceMageBodySprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -547,8 +620,11 @@ sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
 
 [node name="NinjaHeadSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2gdjj")
+animation = &"7"
 
 [node name="NinjaBodySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sc3ue")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 process_callback = 0
@@ -600,6 +676,7 @@ shape = SubResource("RectangleShape2D_cs1tg")
 [node name="IFrames" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_finished" from="HunterWeaponSprite" to="." method="_on_hunter_weapon_sprite_animation_finished"]
 [connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]
 [connection signal="timeout" from="MovementAbilityInAction" to="." method="_on_movement_ability_in_action_timeout"]
 [connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]

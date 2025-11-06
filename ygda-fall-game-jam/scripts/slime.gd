@@ -12,6 +12,8 @@ var phase: Phase = Phase.CHASE
 var lunge_direction
 const CHASE_SPEED: int = 60
 const LUNGE_SPEED: int = 190
+var weak: bool
+var speed_modifier = 1
 
 enum Phase {
 	CHASE,
@@ -19,18 +21,23 @@ enum Phase {
 	LUNGE
 }
 
+func _ready() -> void:
+	if weak:
+		health = 3
+		speed_modifier = 0.7
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if stun_timer.is_stopped() and slime_sprite.animation != "split":
 		if phase == Phase.CHASE:
-			move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta)
+			move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta * speed_modifier)
 			if lunge_range.overlaps_body(Global.player_reference) and lunge_cooldown.is_stopped():
 				lunge_cooldown.start()
 				slime_sprite.play("lunge_startup")
 				phase = Phase.LUNGE_STARTUP
 
 		elif phase == Phase.LUNGE:
-			move_and_collide(lunge_direction * LUNGE_SPEED * delta)
+			move_and_collide(lunge_direction * LUNGE_SPEED * delta * speed_modifier)
 
 func take_damage(damage: int) -> void:
 	if slime_sprite.animation != "split":
@@ -54,10 +61,10 @@ func _on_slime_sprite_animation_finished() -> void:
 	elif slime_sprite.animation == "split":
 		var slow_small_slime_instance = SMALL_SLIME.instantiate()
 		slow_small_slime_instance.global_position = global_position + Vector2(-10, 0)
-		slow_small_slime_instance.speed = 80
+		slow_small_slime_instance.speed = 80 * speed_modifier
 		var fast_small_slime_instance = SMALL_SLIME.instantiate()
 		fast_small_slime_instance.global_position = global_position + Vector2(10, 0)
-		fast_small_slime_instance.speed = 100
+		fast_small_slime_instance.speed = 100 * speed_modifier
 		world.add_child(slow_small_slime_instance)
 		world.add_child(fast_small_slime_instance)
 		queue_free()

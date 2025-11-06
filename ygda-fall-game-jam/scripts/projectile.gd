@@ -20,6 +20,10 @@ func _ready() -> void:
 		"dark_energy": dark_energy_collission_shape
 	}
 	right_rotation = type == "fireball" or type == "dark_energy"
+	if type == "dark_energy":
+		scale = Vector2(1.5, 1.5)
+	else:
+		scale = Vector2(1, 1)
 	for projectile in projectiles:
 		projectiles[projectile].disabled = type != projectile
 	play(type)

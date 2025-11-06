@@ -13,6 +13,8 @@ const EXPLOSION = preload("res://scenes/explosion.tscn")
 var health: int = 9
 var phase: Phase = Phase.TELEPORT
 const SPEED: int = 90
+var weak: bool
+var speed_modifier = 1
 
 enum Phase {
 	HUNT,
@@ -20,12 +22,16 @@ enum Phase {
 }
 
 func _ready() -> void:
+	if weak:
+		speed_modifier = 0.7
+		teleport_cooldown.wait_time = teleport_cooldown.wait_time * 1.5
+		
 	animation_player.play("disappear")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if phase == Phase.HUNT and health > 0 and stun_timer.is_stopped():
-		move_and_collide(position.direction_to(Global.player_reference.position) * SPEED * delta)
+		move_and_collide(position.direction_to(Global.player_reference.position) * SPEED * delta * speed_modifier)
 
 	if phase == Phase.HUNT:
 		ghost_collision.disabled = false
@@ -72,6 +78,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			global_position.y = Global.player_reference.position.y + 50
 		else:
 			global_position.y = Global.player_reference.position.y - 50
+		if weak and health < 6:
+			queue_free()
 		animation_player.play("appear")
 	elif anim_name == "appear":
 		phase = Phase.HUNT

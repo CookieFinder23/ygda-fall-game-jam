@@ -96,7 +96,7 @@ func _ready() -> void:
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
-	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, movement_ability_cooldown.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
+	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
 	}
 	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
@@ -128,6 +128,8 @@ func set_weapon(new_weapon: Character) -> void:
 		if character_data[character][5] != null:
 			character_data[character][5].visible = character == new_weapon
 	current_weapon = character_data[new_weapon][5]
+	if current_weapon == hunter_weapon_sprite:
+		current_weapon.play("idle")
 
 func set_character(character: Character) -> void:
 	current_character = character
@@ -189,6 +191,7 @@ func determine_weapon_layer() -> void:
 
 func attack():
 	if current_character == Character.HUNTER:
+		hunter_weapon_sprite.play("reload")
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = current_weapon.global_position
 		projectile_instance.rotation = current_weapon.rotation
@@ -345,3 +348,7 @@ func _on_transformation_cooldown_timeout() -> void:
 			next_character = transformation_cycle[0]
 		else:
 			next_character = transformation_cycle[transformation_cycle.find(current_character) + 1]
+
+func _on_hunter_weapon_sprite_animation_finished() -> void:
+	if hunter_weapon_sprite.animation == "reload":
+		hunter_weapon_sprite.play("idle")

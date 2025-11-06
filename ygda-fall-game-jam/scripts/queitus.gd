@@ -15,6 +15,7 @@ var phase: Phase = Phase.SLASH
 var has_shot: bool = false
 const SLASH_SPEED = 80
 const SHOOT_SPEED = 1200
+var weak: bool = false
 
 
 enum Phase {
@@ -22,6 +23,9 @@ enum Phase {
 	SHOOT,
 }
 
+func _ready() -> void:
+	if weak:
+		health = 6
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -77,7 +81,10 @@ func shoot():
 	quietus_sprite.play("shoot")
 	var projectile_instance = PROJECTILE.instantiate()
 	projectile_instance.rotation = position.angle_to_point(Global.player_reference.position)
-	projectile_instance.speed = 230
+	if weak:
+		projectile_instance.speed = 170
+	else:
+		projectile_instance.speed = 230
 	projectile_instance.global_position = global_position + projectile_instance.transform.x * 20
 	projectile_instance.type = "quietus"
 	projectile_instance.is_player_owned = false

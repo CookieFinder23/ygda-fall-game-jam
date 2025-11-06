@@ -1,73 +1,173 @@
-[gd_scene load_steps=24 format=3 uid="uid://ck5ysb5s3qdps"]
+[gd_scene load_steps=112 format=3 uid="uid://ck5ysb5s3qdps"]
 
-[ext_resource type="Script" uid="uid://dkrj45mu623v3" path="res://scripts/cultist.gd" id="1_d3kp8"]
-[ext_resource type="Texture2D" uid="uid://ceaqvgl6taxal" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-1.png.png" id="2_aml70"]
-[ext_resource type="Texture2D" uid="uid://b6kv8g826yqy1" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-2.png.png" id="3_gilny"]
-[ext_resource type="Texture2D" uid="uid://x5pm1gtkiess" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-3.png.png" id="4_1yeru"]
-[ext_resource type="Texture2D" uid="uid://cu5fs50dli7l2" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-4.png.png" id="5_iw80n"]
-[ext_resource type="Texture2D" uid="uid://bcmkvl85nis5x" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-5.png.png" id="6_mlhyi"]
-[ext_resource type="Texture2D" uid="uid://dvs271uqfpcmf" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-6.png.png" id="7_g2e7s"]
-[ext_resource type="Texture2D" uid="uid://ckqxad257jgdq" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-7.png.png" id="8_c4bb3"]
-[ext_resource type="Texture2D" uid="uid://bvegm4q1mhv2w" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-8.png.png" id="9_2haii"]
-[ext_resource type="Texture2D" uid="uid://dcy4gxn11vxu" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-9.png.png" id="10_usr06"]
-[ext_resource type="Texture2D" uid="uid://bgsybf8umwafm" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-10.png.png" id="11_4fsmn"]
-[ext_resource type="Texture2D" uid="uid://dkn1fa3urkyab" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-11.png.png" id="12_dp7wo"]
-[ext_resource type="Texture2D" uid="uid://dmpvdw6pljsus" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-12.png.png" id="13_bn653"]
-[ext_resource type="Texture2D" uid="uid://d3xjuepkue14a" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-13.png.png" id="14_tgsiw"]
-[ext_resource type="Texture2D" uid="uid://bw8khjuqfvrd" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-14.png.png" id="15_j436m"]
-[ext_resource type="Texture2D" uid="uid://4ktwsw1dabmk" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-15.png.png" id="16_5kll7"]
-[ext_resource type="Texture2D" uid="uid://cf7o5n4k47m52" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-16.png.png" id="17_vew3s"]
+[ext_resource type="Script" uid="uid://c6sbb3yfkgvks" path="res://scripts/final_boss.gd" id="1_owbfa"]
+[ext_resource type="Texture2D" uid="uid://dqafp0xxxivof" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-1.png.png" id="2_jpmj6"]
+[ext_resource type="Texture2D" uid="uid://bjj6bfqmmmoh1" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-2.png.png" id="3_ydtcr"]
+[ext_resource type="Texture2D" uid="uid://k5fvvg4t5fmt" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-3.png.png" id="4_l8x33"]
+[ext_resource type="Texture2D" uid="uid://c2w88p2thplmo" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-4.png.png" id="5_6h32r"]
+[ext_resource type="Texture2D" uid="uid://dseprqttjkleo" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-5.png.png" id="6_fokdh"]
+[ext_resource type="Texture2D" uid="uid://b2q2b8iurr26v" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-6.png.png" id="7_46wfk"]
+[ext_resource type="Texture2D" uid="uid://dadp8psh3vmsa" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-7.png.png" id="8_e30bg"]
+[ext_resource type="Texture2D" uid="uid://ddb4rxx3bex5o" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-8.png.png" id="9_ayevv"]
+[ext_resource type="Texture2D" uid="uid://eiyrkxbhjduv" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-9.png.png" id="10_ku7mj"]
+[ext_resource type="Texture2D" uid="uid://gnoy41vogdxr" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-10.png.png" id="11_kmidm"]
+[ext_resource type="Texture2D" uid="uid://bow5470rejmwh" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-11.png.png" id="12_ivi5x"]
+[ext_resource type="Texture2D" uid="uid://37eb81gbfa7b" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-12.png.png" id="13_5m3a7"]
+[ext_resource type="Texture2D" uid="uid://eawk1hkqh5c6" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-13.png.png" id="14_y2hl5"]
+[ext_resource type="Texture2D" uid="uid://d0wbeje3jwdtf" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-14.png.png" id="15_txlmr"]
+[ext_resource type="Texture2D" uid="uid://bkpmk3o58i1bx" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-15.png.png" id="16_q7so2"]
+[ext_resource type="Texture2D" uid="uid://bmqf02l4tm4aw" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-16.png.png" id="17_ggkem"]
+[ext_resource type="Texture2D" uid="uid://ce71eeh1b6d6l" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-17.png.png" id="18_h4c3w"]
+[ext_resource type="Texture2D" uid="uid://cjv4oucptnyk8" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-18.png.png" id="19_gh8hr"]
+[ext_resource type="Texture2D" uid="uid://k1jsod68wjv0" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-19.png.png" id="20_1i36b"]
+[ext_resource type="Texture2D" uid="uid://dkdleg8mux0a" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-20.png.png" id="21_s6xc8"]
+[ext_resource type="Texture2D" uid="uid://nasj2jri2mce" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-21.png.png" id="22_7rlfh"]
+[ext_resource type="Texture2D" uid="uid://be5bvlw5r8js6" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -1.png.png" id="23_owbfa"]
+[ext_resource type="Texture2D" uid="uid://b5kcr3ekuk0wq" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -2.png.png" id="24_6ect0"]
+[ext_resource type="Texture2D" uid="uid://cfwew8juawco7" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -3.png.png" id="25_vhrfe"]
+[ext_resource type="Texture2D" uid="uid://kqsjr8wmrgb" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -4.png.png" id="26_a1ln1"]
+[ext_resource type="Texture2D" uid="uid://cupepprgwbuqb" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -5.png.png" id="27_xqns5"]
+[ext_resource type="Texture2D" uid="uid://61baaanltfgy" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -6.png.png" id="28_a4qq1"]
+[ext_resource type="Texture2D" uid="uid://bwpcc3ajlrplf" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -7.png.png" id="29_kupy2"]
+[ext_resource type="Texture2D" uid="uid://76dby0fgfyy" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -8.png.png" id="30_k84xx"]
+[ext_resource type="Texture2D" uid="uid://biv1b2w76mi4g" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -9.png.png" id="31_bjo43"]
+[ext_resource type="Texture2D" uid="uid://dbl2d0lti1iac" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -10.png.png" id="32_q1ers"]
+[ext_resource type="Texture2D" uid="uid://royyb0ttmpi4" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -11.png.png" id="33_fg4hl"]
+[ext_resource type="Texture2D" uid="uid://c72pc4tg0453f" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -12.png.png" id="34_xn0yq"]
+[ext_resource type="Texture2D" uid="uid://ckgj88wb8cx4b" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -13.png.png" id="35_p2sgk"]
+[ext_resource type="Texture2D" uid="uid://crum64kd10wsm" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -14.png.png" id="36_j7jar"]
+[ext_resource type="Texture2D" uid="uid://cdpa0h8whr14t" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -15.png.png" id="37_gyhr0"]
+[ext_resource type="Texture2D" uid="uid://b0j17a2licutv" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -16.png.png" id="38_ql1g6"]
+[ext_resource type="Texture2D" uid="uid://toxp6b0otq5h" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -17.png.png" id="39_a4nch"]
+[ext_resource type="Texture2D" uid="uid://ciqg0q5ldeytj" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -18.png.png" id="40_4vmqf"]
+[ext_resource type="Texture2D" uid="uid://8x88r0ubnwys" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -19.png.png" id="41_0eref"]
+[ext_resource type="Texture2D" uid="uid://b7bsl40ndmibl" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -20.png.png" id="42_7ejhr"]
+[ext_resource type="Texture2D" uid="uid://nqhamnxe2nb" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -21.png.png" id="43_3bb1k"]
+[ext_resource type="Texture2D" uid="uid://tpmrhp2hm8l0" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-1.png.png" id="44_gtai1"]
+[ext_resource type="Texture2D" uid="uid://c8ar44xaw685l" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-2.png.png" id="45_sia0w"]
+[ext_resource type="Texture2D" uid="uid://cmddnibdj6jhu" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-3.png.png" id="46_ggd73"]
+[ext_resource type="Texture2D" uid="uid://8mq5t7c006mn" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-4.png.png" id="47_7c75u"]
+[ext_resource type="Texture2D" uid="uid://c0kbh07h1v4y8" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-5.png.png" id="48_1pjyh"]
+[ext_resource type="Texture2D" uid="uid://br1yhug85phuw" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-6.png.png" id="49_26c8s"]
+[ext_resource type="Texture2D" uid="uid://desyu3kvm8oji" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-7.png.png" id="50_2j36y"]
+[ext_resource type="Texture2D" uid="uid://dhhuxax6rhxg6" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-8.png.png" id="51_gmxy6"]
+[ext_resource type="Texture2D" uid="uid://civslb6sljr81" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-9.png.png" id="52_f3bus"]
+[ext_resource type="Texture2D" uid="uid://djiqlubtlujjs" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-10.png.png" id="53_scdw8"]
+[ext_resource type="Texture2D" uid="uid://bc6umg43v0quf" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-12.png.png" id="54_y37pi"]
+[ext_resource type="Texture2D" uid="uid://c3m16cvkoqjgo" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-13.png.png" id="55_qntue"]
+[ext_resource type="Texture2D" uid="uid://bfhmm6w0aopc" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-14.png.png" id="56_k7mjq"]
+[ext_resource type="Texture2D" uid="uid://b0u6vwid8vw3h" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-15.png.png" id="57_io3pg"]
+[ext_resource type="Texture2D" uid="uid://h06nxted10sl" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-16.png.png" id="58_k5t87"]
+[ext_resource type="Texture2D" uid="uid://bt3e2mgcxqgox" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-17.png.png" id="59_j0oto"]
+[ext_resource type="Texture2D" uid="uid://co1lc3rlwl30l" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-18.png.png" id="60_p47au"]
+[ext_resource type="Texture2D" uid="uid://ddpgy601l6ocp" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-19.png.png" id="61_ekojn"]
+[ext_resource type="Texture2D" uid="uid://bv7ihsqxgbpl8" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-20.png.png" id="62_rgcb2"]
+[ext_resource type="Texture2D" uid="uid://bu58g6gtwsmfe" path="res://assets/images/enemies/final_boss/south/Enemy - Dark Wizard - Front Complete-21.png.png" id="63_8i33y"]
+[ext_resource type="Texture2D" uid="uid://n11pxviy0vvp" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-1.png.png" id="64_7iw3n"]
+[ext_resource type="Texture2D" uid="uid://o7tv1e56j2si" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-2.png.png" id="65_gqcm6"]
+[ext_resource type="Texture2D" uid="uid://g530unl5wixk" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-3.png.png" id="66_5b81f"]
+[ext_resource type="Texture2D" uid="uid://dc5saupwq6udl" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-4.png.png" id="67_paino"]
+[ext_resource type="Texture2D" uid="uid://410s6jhyv0cd" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-5.png.png" id="68_b8mbh"]
+[ext_resource type="Texture2D" uid="uid://di387d76u1lh1" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-6.png.png" id="69_qvr1p"]
+[ext_resource type="Texture2D" uid="uid://cw1kj5o4l7oy8" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-7.png.png" id="70_p40co"]
+[ext_resource type="Texture2D" uid="uid://ct2nqm7fmu5tn" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-8.png.png" id="71_cb21o"]
+[ext_resource type="Texture2D" uid="uid://5kshchcfyrqn" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-9.png.png" id="72_k4vi7"]
+[ext_resource type="Texture2D" uid="uid://c3j8yaoe63bxn" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-10.png.png" id="73_beper"]
+[ext_resource type="Texture2D" uid="uid://cmuuk4qlbj6dt" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-11.png.png" id="74_250tx"]
+[ext_resource type="Texture2D" uid="uid://bwjnwf4gyw4xv" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-12.png.png" id="75_jnmxq"]
+[ext_resource type="Texture2D" uid="uid://3xuhxj21ab4e" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-13.png.png" id="76_mkixc"]
+[ext_resource type="Texture2D" uid="uid://dwxv2psc0nrcv" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-14.png.png" id="77_s83rs"]
+[ext_resource type="Texture2D" uid="uid://cm71xoelf1ahl" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-15.png.png" id="78_2gfjn"]
+[ext_resource type="Texture2D" uid="uid://cqyaojmbnoqv" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-16.png.png" id="79_8a4xt"]
+[ext_resource type="Texture2D" uid="uid://c3s0gtnywp75a" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-17.png.png" id="80_w7dpy"]
+[ext_resource type="Texture2D" uid="uid://coshpo204650l" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-18.png.png" id="81_nltvl"]
+[ext_resource type="Texture2D" uid="uid://b7yt82s2wtj8t" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-19.png.png" id="82_5pw3b"]
+[ext_resource type="Texture2D" uid="uid://c8l5h1wpsw78g" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-20.png.png" id="83_lgrxh"]
+[ext_resource type="Texture2D" uid="uid://7wy1f2sn5q8f" path="res://assets/images/enemies/final_boss/southwest/Enemy - Dark Wizard - 45 SouthWest-21.png.png" id="84_huppq"]
+[ext_resource type="Texture2D" uid="uid://cxfghyptrnyrg" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -1.png.png" id="85_owbfa"]
+[ext_resource type="Texture2D" uid="uid://k153btmw8owg" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -2.png.png" id="86_6ect0"]
+[ext_resource type="Texture2D" uid="uid://dcnvursdaxomk" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -3.png.png" id="87_vhrfe"]
+[ext_resource type="Texture2D" uid="uid://cstfqnl7g57me" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -4.png.png" id="88_a1ln1"]
+[ext_resource type="Texture2D" uid="uid://7s2t47osdr0w" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -5.png.png" id="89_xqns5"]
+[ext_resource type="Texture2D" uid="uid://gi2mohfudtj1" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -6.png.png" id="90_a4qq1"]
+[ext_resource type="Texture2D" uid="uid://lcg5anhyg5d2" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -7.png.png" id="91_kupy2"]
+[ext_resource type="Texture2D" uid="uid://dky2njgpfo2au" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -8.png.png" id="92_k84xx"]
+[ext_resource type="Texture2D" uid="uid://clxt06drvuind" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -9.png.png" id="93_bjo43"]
+[ext_resource type="Texture2D" uid="uid://cortgeasyr3dm" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -10.png.png" id="94_q1ers"]
+[ext_resource type="Texture2D" uid="uid://7jfs4jsm0nwv" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -11.png.png" id="95_fg4hl"]
+[ext_resource type="Texture2D" uid="uid://dt1ixr6q4omfm" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -12.png.png" id="96_xn0yq"]
+[ext_resource type="Texture2D" uid="uid://c3kbxbhvj8x0w" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -13.png.png" id="97_p2sgk"]
+[ext_resource type="Texture2D" uid="uid://djagfx6cb13mq" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -14.png.png" id="98_j7jar"]
+[ext_resource type="Texture2D" uid="uid://dxy58ose15vb8" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -15.png.png" id="99_gyhr0"]
+[ext_resource type="Texture2D" uid="uid://fh0gg4vm3tr3" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -16.png.png" id="100_ql1g6"]
+[ext_resource type="Texture2D" uid="uid://cr2j6dmxuupm1" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -17.png.png" id="101_a4nch"]
+[ext_resource type="Texture2D" uid="uid://coaidj2cur0pf" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -18.png.png" id="102_4vmqf"]
+[ext_resource type="Texture2D" uid="uid://ctlcwf1l81ar7" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -19.png.png" id="103_0eref"]
+[ext_resource type="Texture2D" uid="uid://c8tlftedcefdp" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -20.png.png" id="104_7ejhr"]
+[ext_resource type="Texture2D" uid="uid://clk6la7wt0w46" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -21.png.png" id="105_3bb1k"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w5h7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aml70")
+"texture": ExtResource("44_gtai1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gilny")
+"texture": ExtResource("45_sia0w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1yeru")
+"texture": ExtResource("46_ggd73")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iw80n")
+"texture": ExtResource("47_7c75u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_mlhyi")
+"texture": ExtResource("48_1pjyh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g2e7s")
+"texture": ExtResource("49_26c8s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_c4bb3")
+"texture": ExtResource("50_2j36y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_2haii")
+"texture": ExtResource("51_gmxy6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_usr06")
+"texture": ExtResource("52_f3bus")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_4fsmn")
+"texture": ExtResource("53_scdw8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_dp7wo")
+"texture": ExtResource("54_y37pi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bn653")
+"texture": ExtResource("55_qntue")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tgsiw")
+"texture": ExtResource("56_k7mjq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_j436m")
+"texture": ExtResource("57_io3pg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_5kll7")
+"texture": ExtResource("58_k5t87")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_vew3s")
+"texture": ExtResource("59_j0oto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_p47au")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_ekojn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_rgcb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_8i33y")
 }],
 "loop": false,
 "name": &"down",
@@ -75,105 +175,135 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aml70")
+"texture": ExtResource("64_7iw3n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gilny")
+"texture": ExtResource("65_gqcm6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1yeru")
+"texture": ExtResource("66_5b81f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iw80n")
+"texture": ExtResource("67_paino")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_mlhyi")
+"texture": ExtResource("68_b8mbh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g2e7s")
+"texture": ExtResource("69_qvr1p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_c4bb3")
+"texture": ExtResource("70_p40co")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_2haii")
+"texture": ExtResource("71_cb21o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_usr06")
+"texture": ExtResource("72_k4vi7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_4fsmn")
+"texture": ExtResource("73_beper")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_dp7wo")
+"texture": ExtResource("74_250tx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bn653")
+"texture": ExtResource("75_jnmxq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tgsiw")
+"texture": ExtResource("76_mkixc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_j436m")
+"texture": ExtResource("77_s83rs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_5kll7")
+"texture": ExtResource("78_2gfjn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_vew3s")
+"texture": ExtResource("79_8a4xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_w7dpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_nltvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_5pw3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_lgrxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_huppq")
 }],
 "loop": false,
-"name": &"left",
+"name": &"downright",
 "speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aml70")
+"texture": ExtResource("23_owbfa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gilny")
+"texture": ExtResource("24_6ect0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1yeru")
+"texture": ExtResource("25_vhrfe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iw80n")
+"texture": ExtResource("26_a1ln1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_mlhyi")
+"texture": ExtResource("27_xqns5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g2e7s")
+"texture": ExtResource("28_a4qq1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_c4bb3")
+"texture": ExtResource("29_kupy2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_2haii")
+"texture": ExtResource("30_k84xx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_usr06")
+"texture": ExtResource("31_bjo43")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_4fsmn")
+"texture": ExtResource("32_q1ers")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_dp7wo")
+"texture": ExtResource("33_fg4hl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bn653")
+"texture": ExtResource("34_xn0yq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tgsiw")
+"texture": ExtResource("35_p2sgk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_j436m")
+"texture": ExtResource("36_j7jar")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_5kll7")
+"texture": ExtResource("37_gyhr0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_vew3s")
+"texture": ExtResource("38_ql1g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_a4nch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_4vmqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_0eref")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_7ejhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_3bb1k")
 }],
 "loop": false,
 "name": &"right",
@@ -181,55 +311,138 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aml70")
+"texture": ExtResource("2_jpmj6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gilny")
+"texture": ExtResource("3_ydtcr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1yeru")
+"texture": ExtResource("4_l8x33")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iw80n")
+"texture": ExtResource("5_6h32r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_mlhyi")
+"texture": ExtResource("6_fokdh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g2e7s")
+"texture": ExtResource("7_46wfk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_c4bb3")
+"texture": ExtResource("8_e30bg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_2haii")
+"texture": ExtResource("9_ayevv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_usr06")
+"texture": ExtResource("10_ku7mj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_4fsmn")
+"texture": ExtResource("11_kmidm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_dp7wo")
+"texture": ExtResource("12_ivi5x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bn653")
+"texture": ExtResource("13_5m3a7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tgsiw")
+"texture": ExtResource("14_y2hl5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_j436m")
+"texture": ExtResource("15_txlmr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_5kll7")
+"texture": ExtResource("16_q7so2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_vew3s")
+"texture": ExtResource("17_ggkem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_h4c3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gh8hr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1i36b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_s6xc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7rlfh")
 }],
 "loop": false,
 "name": &"up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("85_owbfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_6ect0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_vhrfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_a1ln1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_xqns5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_a4qq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_kupy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_k84xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_bjo43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_q1ers")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_fg4hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_xn0yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_p2sgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_j7jar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_gyhr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_ql1g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_a4nch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_4vmqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_0eref")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_7ejhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_3bb1k")
+}],
+"loop": false,
+"name": &"upright",
 "speed": 10.0
 }]
 
@@ -253,7 +466,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6kwtl"]
 resource_name = "appear"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -261,7 +473,7 @@ tracks/0/path = NodePath("FinalBossSprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -269,7 +481,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4o0s8"]
 resource_name = "disappear"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -291,31 +502,28 @@ _data = {
 }
 
 [node name="FinalBoss" type="AnimatableBody2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
 collision_layer = 4
 sync_to_physics = false
-script = ExtResource("1_d3kp8")
+script = ExtResource("1_owbfa")
 
 [node name="FinalBossSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
-sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"up"
+sprite_frames = SubResource("SpriteFrames_4w5h7")
+animation = &"upright"
 
 [node name="FinalBossCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_i53qi")
+disabled = true
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="TeleportCooldownTimer" type="Timer" parent="."]
-wait_time = 0.05
 one_shot = true
 autostart = true
-
-[node name="WaitToShootTimer" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -326,8 +534,22 @@ libraries = {
 wait_time = 0.9
 one_shot = true
 
-[connection signal="animation_finished" from="FinalBossSprite" to="." method="_on_cultist_sprite_animation_finished"]
+[node name="WaitToAppearTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="WaitForMiniWaveToEnd" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="RandomSummon" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
+
+[connection signal="animation_finished" from="FinalBossSprite" to="." method="_on_final_boss_sprite_animation_finished"]
 [connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_teleport_cooldown_timer_timeout"]
-[connection signal="timeout" from="WaitToShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="TimeFromAnimationStartToShoot" to="." method="_on_time_from_animation_start_to_shoot_timeout"]
+[connection signal="timeout" from="WaitToAppearTimer" to="." method="_on_wait_to_appear_timer_timeout"]
+[connection signal="timeout" from="WaitForMiniWaveToEnd" to="." method="_on_wait_for_mini_wave_to_end_timeout"]
+[connection signal="timeout" from="RandomSummon" to="." method="_on_random_summon_timeout"]

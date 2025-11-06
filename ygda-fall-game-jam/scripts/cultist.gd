@@ -14,10 +14,16 @@ const EXPLOSION = preload("res://scenes/explosion.tscn")
 const ATTACK_SPREAD = 90
 var health: int = 9
 var phase: Phase = Phase.TELEPORT
+var weak: bool = false
+
 enum Phase {
 	ATTACK,
 	TELEPORT
 }
+
+func _ready() -> void:
+	if weak:
+		teleport_cooldown_timer.wait_time = 1
 
 func _physics_process(delta: float) -> void:
 	cultist_collision.disabled = animation_player.is_playing()
@@ -37,7 +43,10 @@ func attack(direction: String) -> void:
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = global_position
 		projectile_instance.rotation = deg_to_rad(i)
-		projectile_instance.speed = 150
+		if weak:
+			projectile_instance.speed = 75
+		else:
+			projectile_instance.speed = 150
 		projectile_instance.type = "dark_energy"
 		projectile_instance.is_player_owned = false
 		world.add_child(projectile_instance)
@@ -50,6 +59,8 @@ func _on_cultist_sprite_animation_finished() -> void:
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
+		if weak and health < 6:
+			queue_free()
 		if (randi_range(0, 1) == 1 or  Global.player_reference.position.x < 264 or Global.player_reference.position.x >= 375) and (Global.player_reference.position.y > 132 and Global.player_reference.position.y < 228):
 			global_position.y = Global.player_reference.position.y
 			if (randi_range(0, 1) == 1 or Global.player_reference.position.x < 264) and Global.player_reference.position.x < 375:
