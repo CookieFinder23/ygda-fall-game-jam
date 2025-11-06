@@ -31,12 +31,6 @@ enum Phase {
 	TELEPORT
 }
 
-func _process(float) -> void:
-	print(final_boss_collision.disabled)
-
-func _ready() -> void:
-	animation_player.play("disappear")
-
 func get_direction_to_player() -> void:
 	var head_angle_degrees: float = rad_to_deg(get_angle_to(Global.player_reference.position))
 	var head_increment: float = 180 / 4
@@ -76,7 +70,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
 		if 18 - health >= (miniwave_count + 1) * 6:
 			miniwave_count += 1
-			wait_for_mini_wave_to_end.wait_time = miniwave_count * 3 + 3
+			wait_for_mini_wave_to_end.wait_time = miniwave_count * 6 + 3
 			wait_for_mini_wave_to_end.start()
 			summon_multiple_enemies(clamp(miniwave_count, 1, 4))
 		else:
@@ -93,6 +87,8 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	var explosion_instance = Global.EXPLOSION.instantiate()
 	explosion_instance.global_position = global_position
+	if miniwave_count < 2 and health <= 0:
+		health = 1
 	if health <= 0:
 		explosion_instance.death = true
 		world.add_child(explosion_instance)
@@ -113,6 +109,7 @@ func _on_wait_to_appear_timer_timeout() -> void:
 		proposed_spawn_position = Vector2(randi_range(236, 372), randi_range(96, 264))
 	position = proposed_spawn_position
 	get_direction_to_player()
+	visible = true
 	animation_player.play("appear")
 	time_from_animation_start_to_shoot.start()
 

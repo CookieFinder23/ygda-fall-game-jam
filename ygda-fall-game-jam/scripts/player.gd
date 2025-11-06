@@ -21,6 +21,8 @@ extends CharacterBody2D
 @onready var i_frames: Timer = $IFrames
 @onready var ninja_head_sprite: AnimatedSprite2D = $NinjaHeadSprite
 @onready var ninja_body_sprite: AnimatedSprite2D = $NinjaBodySprite
+@onready var slash_timer: Timer = $SlashTimer
+
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -98,11 +100,11 @@ func _ready() -> void:
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
 	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
 	}
-	transformation_cycle = [Character.HUNTER]
+	transformation_cycle = [Character.KNIGHT]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = hunter_body_sprite
-	set_character(Character.HUNTER)
+	current_body_sprite = knight_body_sprite
+	set_character(Character.KNIGHT)
 	next_character = current_character
 	play_body_animation("idle")
 	
@@ -149,7 +151,7 @@ func play_body_animation(animation: String) -> void:
 	current_body_sprite.play(animation)
 
 func do_movement_ability(character: Character) -> void:
-	if character == Character.HUNTER:
+	if character == Character.HUNTER or character == Character.KNIGHT:
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
 	if character == Character.ICE_MAGE:
@@ -164,8 +166,15 @@ func _on_movement_ability_in_action_timeout() -> void:
 	movement_ability_cooldown.start()
 
 func move_weapon_with_mouse() -> void:
+	if current_character == Character.KNIGHT:
+		if movement_ability_in_action.is_stopped():
+			current_weapon.play("sword")
+		else:
+			current_weapon.play("shield")
 	current_weapon.position = Vector2.ZERO
 	current_weapon.look_at(get_global_mouse_position())
+	if current_character == Character.KNIGHT:
+		current_weapon.rotation_degrees = clamp(current_weapon.rotation_degrees, 0, 180)
 	if get_global_mouse_position().x > position.x:
 		current_weapon.position.x = 10
 		current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
@@ -178,6 +187,7 @@ func move_weapon_with_mouse() -> void:
 		current_weapon.scale.y = -1
 	else:
 		current_weapon.scale.y = 1
+	
 
 func determine_weapon_layer() -> void:
 	if movement_direction == MovementDirection.UP:
@@ -206,6 +216,8 @@ func attack():
 		ice_circle_instance.global_position.y = clamp(get_global_mouse_position().y, 48, 312)
 		ice_circle_instance.is_attack = true
 		get_tree().root.add_child(ice_circle_instance)
+	elif current_character == Character.KNIGHT:
+		slash_timer.start()
 		
 func _on_reload_bar_animation_player_animation_finished(_anim_name: StringName) -> void:
 	reload_bar.visible = false

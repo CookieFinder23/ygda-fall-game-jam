@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://bqpogym1ai8ab"]
 
-[ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="1_6grn0"]
 [ext_resource type="Texture2D" uid="uid://cc2fs8maasyhr" path="res://assets/images/characters/ice_mage/idle 1.png" id="1_ert50"]
+[ext_resource type="Texture2D" uid="uid://caeca22b6pmgb" path="res://assets/images/characters/hunter/newIdle1.png" id="1_vqt4b"]
 [ext_resource type="Texture2D" uid="uid://df54o1bwnpw0x" path="res://assets/images/characters/ice_mage/idle 2.png" id="2_4jfp7"]
-[ext_resource type="Texture2D" uid="uid://c48nr5ltl4cnv" path="res://assets/images/characters/hunter/idle2.png" id="2_dqkxi"]
+[ext_resource type="Texture2D" uid="uid://ckx0jmfefclhn" path="res://assets/images/characters/hunter/newIdle2.png" id="2_20wg8"]
 [ext_resource type="Script" uid="uid://dsw0ceid4d5ge" path="res://scripts/next_character.gd" id="3_jhh2w"]
 [ext_resource type="Texture2D" uid="uid://qgvv1kvrtwnv" path="res://assets/images/characters/knight/legs1.png" id="5_4ji0i"]
 [ext_resource type="Texture2D" uid="uid://bp74c0tmt0jp3" path="res://assets/images/characters/knight/legs2.png" id="6_4ji0i"]
@@ -15,14 +15,14 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6grn0")
+"texture": ExtResource("1_vqt4b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_dqkxi")
+"texture": ExtResource("2_20wg8")
 }],
 "loop": true,
 "name": &"hunter",
-"speed": 5.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -60,7 +60,8 @@ animations = [{
 
 [node name="NextCharacter" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6grn0")
-animation = &"ninja"
+animation = &"hunter"
+autoplay = "hunter"
 script = ExtResource("3_jhh2w")
 
 [node name="Label" type="Label" parent="."]

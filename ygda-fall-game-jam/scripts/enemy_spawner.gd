@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 
 var type
 var wave_stagger_time
-var weak
+var weak: bool = false
 
 func _ready() -> void:
 	if wave_stagger_time == 0:

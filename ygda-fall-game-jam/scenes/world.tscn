@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=11 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="Script" uid="uid://wbw3or5rvqko" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://48bo86ql8hxt" path="res://scenes/transformation_clock.tscn" id="5_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bqpogym1ai8ab" path="res://scenes/next_character.tscn" id="6_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://ck5ysb5s3qdps" path="res://scenes/final_boss.tscn" id="10_w7kh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
 bg_color = Color(0, 0, 0, 1)
@@ -75,8 +74,5 @@ autostart = true
 [node name="WaveCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-
-[node name="FinalBoss" parent="." instance=ExtResource("10_w7kh3")]
-position = Vector2(-34, 335)
 
 [connection signal="timeout" from="InbetweenWaveTimer" to="." method="_on_inbetween_wave_timer_timeout"]

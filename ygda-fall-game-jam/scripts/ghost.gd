@@ -13,7 +13,7 @@ const EXPLOSION = preload("res://scenes/explosion.tscn")
 var health: int = 9
 var phase: Phase = Phase.TELEPORT
 const SPEED: int = 90
-var weak: bool
+var weak: bool = false
 var speed_modifier = 1
 
 enum Phase {

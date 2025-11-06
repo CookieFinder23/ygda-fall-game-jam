@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bojqiwewsvnfy"]
+[gd_scene load_steps=34 format=3 uid="uid://bojqiwewsvnfy"]
 
 [ext_resource type="Script" uid="uid://cwe2k8f5qxi06" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://duxoqipkdddb3" path="res://assets/images/characters/hunter/arrow.png" id="1_softn"]
@@ -17,6 +17,17 @@
 [ext_resource type="Texture2D" uid="uid://cokycp4kt4ml" path="res://assets/images/enemies/final_boss/projectile/Dark Wizard Projectile Impact-2.png.png" id="13_g1ida"]
 [ext_resource type="Texture2D" uid="uid://70x73pbp36u4" path="res://assets/images/enemies/final_boss/projectile/Dark Wizard Projectile Impact-3.png.png" id="14_xfonq"]
 [ext_resource type="Texture2D" uid="uid://chfa2dylatehi" path="res://assets/images/enemies/final_boss/projectile/Dark Wizard Projectile Impact-4.png.png" id="15_m0b1s"]
+[ext_resource type="Texture2D" uid="uid://c5l7oimapdpv" path="res://assets/images/enemies/imp/splash1.png" id="16_lh17n"]
+[ext_resource type="Texture2D" uid="uid://c3kpclewlv7qg" path="res://assets/images/enemies/imp/splash2.png" id="17_lcad0"]
+[ext_resource type="Texture2D" uid="uid://bf1g2uo13q460" path="res://assets/images/enemies/imp/splash3.png" id="18_ybp1d"]
+[ext_resource type="Texture2D" uid="uid://ces26to5m5y" path="res://assets/images/enemies/imp/splash4.png" id="19_abxgx"]
+[ext_resource type="Texture2D" uid="uid://fcgdpfjn211t" path="res://assets/images/enemies/imp/splash5.png" id="20_d35w3"]
+[ext_resource type="Texture2D" uid="uid://dm0n4i4ledfgk" path="res://assets/images/enemies/imp/splash6.png" id="21_r4fr4"]
+[ext_resource type="Texture2D" uid="uid://dov6iuwi6hjpy" path="res://assets/images/enemies/imp/splash7.png" id="22_e1rfv"]
+[ext_resource type="Texture2D" uid="uid://cmr85vt32xq6g" path="res://assets/images/enemies/imp/splash8.png" id="23_6b0e3"]
+[ext_resource type="Texture2D" uid="uid://dk7edfdhtx4pg" path="res://assets/images/enemies/imp/splash9.png" id="24_iy0n7"]
+[ext_resource type="Texture2D" uid="uid://cg7rkmgnbmmgj" path="res://assets/images/enemies/imp/splash10.png" id="25_0fujl"]
+[ext_resource type="Texture2D" uid="uid://dsv2dnqnknftv" path="res://assets/images/enemies/imp/splash11.png" id="26_851yy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3m7n"]
 animations = [{
@@ -87,31 +98,37 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_sbbd4")
+"texture": ExtResource("16_lh17n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_g1ida")
+"texture": ExtResource("17_lcad0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_xfonq")
+"texture": ExtResource("18_ybp1d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_m0b1s")
+"texture": ExtResource("19_abxgx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_mxgir")
+"texture": ExtResource("20_d35w3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_rimnf")
+"texture": ExtResource("21_r4fr4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_l47rv")
+"texture": ExtResource("22_e1rfv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_fooc5")
+"texture": ExtResource("23_6b0e3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_sbbd4")
+"texture": ExtResource("24_iy0n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_0fujl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_851yy")
 }],
 "loop": false,
 "name": &"fireball_impact",
