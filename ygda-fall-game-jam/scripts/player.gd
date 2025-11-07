@@ -388,7 +388,7 @@ func take_damage(_damage: int) -> void:
 func _on_change_sceen_to_start_screen_timeout() -> void:
 	for child in world.get_children():
 		child.queue_free()
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	world.fade_to_black()
 	
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	take_damage(1)

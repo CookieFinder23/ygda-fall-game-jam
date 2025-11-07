@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=16 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="Script" uid="uid://wbw3or5rvqko" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://bakod478lp1wq" path="res://scenes/crosshair.tscn" id="2_w7kh3"]
 [ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://b1cd4x4mqh4ha" path="res://scenes/wave_number_display.tscn" id="3_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://celfj717qxisv" path="res://scenes/movement_ability_cooldown_notch.tscn" id="4_i7141"]
@@ -12,6 +13,45 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7kh3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_e3hyu"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q5onr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhx03"]
+_data = {
+&"RESET": SubResource("Animation_q5onr"),
+&"fade_in": SubResource("Animation_e3hyu")
+}
 
 [node name="World" type="Node"]
 script = ExtResource("1_71j4m")
@@ -56,6 +96,21 @@ frame_progress = 0.0
 position = Vector2(570, 119)
 scale = Vector2(2, 2)
 
+[node name="Crosshair" parent="CanvasLayer" instance=ExtResource("2_w7kh3")]
+
+[node name="FadeToBlack" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w7kh3")
+
+[node name="FadeToBlackAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/FadeToBlack"]
+libraries = {
+&"": SubResource("AnimationLibrary_jhx03")
+}
+
 [node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
 
 [node name="Player" parent="." instance=ExtResource("2_rwgxs")]
@@ -74,4 +129,5 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
+[connection signal="animation_finished" from="CanvasLayer/FadeToBlack/FadeToBlackAnimationPlayer" to="." method="_on_fade_to_black_animation_player_animation_finished"]
 [connection signal="timeout" from="InbetweenWaveTimer" to="." method="_on_inbetween_wave_timer_timeout"]

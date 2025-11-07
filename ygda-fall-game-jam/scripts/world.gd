@@ -4,6 +4,8 @@ extends Node
 @onready var hearts_container: HBoxContainer = $CanvasLayer/HeartsContainer
 @onready var inbetween_wave_timer: Timer = $InbetweenWaveTimer
 @onready var wave_cooldown_timer: Timer = $WaveCooldownTimer
+@onready var fade_to_black_animation_player: AnimationPlayer = $CanvasLayer/FadeToBlack/FadeToBlackAnimationPlayer
+
 
 const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
 const IMP = preload("res://scenes/imp.tscn")
@@ -15,6 +17,7 @@ const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
 const FINAL_BOSS = preload("res://scenes/final_boss.tscn")
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Global.wave_number = 0
 	Global.picking_character = false
 	Global.enemies_left = 0
@@ -80,7 +83,7 @@ func get_corner(corner: int) -> Vector2:
 	else:
 		return Vector2(452, 312)
 
-func make_wave(enemy_selection: Array, amount_of_enemies: int):
+func make_wave(enemy_selection: Array, amount_of_enemies: int) -> void:
 	var corner_selection = [1, 2, 3, 4]
 	var enemy
 	var corner: int
@@ -96,3 +99,9 @@ func make_wave(enemy_selection: Array, amount_of_enemies: int):
 		enemy_instance.type = enemy
 		enemy_instance.wave_stagger_time = i * 2
 		add_child(enemy_instance)
+
+func fade_to_black()  -> void:
+	fade_to_black_animation_player.play("fade_in")
+	
+func _on_fade_to_black_animation_player_animation_finished(anim_name: StringName) -> void:
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

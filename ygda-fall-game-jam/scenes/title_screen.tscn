@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://my4u2iu7jwcr"]
+[gd_scene load_steps=11 format=3 uid="uid://my4u2iu7jwcr"]
 
 [ext_resource type="Script" uid="uid://ddfgyxp4vn13y" path="res://scripts/title_screen.gd" id="1_fgkus"]
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="3_mgrm8"]
 [ext_resource type="AudioStream" uid="uid://dgnty4geyyya" path="res://assets/audio/placeholder_menu.mp3" id="3_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://tr7xgvtpd33t" path="res://assets/images/UI/hoemxcreen.png" id="4_mgrm8"]
+[ext_resource type="PackedScene" uid="uid://cbrpci506o4j8" path="res://scenes/black.tscn" id="5_dc4i4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
 
@@ -186,6 +187,14 @@ render_target_update_mode = 4
 offset_right = 639.0
 offset_bottom = 357.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mgrm8")
+
+[node name="Black" parent="." instance=ExtResource("5_dc4i4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="." method="_on_options_button_pressed"]

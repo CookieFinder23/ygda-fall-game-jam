@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bakod478lp1wq"]
+
+[ext_resource type="Texture2D" uid="uid://dra3ob270vui4" path="res://assets/images/UI/crosshair/crosshair_down.png" id="1_norqy"]
+[ext_resource type="Texture2D" uid="uid://csnu0d1ntcnoc" path="res://assets/images/UI/crosshair/crosshair_up.png" id="2_qnjby"]
+[ext_resource type="Script" uid="uid://jcedqsday3dq" path="res://scripts/crosshair.gd" id="3_qnjby"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihytv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_norqy")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qnjby")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Crosshair" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ihytv")
+animation = &"down"
+script = ExtResource("3_qnjby")
