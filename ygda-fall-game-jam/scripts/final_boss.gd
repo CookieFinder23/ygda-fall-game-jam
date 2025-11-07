@@ -55,13 +55,25 @@ func primal_aspid_attack() -> void:
 		var projectile_instance = PROJECTILE.instantiate()
 		projectile_instance.global_position = global_position
 		projectile_instance.rotation = deg_to_rad(i)
-		projectile_instance.speed = 100
+		projectile_instance.speed = 90
 		projectile_instance.type = "dark_energy"
 		projectile_instance.is_player_owned = false
 		world.add_child(projectile_instance)
 
+func mad_dummy_attack() -> void:
+	var projectile_instance = PROJECTILE.instantiate()
+	projectile_instance.global_position = global_position
+	projectile_instance.rotation = rotation
+	projectile_instance.speed = 50
+	projectile_instance.type = "big_projectile"
+	projectile_instance.is_player_owned = false
+	world.add_child(projectile_instance)
+
 func _on_time_from_animation_start_to_shoot_timeout() -> void:
-	primal_aspid_attack()
+	if randi_range(0, 1):
+		primal_aspid_attack()
+	else:
+		mad_dummy_attack()
 
 func _on_final_boss_sprite_animation_finished() -> void:
 	teleport_cooldown_timer.start()
@@ -70,7 +82,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
 		if 18 - health >= (miniwave_count + 1) * 6:
 			miniwave_count += 1
-			wait_for_mini_wave_to_end.wait_time = miniwave_count * 6 + 3
+			wait_for_mini_wave_to_end.wait_time = miniwave_count * 4
 			wait_for_mini_wave_to_end.start()
 			summon_multiple_enemies(clamp(miniwave_count, 1, 4))
 		else:
@@ -131,6 +143,6 @@ func summon_multiple_enemies(amount: int) -> void:
 func _on_wait_for_mini_wave_to_end_timeout() -> void:
 	wait_to_appear_timer.start()
 
-func _on_random_summon_timeout() -> void:
-	if Global.enemies_left < 3 and wait_for_mini_wave_to_end.is_stopped():
-		summon_multiple_enemies(1)
+#func _on_random_summon_timeout() -> void:
+	#if Global.enemies_left < 3 and wait_for_mini_wave_to_end.is_stopped():
+		#summon_multiple_enemies(1)

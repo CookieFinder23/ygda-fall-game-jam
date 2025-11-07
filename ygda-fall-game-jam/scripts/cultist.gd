@@ -47,7 +47,7 @@ func attack(direction: String) -> void:
 			projectile_instance.speed = 75
 		else:
 			projectile_instance.speed = 150
-		projectile_instance.type = "dark_energy"
+		projectile_instance.type = "cultist_energy"
 		projectile_instance.is_player_owned = false
 		world.add_child(projectile_instance)
 

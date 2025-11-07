@@ -24,7 +24,9 @@ extends CharacterBody2D
 @onready var slash_timer: Timer = $SlashTimer
 @onready var shield_collision: CollisionShape2D = $ShieldCollisionArea/ShieldCollision
 @onready var shield_collision_area: Area2D = $ShieldCollisionArea
+@onready var sword_collision: CollisionShape2D = $SwordCollisionArea/SwordCollision
 
+@onready var sword_collision_area: Area2D = $SwordCollisionArea
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -41,6 +43,7 @@ var health = 3
 var next_character: Character
 var transformation_cycle = []
 var slash_start_degrees: int
+
 enum MovementDirection {
 	UP,
 	DOWN,
@@ -99,15 +102,15 @@ func add_character(character: String) -> void:
 func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
-	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
+	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
 	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
 	}
-	transformation_cycle = [Character.KNIGHT]
+	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
 	
-	current_body_sprite = knight_body_sprite
-	set_character(Character.KNIGHT)
+	current_body_sprite = hunter_body_sprite
+	set_character(Character.HUNTER)
 	next_character = current_character
 	play_body_animation("idle")
 	
@@ -141,6 +144,10 @@ func set_character(character: Character) -> void:
 	attack_cooldown.stop()
 	movement_ability_in_action.stop()
 	movement_ability_cooldown.stop()
+	reload_bar_animation_player.stop()
+	reload_bar.visible = false
+	shield_collision.disabled = true
+	sword_collision.disabled = true
 	var old_animation = current_body_sprite.animation
 	set_movement_speed(character)
 	set_attack_cooldown(character)
@@ -153,7 +160,7 @@ func play_body_animation(animation: String) -> void:
 	current_body_sprite.play(animation)
 
 func do_movement_ability(character: Character) -> void:
-	if character == Character.HUNTER:
+	if character == Character.HUNTER or character == Character.KNIGHT:
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
 	elif character == Character.ICE_MAGE:
@@ -163,30 +170,33 @@ func do_movement_ability(character: Character) -> void:
 		get_tree().root.add_child(ice_circle_instance)
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
-	elif character == Character.KNIGHT:
-		movement_ability_in_action.wait_time = 2
-		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
 	movement_ability_cooldown.start()
 
 func do_knight_slash() -> void:
-	current_weapon.rotation_degrees = slash_start_degrees + (slash_timer.wait_time -slash_timer.time_left) * 2 * 100
+	var time_to_use: float
+	sword_collision_area.position = current_weapon.position
+	sword_collision_area.rotation = current_weapon.rotation
+	if slash_timer.time_left > slash_timer.wait_time / 2:
+		time_to_use = slash_timer.wait_time - slash_timer.time_left
+	else:
+		time_to_use = slash_timer.time_left
+	if current_weapon.position.x < current_body_sprite.position.x:
+		current_weapon.rotation_degrees = slash_start_degrees - time_to_use * 500 
+	else:
+		current_weapon.rotation_degrees = slash_start_degrees + time_to_use * 500
 
 func move_weapon_with_mouse() -> void:
-		
-	shield_collision.disabled = true
 	if current_character == Character.KNIGHT:
 		if movement_ability_in_action.is_stopped():
 			current_weapon.play("sword")
+			shield_collision.disabled = true
 		else:
 			current_weapon.play("shield")
 			shield_collision.disabled = false
-			
 	current_weapon.position = Vector2.ZERO
 	current_weapon.look_at(get_global_mouse_position())
-	if current_character == Character.KNIGHT and current_weapon.animation == "sword":
-		current_weapon.rotation_degrees = clamp(current_weapon.rotation_degrees, 0, 180)
 	if current_character == Character.KNIGHT and current_weapon.animation == "shield":
 			current_weapon.position.x = (30 * cos(current_weapon.rotation))
 			current_weapon.position.y = (35 * sin(current_weapon.rotation))
@@ -194,11 +204,14 @@ func move_weapon_with_mouse() -> void:
 			shield_collision_area.position = current_weapon.position
 	else:
 		if get_global_mouse_position().x > position.x:
-				current_weapon.position.x = 10
-				current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+			current_weapon.position.x = 10
+			current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
 		else:
 			current_weapon.position.x = -10
 			current_weapon.position.y = (5 * sin(current_weapon.rotation)) + VERTICAL_WEAPON_OFFSET
+		if current_character == Character.KNIGHT:
+			current_weapon.position.y -= VERTICAL_WEAPON_OFFSET
+			current_weapon.position.y *= 5
 	
 	current_weapon.rotation_degrees = wrap(current_weapon.rotation_degrees, 0, 360)
 	if current_weapon.rotation_degrees > 90 and current_weapon.rotation_degrees < 270:
@@ -234,6 +247,7 @@ func attack():
 		ice_circle_instance.is_attack = true
 		get_tree().root.add_child(ice_circle_instance)
 	elif current_character == Character.KNIGHT:
+		current_weapon.position.x *= 2
 		slash_timer.start()
 		slash_start_degrees = current_weapon.rotation_degrees
 		
@@ -334,13 +348,19 @@ func _physics_process(delta: float) -> void:
 		if (current_weapon != null):
 			if current_character == Character.KNIGHT and not slash_timer.is_stopped():
 				do_knight_slash()
+				sword_collision.disabled = false
 			else:
+				sword_collision.disabled = true
 				move_weapon_with_mouse()
 		set_head_direction()
 		
-		if Input.is_action_just_pressed("attack") and attack_cooldown.is_stopped() and not (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()):
+		var knight_shield_active: bool = false
+		if current_character == Character.KNIGHT:
+			knight_shield_active = current_weapon.animation == "shield"
+		
+		if Input.is_action_just_pressed("attack") and attack_cooldown.is_stopped() and not (current_character == Character.HUNTER and not movement_ability_in_action.is_stopped()) and not knight_shield_active:
 			attack_cooldown.start()
-			reload_bar.visible = true
+			reload_bar.visible = not current_character == Character.KNIGHT
 			reload_bar_animation_player.speed_scale = 1 / attack_cooldown.wait_time
 			reload_bar_animation_player.play("slide_right")
 			attack()
@@ -373,7 +393,6 @@ func _on_change_sceen_to_start_screen_timeout() -> void:
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	take_damage(1)
 
-
 func _on_transformation_cooldown_timeout() -> void:
 	if transformation_cycle.size() > 1:
 		set_character(next_character)
@@ -385,3 +404,9 @@ func _on_transformation_cooldown_timeout() -> void:
 func _on_hunter_weapon_sprite_animation_finished() -> void:
 	if hunter_weapon_sprite.animation == "reload":
 		hunter_weapon_sprite.play("idle")
+
+func _on_shield_collision_area_body_entered(body: Node2D) -> void:
+	body.stun(0.25)
+
+func _on_sword_collision_area_body_entered(body: Node2D) -> void:
+	body.take_damage(3)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=78 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -564,13 +564,16 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2b1d"]
-size = Vector2(10, 20)
+size = Vector2(8, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs1tg"]
 size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc3ue"]
-size = Vector2(20, 32)
+size = Vector2(24, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlsd"]
+size = Vector2(30, 40)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -598,18 +601,20 @@ animation = &"reload"
 autoplay = "idle"
 
 [node name="KnightBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"idle"
 
 [node name="KnightHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -11.5)
 sprite_frames = SubResource("SpriteFrames_apa73")
 animation = &"1"
 
 [node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"shield"
+animation = &"sword"
 
 [node name="IceMageBodySprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -666,7 +671,6 @@ libraries = {
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -678,6 +682,7 @@ visible = false
 shape = SubResource("RectangleShape2D_cs1tg")
 
 [node name="IFrames" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="SlashTimer" type="Timer" parent="."]
@@ -686,11 +691,20 @@ one_shot = true
 
 [node name="ShieldCollisionArea" type="Area2D" parent="." groups=["shield"]]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
 [node name="ShieldCollision" type="CollisionShape2D" parent="ShieldCollisionArea"]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_sc3ue")
+disabled = true
+
+[node name="SwordCollisionArea" type="Area2D" parent="." groups=["shield"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="SwordCollision" type="CollisionShape2D" parent="SwordCollisionArea"]
+shape = SubResource("RectangleShape2D_lxlsd")
+disabled = true
 
 [connection signal="animation_finished" from="HunterWeaponSprite" to="." method="_on_hunter_weapon_sprite_animation_finished"]
 [connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]
@@ -698,3 +712,5 @@ shape = SubResource("RectangleShape2D_sc3ue")
 [connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]
 [connection signal="timeout" from="ChangeSceenToStartScreen" to="." method="_on_change_sceen_to_start_screen_timeout"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="ShieldCollisionArea" to="." method="_on_shield_collision_area_body_entered"]
+[connection signal="body_entered" from="SwordCollisionArea" to="." method="_on_sword_collision_area_body_entered"]
