@@ -1,8 +1,8 @@
-extends HBoxContainer
+extends HFlowContainer
 const HEART_GUI = preload("res://scenes/heart_gui.tscn")
 
 func _ready() -> void:
-	set_max_hearts(3)
+	set_max_hearts(5)
 
 func set_max_hearts(max_hearts: int):
 	for i in range(max_hearts):

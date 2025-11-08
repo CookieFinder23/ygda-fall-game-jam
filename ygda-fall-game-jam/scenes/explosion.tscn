@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwg2wdbjflb10"]
 
 [ext_resource type="Script" uid="uid://bbf7x3db8w2ds" path="res://scripts/explosion.gd" id="1_17npe"]
-
-[sub_resource type="Gradient" id="Gradient_fulsm"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+[ext_resource type="Gradient" uid="uid://b72w46ye8t0wm" path="res://assets/smoke.tres" id="1_nfeox"]
 
 [node name="Explosion" type="CPUParticles2D"]
 scale = Vector2(3, 3)
@@ -23,8 +21,7 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
 angle_max = 360.0
-color = Color(1, 0, 0, 1)
-color_ramp = SubResource("Gradient_fulsm")
+color_ramp = ExtResource("1_nfeox")
 script = ExtResource("1_17npe")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

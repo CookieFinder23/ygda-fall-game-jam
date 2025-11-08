@@ -15,6 +15,7 @@ const PROJECTILE = preload("res://scenes/projectile.tscn")
 const DASH_TIME = 0.5
 const DASH_DISTANCE = 312
 var weak: bool = false
+var already_dead: bool = false
 
 enum Action {
 	LEFT,
@@ -125,10 +126,12 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	var explosion_instance = Global.EXPLOSION.instantiate()
 	explosion_instance.global_position = global_position
-	if health <= 0:
+	if health <= 0 and not already_dead:
+		explosion_instance.global_position = global_position
 		explosion_instance.death = true
 		world.add_child(explosion_instance)
 		Global.enemies_left -= 1
+		already_dead = true
 		queue_free()
 	else:
 		explosion_instance.death = false

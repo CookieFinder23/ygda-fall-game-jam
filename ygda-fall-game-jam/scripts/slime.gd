@@ -14,6 +14,7 @@ const CHASE_SPEED: int = 60
 const LUNGE_SPEED: int = 190
 var weak: bool
 var speed_modifier = 1
+var already_dead: bool = false
 
 enum Phase {
 	CHASE,

@@ -20,11 +20,12 @@ const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 const ATTACK_SPREAD = 135
-var health: int = 18
+var health: int = 24
 var phase: Phase = Phase.TELEPORT
 var direction_degrees: int
 var head_direction: int
 var miniwave_count: int = 0
+var already_dead: bool = false
 enum Phase {
 	ATTACK,
 	SUMMON,
@@ -80,7 +81,7 @@ func _on_final_boss_sprite_animation_finished() -> void:
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
-		if 18 - health >= (miniwave_count + 1) * 6:
+		if 24 - health >= (miniwave_count + 1) * 6:
 			miniwave_count += 1
 			wait_for_mini_wave_to_end.wait_time = miniwave_count * 4
 			wait_for_mini_wave_to_end.start()
@@ -99,12 +100,14 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	var explosion_instance = Global.EXPLOSION.instantiate()
 	explosion_instance.global_position = global_position
-	if miniwave_count < 2 and health <= 0:
+	if miniwave_count < 3 and health <= 0:
 		health = 1
-	if health <= 0:
+	if health <= 0 and not already_dead:
+		explosion_instance.global_position = global_position
 		explosion_instance.death = true
 		world.add_child(explosion_instance)
-		Global.enemies_left -= 1
+		Global.enemies_left -= 0.5
+		already_dead = true
 		queue_free()
 	else:
 		explosion_instance.death = false
@@ -142,7 +145,3 @@ func summon_multiple_enemies(amount: int) -> void:
 		
 func _on_wait_for_mini_wave_to_end_timeout() -> void:
 	wait_to_appear_timer.start()
-
-#func _on_random_summon_timeout() -> void:
-	#if Global.enemies_left < 3 and wait_for_mini_wave_to_end.is_stopped():
-		#summon_multiple_enemies(1)

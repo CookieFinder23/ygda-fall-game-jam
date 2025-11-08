@@ -1,5 +1,4 @@
 extends CharacterBody2D
-@onready var hearts_container: HBoxContainer = $"../CanvasLayer/HeartsContainer"
 
 @onready var world: Node = $".."
 @onready var hunter_body_sprite: AnimatedSprite2D = $HunterBodySprite
@@ -38,7 +37,7 @@ var current_weapon: AnimatedSprite2D
 var current_character: Character
 var movement_speed: int
 var movement_direction: MovementDirection
-var health = 3
+var health = 5
 var next_character: Character
 var transformation_cycle = []
 var slash_start_degrees: int
@@ -75,7 +74,7 @@ enum MovementAbilityCooldownLength {
 	SLOW
 }
 var movement_ability_cooldown_length_to_number = {
-	MovementAbilityCooldownLength.FAST: 0.5,
+	MovementAbilityCooldownLength.FAST: 0.25,
 	MovementAbilityCooldownLength.NORMAL: 1,
 	MovementAbilityCooldownLength.SLOW: 2
 }
@@ -91,19 +90,21 @@ func _enter_tree() -> void:
 	Global.player_reference = self
 
 func add_character(character: String) -> void:
-	if health < 3:
+	if health < 5:
 		health += 1
 	if character == "ice_mage":
 		transformation_cycle.append(Character.ICE_MAGE)
 	if character == "knight":
 		transformation_cycle.append(Character.KNIGHT)
+	if character == "ninja":
+		transformation_cycle.append(Character.NINJA)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
 	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
-	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
+	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 10]
 	}
 	transformation_cycle = [Character.HUNTER]
 	velocity.y = 0.1 # since for some reason the player has to move a bit for the head to snap into place
@@ -127,7 +128,14 @@ func set_sprite(new_sprite: Character) -> void:
 		character_data[character][3].visible = character == new_sprite
 		character_data[character][4].visible = character == new_sprite
 	current_body_sprite = character_data[new_sprite][3]
+	
+	if current_body_sprite == hunter_body_sprite or current_body_sprite == knight_body_sprite:
+		current_body_sprite.position = Vector2.ZERO
 	current_head_sprite = character_data[new_sprite][4]
+	if current_head_sprite == hunter_head_sprite:
+		current_head_sprite.position = Vector2(0, -11)
+	elif current_head_sprite == knight_head_sprite:
+		current_head_sprite.position = Vector2(0, -11.5)
 
 
 func set_weapon(new_weapon: Character) -> void:
@@ -169,9 +177,26 @@ func do_movement_ability(character: Character) -> void:
 		get_tree().root.add_child(ice_circle_instance)
 		movement_ability_in_action.wait_time = 1
 		movement_ability_in_action.start()
+	elif character == Character.NINJA:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.global_position = global_position
+		explosion_instance.smoke = true
+		world.add_child(explosion_instance)
+		current_body_sprite.visible = false
+		current_head_sprite.visible = false
+		position += velocity * 0.75
+		movement_ability_in_action.wait_time = 0.1
+		movement_ability_in_action.start()
 	
 func _on_movement_ability_in_action_timeout() -> void:
 	movement_ability_cooldown.start()
+	if current_character == Character.NINJA:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.global_position = global_position
+		explosion_instance.smoke = true
+		world.add_child(explosion_instance)
+		current_body_sprite.visible = true
+		current_head_sprite.visible = true
 
 func do_knight_slash() -> void:
 	var time_to_use: float
@@ -249,6 +274,20 @@ func attack():
 		current_weapon.position.x *= 2
 		slash_timer.start()
 		slash_start_degrees = current_weapon.rotation_degrees
+	elif current_character == Character.NINJA:
+		look_at(get_global_mouse_position())
+		var middle_dir = rotation_degrees
+		var spread = 45
+		for i in range(3):
+			var projectile_instance = PROJECTILE.instantiate()
+			projectile_instance.global_position = global_position
+			projectile_instance.rotation_degrees = middle_dir + (i - 1) * 15
+			projectile_instance.speed = 300
+			projectile_instance.type = "ninja_star"
+			projectile_instance.is_player_owned = true
+			projectile_instance.damage = 1
+			get_tree().root.add_child(projectile_instance)
+		rotation_degrees = 0
 		
 func _on_reload_bar_animation_player_animation_finished(_anim_name: StringName) -> void:
 	reload_bar.visible = false
@@ -263,19 +302,18 @@ func set_head_direction() -> void:
 	if head_direction > amount_of_heads - 1:
 		if head_direction == head_increment:
 			if amount_of_heads == 8:
-				current_head_sprite.play("8")
-			else:
+				current_head_sprite.play("7")
+			elif amount_of_heads == 5:
 				current_head_sprite.play("4")
 		else:
 			current_head_sprite.play(str((amount_of_heads - 1) - (head_direction - amount_of_heads)))
 		current_head_sprite.flip_h = true
 		current_body_sprite.flip_h = true
 		if current_character == Character.ICE_MAGE:
-			if (current_body_sprite.animation == "idle_back"):
-				if current_body_sprite.flip_h:
-					current_body_sprite.position.x = 5
+			if current_body_sprite.animation == "idle_back":
+				current_body_sprite.position.x = 5
 			else:
-				current_body_sprite.position.x = -5
+				current_body_sprite.position.x = -6
 			current_head_sprite.position.x = -5
 		elif current_character == Character.HUNTER:
 			if current_body_sprite.animation == "walk":
@@ -286,8 +324,9 @@ func set_head_direction() -> void:
 		current_head_sprite.play(str(head_direction))
 		current_head_sprite.flip_h = false
 		current_body_sprite.flip_h = false
+		current_head_sprite.position.x = -4
 		if current_character == Character.ICE_MAGE:
-			if (current_body_sprite.animation == "idle_back"):
+			if current_body_sprite.animation == "idle_back":
 				current_body_sprite.position.x = -8
 			else:
 				current_body_sprite.position.x = 3
@@ -303,6 +342,24 @@ func set_head_direction() -> void:
 			current_head_sprite.position.y = -5
 		else:
 			current_head_sprite.position.y = -6
+	elif current_character == Character.NINJA:
+		if current_body_sprite.animation == "idle":
+			current_head_sprite.position.x = 2
+			if current_body_sprite.flip_h:
+				current_body_sprite.position.x = 4
+			else:
+				current_body_sprite.position.x = 0
+			current_body_sprite.position.y = 4
+		else:
+			current_head_sprite.position.y = -11.5
+			current_body_sprite.position = Vector2(-4, 0)
+			if current_body_sprite.flip_h:
+				current_head_sprite.position.x = 0
+			else:
+				current_head_sprite.position.x = -8
+	elif current_character == Character.KNIGHT:
+		current_body_sprite.position = Vector2.ZERO
+		current_head_sprite.position = Vector2(0, -11.5)
 	
 func _physics_process(delta: float) -> void:
 	if health > 0:
@@ -371,7 +428,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func take_damage(_damage: int) -> void:
-	if i_frames.is_stopped():
+	if i_frames.is_stopped() and not (current_character == Character.NINJA and not movement_ability_in_action.is_stopped()):
 		i_frames.start()
 		health -= 1
 		var explosion_instance = Global.EXPLOSION.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bojqiwewsvnfy"]
+[gd_scene load_steps=73 format=3 uid="uid://bojqiwewsvnfy"]
 
 [ext_resource type="Script" uid="uid://cwe2k8f5qxi06" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://bbcb2dhke14d6" path="res://assets/images/enemies/final_boss/big_projectile/Enemy - Dark Wizard - Homing Projectile-1.png.png" id="1_e1rfv"]
@@ -33,16 +33,34 @@
 [ext_resource type="Texture2D" uid="uid://fcgdpfjn211t" path="res://assets/images/enemies/imp/splash5.png" id="20_d35w3"]
 [ext_resource type="Texture2D" uid="uid://dqituxgm8jvjg" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile-5.png.png" id="21_cees3"]
 [ext_resource type="Texture2D" uid="uid://dm0n4i4ledfgk" path="res://assets/images/enemies/imp/splash6.png" id="21_r4fr4"]
+[ext_resource type="Texture2D" uid="uid://brt4ixr1jn41n" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-1.png.png" id="22_brg2m"]
 [ext_resource type="Texture2D" uid="uid://dov6iuwi6hjpy" path="res://assets/images/enemies/imp/splash7.png" id="22_e1rfv"]
+[ext_resource type="Texture2D" uid="uid://sx0v4qwcab8b" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-2.png.png" id="23_5at68"]
 [ext_resource type="Texture2D" uid="uid://cmr85vt32xq6g" path="res://assets/images/enemies/imp/splash8.png" id="23_6b0e3"]
+[ext_resource type="Texture2D" uid="uid://d4hjw3vbm5occ" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-3.png.png" id="24_gep7w"]
 [ext_resource type="Texture2D" uid="uid://dk7edfdhtx4pg" path="res://assets/images/enemies/imp/splash9.png" id="24_iy0n7"]
 [ext_resource type="Texture2D" uid="uid://cg7rkmgnbmmgj" path="res://assets/images/enemies/imp/splash10.png" id="25_0fujl"]
+[ext_resource type="Texture2D" uid="uid://bsedws6oofwb3" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-4.png.png" id="25_46ykf"]
 [ext_resource type="Texture2D" uid="uid://dsv2dnqnknftv" path="res://assets/images/enemies/imp/splash11.png" id="26_851yy"]
+[ext_resource type="Texture2D" uid="uid://b2ft4w5rtjma6" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-5.png.png" id="26_cig1v"]
+[ext_resource type="Texture2D" uid="uid://fi6b0co36hmq" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-6.png.png" id="27_ojd8i"]
+[ext_resource type="Texture2D" uid="uid://fivxbw44bvh0" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-7.png.png" id="28_l8nqs"]
+[ext_resource type="Texture2D" uid="uid://c7vuer1ecop3f" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-8.png.png" id="29_h051v"]
+[ext_resource type="Texture2D" uid="uid://c0wkfmtervob7" path="res://assets/images/enemies/cultist/projectile/Enemy - Cultist - Projectile Impact-9.png.png" id="30_q04pg"]
+[ext_resource type="Texture2D" uid="uid://cwiewf71b2frg" path="res://assets/images/characters/ninja/projectile/ninjastar1.png" id="38_7ytrm"]
 [ext_resource type="Texture2D" uid="uid://ciw4qbgw6mjp1" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-1.png.png" id="38_cees3"]
 [ext_resource type="Texture2D" uid="uid://chpbnvus6f1ad" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-2.png.png" id="39_gs484"]
+[ext_resource type="Texture2D" uid="uid://dbe6r67ff87sj" path="res://assets/images/characters/ninja/projectile/ninjastar2.png" id="39_n4r02"]
 [ext_resource type="Texture2D" uid="uid://d2sbna41eodcx" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-3.png.png" id="40_7wdef"]
+[ext_resource type="Texture2D" uid="uid://dwen0ilqrkl4e" path="res://assets/images/characters/ninja/projectile/ninjastar3.png" id="40_imnp4"]
+[ext_resource type="Texture2D" uid="uid://ch2p8tvt6dcmf" path="res://assets/images/characters/ninja/projectile/ninjastar4.png" id="41_2y024"]
 [ext_resource type="Texture2D" uid="uid://641gcmtk17kc" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-4.png.png" id="41_pkmj5"]
 [ext_resource type="Texture2D" uid="uid://1k8j4xnpwebb" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-5.png.png" id="42_mn426"]
+[ext_resource type="Texture2D" uid="uid://cikl7ttwxtvnp" path="res://assets/images/characters/ninja/projectile/ninjastar5.png" id="42_wyp2u"]
+[ext_resource type="Texture2D" uid="uid://gcb3vbs6457b" path="res://assets/images/characters/ninja/projectile/ninjastar6.png" id="43_obfy0"]
+[ext_resource type="Texture2D" uid="uid://bwcjsk28155c" path="res://assets/images/characters/ninja/projectile/ninjastar7.png" id="44_ts1ne"]
+[ext_resource type="Texture2D" uid="uid://xvtjm0xwcgnn" path="res://assets/images/characters/ninja/projectile/ninjastar8.png" id="45_bylge"]
+[ext_resource type="Texture2D" uid="uid://tx8dbantv5ei" path="res://assets/images/characters/ninja/projectile/ninjastar9.png" id="46_62c48"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3m7n"]
 animations = [{
@@ -140,37 +158,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_lh17n")
+"texture": ExtResource("22_brg2m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_lcad0")
+"texture": ExtResource("23_5at68")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_ybp1d")
+"texture": ExtResource("24_gep7w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_abxgx")
+"texture": ExtResource("25_46ykf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_d35w3")
+"texture": ExtResource("26_cig1v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_r4fr4")
+"texture": ExtResource("27_ojd8i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_e1rfv")
+"texture": ExtResource("28_l8nqs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_6b0e3")
+"texture": ExtResource("29_h051v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_iy0n7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_0fujl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_851yy")
+"texture": ExtResource("30_q04pg")
 }],
 "loop": false,
 "name": &"cultist_energy_impact",
@@ -273,6 +285,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("38_7ytrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_n4r02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_imnp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_2y024")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_wyp2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_obfy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ts1ne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_bylge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_62c48")
+}],
+"loop": true,
+"name": &"ninja_star",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("38_cees3")
 }, {
 "duration": 1.0,
@@ -341,10 +385,50 @@ size = Vector2(13, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2g40"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ytrm"]
+size = Vector2(11, 11)
+
+[sub_resource type="Animation" id="Animation_7ytrm"]
+resource_name = "fade_out"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n4r02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4r02"]
+_data = {
+&"RESET": SubResource("Animation_n4r02"),
+&"fade_out": SubResource("Animation_7ytrm")
+}
+
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_q3m7n")
-animation = &"quietus_impact"
+animation = &"cultist_energy_impact"
 script = ExtResource("1_c8fcr")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -361,6 +445,7 @@ position = Vector2(7.23998e-06, 2)
 shape = SubResource("CircleShape2D_6q2a6")
 
 [node name="QuietusProjectileCollossion" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(-3.8147e-06, 1.66746e-13)
 shape = SubResource("RectangleShape2D_cees3")
 
@@ -378,11 +463,26 @@ shape = SubResource("RectangleShape2D_e1rfv")
 visible = false
 shape = SubResource("RectangleShape2D_f2g40")
 
-[node name="Lifetime" type="Timer" parent="."]
+[node name="NinjaStarCollission" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7ytrm")
+
+[node name="HomingLifetime" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="NinjaStarLifetime" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n4r02")
+}
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="NinjaStarLifetime" to="." method="_on_ninja_star_lifetime_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

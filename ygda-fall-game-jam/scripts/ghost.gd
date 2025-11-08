@@ -15,6 +15,7 @@ var phase: Phase = Phase.TELEPORT
 const SPEED: int = 90
 var weak: bool = false
 var speed_modifier = 1
+var already_dead: bool = false
 
 enum Phase {
 	HUNT,
@@ -59,10 +60,11 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	var explosion_instance = Global.EXPLOSION.instantiate()
 	explosion_instance.global_position = global_position
-	if health <= 0:
+	if health <= 0 and not already_dead:
 		explosion_instance.death = true
 		world.add_child(explosion_instance)
 		Global.enemies_left -= 1
+		already_dead = true
 		queue_free()
 	else:
 		explosion_instance.death = false
@@ -79,6 +81,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		else:
 			global_position.y = Global.player_reference.position.y - 50
 		if weak and health < 6:
+			Global.enemies_left -= 1
 			queue_free()
 		animation_player.play("appear")
 	elif anim_name == "appear":

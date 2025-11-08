@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://df54o1bwnpw0x" path="res://assets/images/characters/ice_mage/idle 2.png" id="2_4jfp7"]
 [ext_resource type="Texture2D" uid="uid://ckx0jmfefclhn" path="res://assets/images/characters/hunter/newIdle2.png" id="2_20wg8"]
 [ext_resource type="Script" uid="uid://dsw0ceid4d5ge" path="res://scripts/next_character.gd" id="3_jhh2w"]
+[ext_resource type="Texture2D" uid="uid://b4rqtfdgd3p28" path="res://assets/images/characters/ninja/ninjaidle1.png" id="5_4ji0i"]
+[ext_resource type="Texture2D" uid="uid://cd73srw5jthrp" path="res://assets/images/characters/ninja/ninjaidle2.png" id="6_wvrem"]
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="7_dqkxi"]
-[ext_resource type="Texture2D" uid="uid://cbcryd7fqjuqv" path="res://assets/images/enemies/ghost/ghost_attack.png" id="7_vqt4b"]
-[ext_resource type="Texture2D" uid="uid://bhs28qj6xk3rv" path="res://assets/images/enemies/ghost/ghost_idle.png" id="8_20wg8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4gjji"]
 load_path = "res://.godot/imported/legs1.png-4c0e5ceaa8cfed56ae71a0511048a002.ctex"
@@ -52,10 +52,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_vqt4b")
+"texture": ExtResource("5_4ji0i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_20wg8")
+"texture": ExtResource("6_wvrem")
 }],
 "loop": true,
 "name": &"ninja",
@@ -64,7 +64,7 @@ animations = [{
 
 [node name="NextCharacter" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6grn0")
-animation = &"hunter"
+animation = &"ninja"
 autoplay = "hunter"
 script = ExtResource("3_jhh2w")
 

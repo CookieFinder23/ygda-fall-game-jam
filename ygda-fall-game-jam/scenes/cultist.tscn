@@ -1,73 +1,111 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctgcbrf8g882i"]
+[gd_scene load_steps=59 format=3 uid="uid://ctgcbrf8g882i"]
 
 [ext_resource type="Script" uid="uid://dkrj45mu623v3" path="res://scripts/cultist.gd" id="1_6kwtl"]
-[ext_resource type="Texture2D" uid="uid://ceaqvgl6taxal" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-1.png.png" id="2_bd6yb"]
-[ext_resource type="Texture2D" uid="uid://b6kv8g826yqy1" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-2.png.png" id="3_666iw"]
-[ext_resource type="Texture2D" uid="uid://x5pm1gtkiess" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-3.png.png" id="4_h54gi"]
-[ext_resource type="Texture2D" uid="uid://cu5fs50dli7l2" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-4.png.png" id="5_hmxcc"]
-[ext_resource type="Texture2D" uid="uid://bcmkvl85nis5x" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-5.png.png" id="6_b20iv"]
-[ext_resource type="Texture2D" uid="uid://dvs271uqfpcmf" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-6.png.png" id="7_4jiy2"]
-[ext_resource type="Texture2D" uid="uid://ckqxad257jgdq" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-7.png.png" id="8_1hmqt"]
-[ext_resource type="Texture2D" uid="uid://bvegm4q1mhv2w" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-8.png.png" id="9_yke46"]
-[ext_resource type="Texture2D" uid="uid://dcy4gxn11vxu" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-9.png.png" id="10_5qvbf"]
-[ext_resource type="Texture2D" uid="uid://bgsybf8umwafm" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-10.png.png" id="11_tss7g"]
-[ext_resource type="Texture2D" uid="uid://dkn1fa3urkyab" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-11.png.png" id="12_pmrom"]
-[ext_resource type="Texture2D" uid="uid://dmpvdw6pljsus" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-12.png.png" id="13_bbgki"]
-[ext_resource type="Texture2D" uid="uid://d3xjuepkue14a" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-13.png.png" id="14_frob4"]
-[ext_resource type="Texture2D" uid="uid://bw8khjuqfvrd" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-14.png.png" id="15_s8suq"]
-[ext_resource type="Texture2D" uid="uid://4ktwsw1dabmk" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-15.png.png" id="16_1vtg4"]
-[ext_resource type="Texture2D" uid="uid://cf7o5n4k47m52" path="res://assets/images/enemies/cultist/Enemy - Cultist - South-16.png.png" id="17_itete"]
+[ext_resource type="Texture2D" uid="uid://dkrs8un2as0gq" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-1.png.png" id="2_1lq4g"]
+[ext_resource type="Texture2D" uid="uid://u0ggep1ie45d" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-2.png.png" id="3_pyv3w"]
+[ext_resource type="Texture2D" uid="uid://fcvflq83beni" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-3.png.png" id="4_dxivb"]
+[ext_resource type="Texture2D" uid="uid://jifhgpc0hmkd" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-4.png.png" id="5_1c5rv"]
+[ext_resource type="Texture2D" uid="uid://s2hibc47ine2" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-5.png.png" id="6_js5lg"]
+[ext_resource type="Texture2D" uid="uid://d33t1o0e2va1t" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-6.png.png" id="7_a60xw"]
+[ext_resource type="Texture2D" uid="uid://irhf0gmnaba2" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-7.png.png" id="8_4q85e"]
+[ext_resource type="Texture2D" uid="uid://byt76jkvlun2f" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-8.png.png" id="9_30xti"]
+[ext_resource type="Texture2D" uid="uid://cj1pxi4pif8yp" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-9.png.png" id="10_mw6cn"]
+[ext_resource type="Texture2D" uid="uid://c0j3t0jld0tnr" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-10.png.png" id="11_1464t"]
+[ext_resource type="Texture2D" uid="uid://bep4q4mj5ppnr" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-11.png.png" id="12_iyudf"]
+[ext_resource type="Texture2D" uid="uid://cpcnfi81b1ij8" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-12.png.png" id="13_xgsac"]
+[ext_resource type="Texture2D" uid="uid://bkeiuxq5wjhup" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-13.png.png" id="14_m12nw"]
+[ext_resource type="Texture2D" uid="uid://bfwhdcejowut3" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-14.png.png" id="15_dxquc"]
+[ext_resource type="Texture2D" uid="uid://dwk1jicvba8tm" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-15.png.png" id="16_id7ot"]
+[ext_resource type="Texture2D" uid="uid://dpvlsoosevm8y" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-16.png.png" id="17_wt7ld"]
+[ext_resource type="Texture2D" uid="uid://cbjbc3acmncnc" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-17.png.png" id="18_jdybb"]
+[ext_resource type="Texture2D" uid="uid://dqtg2vi0hd2nq" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-1.png.png" id="19_tlr24"]
+[ext_resource type="Texture2D" uid="uid://dj5xn831yf8gf" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-2.png.png" id="20_kofwa"]
+[ext_resource type="Texture2D" uid="uid://f05xtpr8v3yt" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-3.png.png" id="21_t6fe7"]
+[ext_resource type="Texture2D" uid="uid://b6nma0vde1ktf" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-4.png.png" id="22_mxile"]
+[ext_resource type="Texture2D" uid="uid://b5f8f0qdgrtc6" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-5.png.png" id="23_sgnok"]
+[ext_resource type="Texture2D" uid="uid://b2d4xnr8ue46n" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-6.png.png" id="24_8hko1"]
+[ext_resource type="Texture2D" uid="uid://d1jpejtk0ddgg" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-7.png.png" id="25_mcsx2"]
+[ext_resource type="Texture2D" uid="uid://l7eiiijtru6f" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-8.png.png" id="26_hn4c2"]
+[ext_resource type="Texture2D" uid="uid://dlwnsrr43s7ji" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-9.png.png" id="27_alve7"]
+[ext_resource type="Texture2D" uid="uid://bih3jdmj4ng4v" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-10.png.png" id="28_1iogb"]
+[ext_resource type="Texture2D" uid="uid://db0meuhxdwfm6" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-11.png.png" id="29_37lls"]
+[ext_resource type="Texture2D" uid="uid://csqitixbjc147" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-12.png.png" id="30_vo4i8"]
+[ext_resource type="Texture2D" uid="uid://n1yru10qaijd" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-13.png.png" id="31_bkd2s"]
+[ext_resource type="Texture2D" uid="uid://cj0tbksc2gd8g" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-14.png.png" id="32_p0wmr"]
+[ext_resource type="Texture2D" uid="uid://dcknqq3soe8so" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-15.png.png" id="33_xg2ek"]
+[ext_resource type="Texture2D" uid="uid://c0n4ryxipn7bg" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-16.png.png" id="34_7asht"]
+[ext_resource type="Texture2D" uid="uid://cmrlgo2fcuan7" path="res://assets/images/enemies/cultist/right/Enemy - Cultist - East-17.png.png" id="35_rbk4y"]
+[ext_resource type="Texture2D" uid="uid://bh3fr1ep8pktg" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-1.png.png" id="36_gvsbd"]
+[ext_resource type="Texture2D" uid="uid://c8rlvrnsgp70q" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-2.png.png" id="37_u0ntt"]
+[ext_resource type="Texture2D" uid="uid://c8d8l8dfuqv2f" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-3.png.png" id="38_oceik"]
+[ext_resource type="Texture2D" uid="uid://bsut3jriupf20" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-4.png.png" id="39_3f4y3"]
+[ext_resource type="Texture2D" uid="uid://jbqvlern4fxx" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-5.png.png" id="40_lqlo2"]
+[ext_resource type="Texture2D" uid="uid://dvpnhpur36n24" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-6.png.png" id="41_3ipjn"]
+[ext_resource type="Texture2D" uid="uid://cy3cwbpmsrr4b" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-7.png.png" id="42_lhmqk"]
+[ext_resource type="Texture2D" uid="uid://pfs1ti0yllx3" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-8.png.png" id="43_popmc"]
+[ext_resource type="Texture2D" uid="uid://buo73miri2xir" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-9.png.png" id="44_58lv8"]
+[ext_resource type="Texture2D" uid="uid://d0h2pgkqpgmlv" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-10.png.png" id="45_0bnfe"]
+[ext_resource type="Texture2D" uid="uid://chiwrvdl635m2" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-11.png.png" id="46_bukt1"]
+[ext_resource type="Texture2D" uid="uid://blgrwb5a1mpqw" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-12.png.png" id="47_8kcyv"]
+[ext_resource type="Texture2D" uid="uid://dflvm5wessx5a" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-13.png.png" id="48_ni5vk"]
+[ext_resource type="Texture2D" uid="uid://dmu1y5c36n27h" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-14.png.png" id="49_0cils"]
+[ext_resource type="Texture2D" uid="uid://cpuwqy2wvbqt8" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-15.png.png" id="50_ddt2k"]
+[ext_resource type="Texture2D" uid="uid://c6yik6ghehpc4" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-16.png.png" id="51_lirxq"]
+[ext_resource type="Texture2D" uid="uid://bwbqxvf8gx388" path="res://assets/images/enemies/cultist/up/Enemy - Cultist - North-17.png.png" id="52_433n2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bd6yb")
+"texture": ExtResource("2_1lq4g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_666iw")
+"texture": ExtResource("3_pyv3w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_h54gi")
+"texture": ExtResource("4_dxivb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hmxcc")
+"texture": ExtResource("5_1c5rv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_b20iv")
+"texture": ExtResource("6_js5lg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_4jiy2")
+"texture": ExtResource("7_a60xw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1hmqt")
+"texture": ExtResource("8_4q85e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_yke46")
+"texture": ExtResource("9_30xti")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_5qvbf")
+"texture": ExtResource("10_mw6cn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_tss7g")
+"texture": ExtResource("11_1464t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_pmrom")
+"texture": ExtResource("12_iyudf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bbgki")
+"texture": ExtResource("13_xgsac")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_frob4")
+"texture": ExtResource("14_m12nw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_s8suq")
+"texture": ExtResource("15_dxquc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_1vtg4")
+"texture": ExtResource("16_id7ot")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_itete")
+"texture": ExtResource("17_wt7ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jdybb")
 }],
 "loop": false,
 "name": &"down",
@@ -75,105 +113,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bd6yb")
+"texture": ExtResource("19_tlr24")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_666iw")
+"texture": ExtResource("20_kofwa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_h54gi")
+"texture": ExtResource("21_t6fe7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hmxcc")
+"texture": ExtResource("22_mxile")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_b20iv")
+"texture": ExtResource("23_sgnok")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_4jiy2")
+"texture": ExtResource("24_8hko1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1hmqt")
+"texture": ExtResource("25_mcsx2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_yke46")
+"texture": ExtResource("26_hn4c2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_5qvbf")
+"texture": ExtResource("27_alve7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_tss7g")
+"texture": ExtResource("28_1iogb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_pmrom")
+"texture": ExtResource("29_37lls")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bbgki")
+"texture": ExtResource("30_vo4i8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_frob4")
+"texture": ExtResource("31_bkd2s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_s8suq")
+"texture": ExtResource("32_p0wmr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_1vtg4")
+"texture": ExtResource("33_xg2ek")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_itete")
-}],
-"loop": false,
-"name": &"left",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_bd6yb")
+"texture": ExtResource("34_7asht")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_666iw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_h54gi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_hmxcc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_b20iv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_4jiy2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_1hmqt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_yke46")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_5qvbf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_tss7g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_pmrom")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_bbgki")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_frob4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_s8suq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_1vtg4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_itete")
+"texture": ExtResource("35_rbk4y")
 }],
 "loop": false,
 "name": &"right",
@@ -181,52 +169,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bd6yb")
+"texture": ExtResource("36_gvsbd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_666iw")
+"texture": ExtResource("37_u0ntt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_h54gi")
+"texture": ExtResource("38_oceik")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hmxcc")
+"texture": ExtResource("39_3f4y3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_b20iv")
+"texture": ExtResource("40_lqlo2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_4jiy2")
+"texture": ExtResource("41_3ipjn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1hmqt")
+"texture": ExtResource("42_lhmqk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_yke46")
+"texture": ExtResource("43_popmc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_5qvbf")
+"texture": ExtResource("44_58lv8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_tss7g")
+"texture": ExtResource("45_0bnfe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_pmrom")
+"texture": ExtResource("46_bukt1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bbgki")
+"texture": ExtResource("47_8kcyv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_frob4")
+"texture": ExtResource("48_ni5vk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_s8suq")
+"texture": ExtResource("49_0cils")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_1vtg4")
+"texture": ExtResource("50_ddt2k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_itete")
+"texture": ExtResource("51_lirxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_433n2")
 }],
 "loop": false,
 "name": &"up",
@@ -296,7 +287,7 @@ script = ExtResource("1_6kwtl")
 [node name="CultistSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"up"
+animation = &"right"
 
 [node name="CultistCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

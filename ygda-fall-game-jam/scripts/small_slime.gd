@@ -2,10 +2,10 @@ extends AnimatableBody2D
 @onready var stun_timer: Timer = $StunTimer
 @onready var i_frames: Timer = $IFrames
 @onready var small_slime_sprite: AnimatedSprite2D = $SmallSlimeSprite
-
 var health: int = 1
 var lunge_direction
 var speed: int
+var already_dead: bool = false
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 
 func _physics_process(delta: float) -> void:
@@ -17,11 +17,13 @@ func _physics_process(delta: float) -> void:
 		small_slime_sprite.play("stun")
 
 func take_damage(_damage: int) -> void:
-	if i_frames.is_stopped():
-		var explosion_instance = EXPLOSION.instantiate()
-		get_tree().root.add_child(explosion_instance)
+	if i_frames.is_stopped() and not already_dead:
+		var explosion_instance = Global.EXPLOSION.instantiate()
 		explosion_instance.global_position = global_position
+		explosion_instance.death = true
+		get_tree().root.add_child(explosion_instance)
 		Global.enemies_left -= 0.5
+		already_dead = true
 		queue_free()
 
 func stun(stun_time: int) -> void:

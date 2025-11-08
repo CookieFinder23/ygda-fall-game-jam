@@ -5,7 +5,10 @@ extends AnimatedSprite2D
 @onready var dark_energy_collission_shape: CollisionShape2D = $Hitbox/DarkEnergyCollissionShape
 @onready var big_projectile_collission: CollisionShape2D = $Hitbox/BigProjectileCollission
 @onready var cultist_energy_collission: CollisionShape2D = $Hitbox/CultistEnergyCollission
-@onready var lifetime: Timer = $Lifetime
+@onready var ninja_star_collission: CollisionShape2D = $Hitbox/NinjaStarCollission
+
+@onready var homing_lifetime: Timer = $HomingLifetime
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var world: Node = $".."
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -24,7 +27,8 @@ func _ready() -> void:
 		"quietus": quietus_projectile_collossion,
 		"dark_energy": dark_energy_collission_shape,
 		"big_projectile": big_projectile_collission,
-		"cultist_energy": cultist_energy_collission
+		"cultist_energy": cultist_energy_collission,
+		"ninja_star": ninja_star_collission
 	}
 	right_rotation = type == "fireball" or type == "dark_energy"
 	for projectile in projectiles:
@@ -36,7 +40,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not freeze:
 		if type == "big_projectile":
-			if not lifetime.is_stopped():
+			if not homing_lifetime.is_stopped():
 				look_at(Global.player_reference.position)
 			position += transform.x * speed * delta
 		else:
@@ -84,3 +88,11 @@ func die() -> void:
 		play(type + "_impact")
 	else:
 		queue_free()
+
+
+func _on_ninja_star_lifetime_timeout() -> void:
+	if type == "ninja_star":
+		animation_player.play("fade_out")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	queue_free()

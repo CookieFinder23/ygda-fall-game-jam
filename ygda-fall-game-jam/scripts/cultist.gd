@@ -15,6 +15,7 @@ const ATTACK_SPREAD = 90
 var health: int = 9
 var phase: Phase = Phase.TELEPORT
 var weak: bool = false
+var already_dead: bool = false
 
 enum Phase {
 	ATTACK,
@@ -60,23 +61,26 @@ func _on_cultist_sprite_animation_finished() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
 		if weak and health < 6:
+			Global.enemies_left -= 1
 			queue_free()
 		if (randi_range(0, 1) == 1 or  Global.player_reference.position.x < 264 or Global.player_reference.position.x >= 375) and (Global.player_reference.position.y > 132 and Global.player_reference.position.y < 228):
+			cultist_sprite.flip_h = false
 			global_position.y = Global.player_reference.position.y
 			if (randi_range(0, 1) == 1 or Global.player_reference.position.x < 264) and Global.player_reference.position.x < 375:
 				global_position.x = Global.player_reference.position.x + 100
 				cultist_sprite.play("right")
 			else:
 				global_position.x = Global.player_reference.position.x - 100
-				cultist_sprite.play("left")
+				cultist_sprite.play("right")
+				cultist_sprite.flip_h = true
 		else:
 			global_position.x = Global.player_reference.position.x
 			if (randi_range(0, 1) == 1 or Global.player_reference.position.y < 132) and Global.player_reference.position.y < 228:
 				global_position.y = Global.player_reference.position.y + 100
-				cultist_sprite.play("down")
+				cultist_sprite.play("up")
 			else:
 				global_position.y = Global.player_reference.position.y - 100
-				cultist_sprite.play("up")
+				cultist_sprite.play("down")
 		time_from_animation_start_to_shoot.start()
 		animation_player.play("appear")
 		
@@ -87,10 +91,12 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	var explosion_instance = Global.EXPLOSION.instantiate()
 	explosion_instance.global_position = global_position
-	if health <= 0:
+	if health <= 0 and not already_dead:
+		explosion_instance.global_position = global_position
 		explosion_instance.death = true
 		world.add_child(explosion_instance)
 		Global.enemies_left -= 1
+		already_dead = true
 		queue_free()
 	else:
 		explosion_instance.death = false

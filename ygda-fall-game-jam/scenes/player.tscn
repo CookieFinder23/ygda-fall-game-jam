@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=96 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -48,6 +48,22 @@
 [ext_resource type="Texture2D" uid="uid://ci7lijspvmknc" path="res://assets/images/characters/hunter/crossbowEmpty.png" id="34_2dvfe"]
 [ext_resource type="Texture2D" uid="uid://b1fx276fuj421" path="res://assets/images/characters/knight/shield.png" id="38_sc3ue"]
 [ext_resource type="Texture2D" uid="uid://dt6vj10sullg6" path="res://assets/images/characters/knight/sword.png" id="39_lxlsd"]
+[ext_resource type="Texture2D" uid="uid://ci8muhcktatd3" path="res://assets/images/characters/ninja/ninjahead1.png" id="47_51ujp"]
+[ext_resource type="Texture2D" uid="uid://b57lecjhr361j" path="res://assets/images/characters/ninja/ninjaidlebody1.png" id="47_ha2mi"]
+[ext_resource type="Texture2D" uid="uid://cqtn7fr2d7e0q" path="res://assets/images/characters/ninja/ninjawalk1.png" id="47_sc3ue"]
+[ext_resource type="Texture2D" uid="uid://beu545r5euw8v" path="res://assets/images/characters/ninja/ninjaidlebody2.png" id="48_apa73"]
+[ext_resource type="Texture2D" uid="uid://cb1dfqnk0eis5" path="res://assets/images/characters/ninja/ninjawalk2.png" id="48_lxlsd"]
+[ext_resource type="Texture2D" uid="uid://ikd3ddch3tvo" path="res://assets/images/characters/ninja/ninjahead2.png" id="48_tk41t"]
+[ext_resource type="Texture2D" uid="uid://chg4lm0w8da08" path="res://assets/images/characters/ninja/ninjahead3.png" id="49_fuw3a"]
+[ext_resource type="Texture2D" uid="uid://b0et4beqsy8e1" path="res://assets/images/characters/ninja/ninjawalk3.png" id="49_ha2mi"]
+[ext_resource type="Texture2D" uid="uid://whmy65akgfdt" path="res://assets/images/characters/ninja/ninjahead4.png" id="50_8txt3"]
+[ext_resource type="Texture2D" uid="uid://bffqnhdbn2cf0" path="res://assets/images/characters/ninja/ninjawalk4.png" id="50_apa73"]
+[ext_resource type="Texture2D" uid="uid://bi8mcvajs843h" path="res://assets/images/characters/ninja/ninjahead5.png" id="51_2w11d"]
+[ext_resource type="Texture2D" uid="uid://c4f8hnhs6qn2t" path="res://assets/images/characters/ninja/ninjahead6.png" id="52_770dr"]
+[ext_resource type="Texture2D" uid="uid://dl2tk35mvr31p" path="res://assets/images/characters/ninja/ninjahead7.png" id="53_8f1cb"]
+[ext_resource type="Texture2D" uid="uid://dbcaxbqx4ahmi" path="res://assets/images/characters/ninja/ninjahead8.png" id="54_vdulj"]
+[ext_resource type="Texture2D" uid="uid://mlt05jeofngn" path="res://assets/images/characters/ninja/ninjahead9.png" id="55_vau08"]
+[ext_resource type="Texture2D" uid="uid://b22rl1iuo8dic" path="res://assets/images/characters/ninja/ninjahead10.png" id="56_qsb7e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
@@ -470,7 +486,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("25_u2ulf")
+"texture": ExtResource("47_51ujp")
 }],
 "loop": true,
 "name": &"0",
@@ -478,7 +494,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_6e8lb")
+"texture": ExtResource("48_tk41t")
 }],
 "loop": true,
 "name": &"1",
@@ -486,7 +502,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("27_2gdjj")
+"texture": ExtResource("49_fuw3a")
 }],
 "loop": true,
 "name": &"2",
@@ -494,7 +510,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("28_sc3ue")
+"texture": ExtResource("50_8txt3")
 }],
 "loop": true,
 "name": &"3",
@@ -502,7 +518,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("29_lxlsd")
+"texture": ExtResource("51_2w11d")
 }],
 "loop": true,
 "name": &"4",
@@ -510,7 +526,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("30_ha2mi")
+"texture": ExtResource("52_770dr")
 }],
 "loop": true,
 "name": &"5",
@@ -518,7 +534,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("31_2gdjj")
+"texture": ExtResource("53_8f1cb")
 }],
 "loop": true,
 "name": &"6",
@@ -526,14 +542,59 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("32_sc3ue")
+"texture": ExtResource("54_vdulj")
 }],
 "loop": true,
 "name": &"7",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_vau08")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("56_qsb7e")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc3ue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_ha2mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_apa73")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_sc3ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_lxlsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ha2mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_apa73")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_3v2ag"]
 length = 0.001
@@ -598,13 +659,15 @@ platform_on_leave = 2
 script = ExtResource("1_g2els")
 
 [node name="HunterBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"movement"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
-position = Vector2(2, -11)
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_4ni07")
 animation = &"0"
 
@@ -618,7 +681,7 @@ autoplay = "idle"
 visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
-animation = &"idle"
+animation = &"walk"
 
 [node name="KnightHeadSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -644,13 +707,15 @@ sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
 
 [node name="NinjaHeadSprite" type="AnimatedSprite2D" parent="."]
-visible = false
+position = Vector2(-4, -11.5)
 sprite_frames = SubResource("SpriteFrames_2gdjj")
-animation = &"7"
+animation = &"8"
 
 [node name="NinjaBodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
+position = Vector2(-4, 4)
 sprite_frames = SubResource("SpriteFrames_sc3ue")
+animation = &"idle"
+frame_progress = 0.397896
 
 [node name="AttackCooldown" type="Timer" parent="."]
 process_callback = 0
@@ -688,7 +753,6 @@ libraries = {
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

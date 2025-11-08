@@ -111,9 +111,9 @@ grow_vertical = 2
 
 [node name="MovementAbilityCooldown" parent="CanvasLayer" instance=ExtResource("4_i7141")]
 offset_left = 10.0
-offset_top = 48.0
+offset_top = 88.0
 offset_right = 130.0
-offset_bottom = 75.0
+offset_bottom = 115.0
 
 [node name="TransformationClock" parent="CanvasLayer" instance=ExtResource("5_4mrxx")]
 visible = false

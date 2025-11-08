@@ -1,7 +1,7 @@
 extends Node
 
 @onready var player: CharacterBody2D = $Player
-@onready var hearts_container: HBoxContainer = $CanvasLayer/HeartsContainer
+@onready var hearts_container: HFlowContainer = $CanvasLayer/HeartsContainer
 @onready var inbetween_wave_timer: Timer = $InbetweenWaveTimer
 @onready var wave_cooldown_timer: Timer = $WaveCooldownTimer
 @onready var fade_to_black_animation_player: AnimationPlayer = $CanvasLayer/FadeToBlack/FadeToBlackAnimationPlayer
@@ -42,6 +42,7 @@ func _on_inbetween_wave_timer_timeout() -> void:
 		add_child(enemy_instance)
 
 func _physics_process(_delta: float) -> void:
+	print(Global.enemies_left)
 	hearts_container.update_hearts(player.health)
 	if Global.begin_next_wave == true:
 		Global.player_reference.transformation_cooldown.start()

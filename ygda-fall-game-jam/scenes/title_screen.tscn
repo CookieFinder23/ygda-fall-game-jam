@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://my4u2iu7jwcr"]
+[gd_scene load_steps=13 format=3 uid="uid://my4u2iu7jwcr"]
 
 [ext_resource type="Script" uid="uid://ddfgyxp4vn13y" path="res://scripts/title_screen.gd" id="1_fgkus"]
 [ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/title screen thingy (4).mp3" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="3_mgrm8"]
-[ext_resource type="VideoStream" uid="uid://dpp081xvibj7w" path="res://assets/r.ogv" id="4_mgrm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
 
@@ -248,13 +247,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("4_mgrm8")
 autoplay = true
 expand = true
 loop = true
 
 [node name="Black" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

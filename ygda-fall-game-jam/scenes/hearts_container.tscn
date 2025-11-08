@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://445hyyau3ikf" path="res://scripts/hearts_container.gd" id="1_nx8e0"]
 
-[node name="HeartsContainer" type="HBoxContainer"]
+[node name="HeartsContainer" type="HFlowContainer"]
 offset_right = 140.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
+offset_bottom = 80.0
 alignment = 1
 script = ExtResource("1_nx8e0")

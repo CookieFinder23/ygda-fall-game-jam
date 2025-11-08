@@ -3,7 +3,8 @@ extends AnimatedSprite2D
 var character_enum_to_animation = {
 	0: "hunter",
 	1: "knight",
-	2: "ice_mage"
+	2: "ice_mage",
+	3: "ninja"
 }
 
 func _physics_process(delta: float) -> void:
