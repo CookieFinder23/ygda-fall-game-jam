@@ -502,7 +502,6 @@ _data = {
 }
 
 [node name="FinalBoss" type="AnimatableBody2D" groups=["Enemy"]]
-visible = false
 scale = Vector2(2, 2)
 collision_layer = 4
 sync_to_physics = false

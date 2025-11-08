@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://udt17k28netv"
-path="res://.godot/imported/legs3.png-bc69e89c95726171981a742640a64bc5.ctex"
+uid="uid://ciw4qbgw6mjp1"
+path="res://.godot/imported/Enemy - Quietus -  Projectile-1.png.png-a7fe6a06b1f109f6fa1d9f11fdae9249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/knight/legs3.png"
-dest_files=["res://.godot/imported/legs3.png-bc69e89c95726171981a742640a64bc5.ctex"]
+source_file="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-1.png.png"
+dest_files=["res://.godot/imported/Enemy - Quietus -  Projectile-1.png.png-a7fe6a06b1f109f6fa1d9f11fdae9249.ctex"]
 
 [params]
 

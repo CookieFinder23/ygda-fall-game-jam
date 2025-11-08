@@ -138,7 +138,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_5uyu1")
 }
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["shield"]]
 visible = false
 collision_layer = 0
 collision_mask = 4

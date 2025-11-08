@@ -23,6 +23,7 @@ func _ready() -> void:
 	Global.enemies_left = 0
 	Global.begin_next_wave = true
 	Global.remaining_characters =  ["ice_mage", "knight", "ninja"]
+	fade_to_black_animation_player.play("fade_out")
 
 func _on_inbetween_wave_timer_timeout() -> void:
 	Global.wave_number += 1
@@ -48,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 		Global.begin_next_wave = false
 		inbetween_wave_timer.start()
 		wave_cooldown_timer.start()
-	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false and Global.player_reference.position.y > 118:
+	elif Global.enemies_left <= 0 and wave_cooldown_timer.is_stopped() and Global.picking_character == false and Global.player_reference.position.y > 118 and Global.wave_number < 4:
 		Global.picking_character = true
 		create_character_choice()
 		
@@ -104,4 +105,5 @@ func fade_to_black()  -> void:
 	fade_to_black_animation_player.play("fade_in")
 	
 func _on_fade_to_black_animation_player_animation_finished(anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	if anim_name == "fade_in":
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cm4xggw0kp41b"]
+[gd_scene load_steps=18 format=3 uid="uid://cm4xggw0kp41b"]
 
 [ext_resource type="Script" uid="uid://wbw3or5rvqko" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://ro0m4lxemsly" path="res://scenes/battle_room.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://v35gp5mvgpm6" path="res://assets/images/UI/bg1.png" id="2_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://bakod478lp1wq" path="res://scenes/crosshair.tscn" id="2_w7kh3"]
 [ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
@@ -11,26 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://bqpogym1ai8ab" path="res://scenes/next_character.tscn" id="6_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_q5onr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e3hyu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7kh3"]
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_e3hyu"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_q5onr"]
 length = 0.001
@@ -47,14 +41,50 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_e3hyu"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jhx03"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jhx03"]
 _data = {
 &"RESET": SubResource("Animation_q5onr"),
-&"fade_in": SubResource("Animation_e3hyu")
+&"fade_in": SubResource("Animation_e3hyu"),
+&"fade_out": SubResource("Animation_jhx03")
 }
 
 [node name="World" type="Node"]
 script = ExtResource("1_71j4m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -2
+position = Vector2(1.52588e-05, 6.10352e-05)
+sprite_frames = SubResource("SpriteFrames_q5onr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -63,13 +93,11 @@ offset_left = 1.52588e-05
 offset_top = 6.10352e-05
 offset_right = 140.0
 offset_bottom = 360.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4mrxx")
 
 [node name="RightBar" type="Panel" parent="CanvasLayer"]
 offset_left = 500.0
 offset_right = 640.0
 offset_bottom = 360.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4mrxx")
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("8_4mrxx")]
 
@@ -88,12 +116,14 @@ offset_right = 130.0
 offset_bottom = 75.0
 
 [node name="TransformationClock" parent="CanvasLayer" instance=ExtResource("5_4mrxx")]
-position = Vector2(571, 274)
+visible = false
+position = Vector2(570, 274)
 scale = Vector2(4, 4)
 frame_progress = 0.0
 
 [node name="NextCharacter" parent="CanvasLayer" instance=ExtResource("6_7r4gi")]
-position = Vector2(570, 119)
+visible = false
+position = Vector2(570, 120)
 scale = Vector2(2, 2)
 
 [node name="Crosshair" parent="CanvasLayer" instance=ExtResource("2_w7kh3")]

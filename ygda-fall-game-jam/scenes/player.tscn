@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=80 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -28,14 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://btwcfq62a76v5" path="res://assets/images/characters/ice_mage/w3.png" id="18_pf23h"]
 [ext_resource type="Texture2D" uid="uid://bst37m80tauqd" path="res://assets/images/characters/ice_mage/w4.png" id="19_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://iicfj16iejkl" path="res://assets/images/characters/ice_mage/w5.png" id="20_wqfne"]
-[ext_resource type="Texture2D" uid="uid://qgvv1kvrtwnv" path="res://assets/images/characters/knight/legs1.png" id="21_fdfoy"]
 [ext_resource type="Texture2D" uid="uid://dcbaamgdgo2d" path="res://assets/images/characters/ice_mage/w6.png" id="21_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://dy2eywb1s4t8w" path="res://assets/images/characters/ice_mage/w7.png" id="22_gl8cc"]
-[ext_resource type="Texture2D" uid="uid://bp74c0tmt0jp3" path="res://assets/images/characters/knight/legs2.png" id="22_hhpqf"]
 [ext_resource type="Texture2D" uid="uid://joffbh84iexf" path="res://assets/images/characters/ice_mage/backside idle 2.png" id="22_t4otl"]
-[ext_resource type="Texture2D" uid="uid://c2huvbvkbu2n7" path="res://assets/images/characters/knight/legs3.png" id="23_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://dkwim0i34mkde" path="res://assets/images/characters/ice_mage/backside.png" id="23_j2b1d"]
-[ext_resource type="Texture2D" uid="uid://bliencyniatd5" path="res://assets/images/characters/knight/legs4.png" id="24_holxr"]
 [ext_resource type="Texture2D" uid="uid://8ejdkbhp5jdi" path="res://assets/images/characters/knight/head1.png" id="25_u2ulf"]
 [ext_resource type="Texture2D" uid="uid://dm5mm3tbplnqd" path="res://assets/images/characters/knight/head2.png" id="26_6e8lb"]
 [ext_resource type="Texture2D" uid="uid://dir5xwo5swkyc" path="res://assets/images/characters/knight/head3.png" id="27_2gdjj"]
@@ -202,11 +198,23 @@ animations = [{
 "speed": 2.5
 }]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4gjji"]
+load_path = "res://.godot/imported/legs1.png-4c0e5ceaa8cfed56ae71a0511048a002.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u2ulf"]
+load_path = "res://.godot/imported/legs2.png-3e2f6b62596f81eee22f93777a2b1966.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6e8lb"]
+load_path = "res://.godot/imported/legs3.png-bc69e89c95726171981a742640a64bc5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gdjj"]
+load_path = "res://.godot/imported/legs4.png-5254b348c20edea29e45a69a7c13c07e.ctex"
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_fdfoy")
+"texture": SubResource("CompressedTexture2D_4gjji")
 }],
 "loop": true,
 "name": &"idle",
@@ -214,16 +222,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_fdfoy")
+"texture": SubResource("CompressedTexture2D_4gjji")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_hhpqf")
+"texture": SubResource("CompressedTexture2D_u2ulf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_g5jhy")
+"texture": SubResource("CompressedTexture2D_6e8lb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_holxr")
+"texture": SubResource("CompressedTexture2D_2gdjj")
 }],
 "loop": true,
 "name": &"walk",
@@ -575,6 +583,14 @@ size = Vector2(24, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlsd"]
 size = Vector2(30, 40)
 
+[sub_resource type="Animation" id="Animation_4gjji"]
+resource_name = "hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2ulf"]
+_data = {
+&"hit": SubResource("Animation_4gjji")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 motion_mode = 1
@@ -582,13 +598,11 @@ platform_on_leave = 2
 script = ExtResource("1_g2els")
 
 [node name="HunterBodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"movement"
 
 [node name="HunterHeadSprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(2, -11)
 sprite_frames = SubResource("SpriteFrames_4ni07")
@@ -613,6 +627,7 @@ sprite_frames = SubResource("SpriteFrames_apa73")
 animation = &"1"
 
 [node name="KnightWeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"sword"
 
@@ -629,10 +644,12 @@ sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
 
 [node name="NinjaHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_2gdjj")
 animation = &"7"
 
 [node name="NinjaBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_sc3ue")
 
 [node name="AttackCooldown" type="Timer" parent="."]
@@ -671,10 +688,11 @@ libraries = {
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="Hurtbox"]
+[node name="PlayerHurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_j2b1d")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
@@ -690,6 +708,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="ShieldCollisionArea" type="Area2D" parent="." groups=["shield"]]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -699,12 +718,18 @@ shape = SubResource("RectangleShape2D_sc3ue")
 disabled = true
 
 [node name="SwordCollisionArea" type="Area2D" parent="." groups=["shield"]]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
 [node name="SwordCollision" type="CollisionShape2D" parent="SwordCollisionArea"]
 shape = SubResource("RectangleShape2D_lxlsd")
 disabled = true
+
+[node name="HurtAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u2ulf")
+}
 
 [connection signal="animation_finished" from="HunterWeaponSprite" to="." method="_on_hunter_weapon_sprite_animation_finished"]
 [connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]

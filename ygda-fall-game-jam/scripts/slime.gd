@@ -30,6 +30,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if stun_timer.is_stopped() and slime_sprite.animation != "split":
 		if phase == Phase.CHASE:
+			if slime_sprite.animation == "lunge":
+				print("whoops!")
 			move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta * speed_modifier)
 			if lunge_range.overlaps_body(Global.player_reference) and lunge_cooldown.is_stopped():
 				lunge_cooldown.start()
@@ -68,7 +70,6 @@ func _on_slime_sprite_animation_finished() -> void:
 		world.add_child(slow_small_slime_instance)
 		world.add_child(fast_small_slime_instance)
 		queue_free()
-
 	
 func stun(stun_time: int) -> void:
 	stun_timer.wait_time = stun_time

@@ -40,11 +40,13 @@ func _physics_process(delta: float) -> void:
 				look_at(Global.player_reference.position)
 			position += transform.x * speed * delta
 		else:
-			if right_rotation:
+			if right_rotation or type == "quietus":
 				rotation = old_rotation
 			position += transform.x * speed * delta
 			if right_rotation:
 				rotation_degrees += -90
+			if type == "quietus":
+				rotation_degrees += 90
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if not freeze:
@@ -62,7 +64,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		call_deferred("die")
 
 func die() -> void:
-	if right_rotation or type == "big_projectile" or type == "cultist_energy":
+	if right_rotation or type == "big_projectile" or type == "cultist_energy" or type == "quietus":
 		freeze = true
 		if type == "big_projectile":
 			scale = Vector2(2, 2)

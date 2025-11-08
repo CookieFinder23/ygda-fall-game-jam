@@ -1,27 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://my4u2iu7jwcr"]
+[gd_scene load_steps=14 format=3 uid="uid://my4u2iu7jwcr"]
 
 [ext_resource type="Script" uid="uid://ddfgyxp4vn13y" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/title screen thingy (4).mp3" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="3_mgrm8"]
-[ext_resource type="AudioStream" uid="uid://dgnty4geyyya" path="res://assets/audio/placeholder_menu.mp3" id="3_s4lrb"]
-[ext_resource type="Texture2D" uid="uid://tr7xgvtpd33t" path="res://assets/images/UI/hoemxcreen.png" id="4_mgrm8"]
-[ext_resource type="PackedScene" uid="uid://cbrpci506o4j8" path="res://scenes/black.tscn" id="5_dc4i4"]
+[ext_resource type="VideoStream" uid="uid://dpp081xvibj7w" path="res://assets/r.ogv" id="4_mgrm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4lrb"]
-bg_color = Color(0.74558, 0.74558, 0.74558, 1)
+bg_color = Color(0.745098, 0.745098, 0.745098, 0.498039)
+border_color = Color(0, 0, 0, 0.498039)
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgrm8"]
-bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+bg_color = Color(0.282353, 0.282353, 0.282353, 0.498039)
+border_color = Color(0, 0, 0, 0.498039)
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgkus"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0.498039)
+border_color = Color(0, 0, 0, 0.498039)
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgrm8"]
-texture = ExtResource("4_mgrm8")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc4i4"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_dc4i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e54dn"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mgrm8"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dc4i4"]
+_data = {
+&"RESET": SubResource("Animation_dc4i4"),
+&"fade_in": SubResource("Animation_e54dn"),
+&"fade_out": SubResource("Animation_mgrm8")
+}
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -39,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.5
-offset_top = -60.0
-offset_right = 172.5
-offset_bottom = 139.0
+offset_left = -110.0
+offset_top = -70.0
+offset_right = 110.0
+offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
@@ -111,7 +165,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_s4lrb")
+stream = ExtResource("3_dc4i4")
 autoplay = true
 parameters/looping = true
 
@@ -184,19 +238,38 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Panel" type="Panel" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-offset_right = 639.0
-offset_bottom = 357.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_mgrm8")
+offset_right = 640.0
+offset_bottom = 360.0
 
-[node name="Black" parent="." instance=ExtResource("5_dc4i4")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_mgrm8")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Black" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dc4i4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Black"]
+libraries = {
+&"": SubResource("AnimationLibrary_dc4i4")
+}
 
 [connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="animation_finished" from="Black/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

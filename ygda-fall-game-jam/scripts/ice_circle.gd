@@ -12,6 +12,7 @@ func _ready() -> void:
 		scale = Vector2(0.5, 0.5)
 		_3d.visible = false
 		stun_time = 0.25
+		hitbox.collision_layer = 2
 		
 func _physics_process(delta: float) -> void:
 	if not is_attack:

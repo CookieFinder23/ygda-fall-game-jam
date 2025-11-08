@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var hunter_body_sprite: AnimatedSprite2D = $HunterBodySprite
 @onready var hunter_head_sprite: AnimatedSprite2D = $HunterHeadSprite
 @onready var knight_body_sprite: AnimatedSprite2D = $KnightBodySprite
-@onready var player_collision: CollisionShape2D = $PlayerCollision
+@onready var player_hurtbox_collision: CollisionShape2D = $Hurtbox/PlayerHurtboxCollision
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var movement_ability_cooldown: Timer = $MovementAbilityCooldown
 @onready var movement_ability_in_action: Timer = $MovementAbilityInAction
@@ -25,7 +25,6 @@ extends CharacterBody2D
 @onready var shield_collision: CollisionShape2D = $ShieldCollisionArea/ShieldCollision
 @onready var shield_collision_area: Area2D = $ShieldCollisionArea
 @onready var sword_collision: CollisionShape2D = $SwordCollisionArea/SwordCollision
-
 @onready var sword_collision_area: Area2D = $SwordCollisionArea
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
@@ -103,7 +102,7 @@ func _ready() -> void:
 	character_data = {
 	Character.HUNTER: [MovementSpeed.NORMAL, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.NORMAL, hunter_body_sprite, hunter_head_sprite, hunter_weapon_sprite, 8],
 	Character.KNIGHT: [MovementSpeed.NORMAL, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, knight_body_sprite, knight_head_sprite, knight_weapon_sprite, 8],
-	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.SLOW, MovementAbilityCooldownLength.NORMAL, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
+	Character.ICE_MAGE: [MovementSpeed.SLOW, AttackCooldownLength.NORMAL, MovementAbilityCooldownLength.SLOW, ice_mage_body_sprite, ice_mage_head_sprite, null, 8],
 	Character.NINJA: [MovementSpeed.FAST, AttackCooldownLength.FAST, MovementAbilityCooldownLength.FAST, ninja_body_sprite, ninja_head_sprite, null, 8]
 	}
 	transformation_cycle = [Character.HUNTER]
@@ -298,7 +297,6 @@ func set_head_direction() -> void:
 				current_head_sprite.position.x = 2
 			else:
 				current_head_sprite.position.x = 0
-	
 		
 	if current_character == Character.ICE_MAGE:
 		if (current_body_sprite.animation == "idle" or current_body_sprite.animation == "idle_back") and current_body_sprite.frame == 1:
@@ -309,11 +307,13 @@ func set_head_direction() -> void:
 func _physics_process(delta: float) -> void:
 	if health > 0:
 		if i_frames.is_stopped():
-			current_body_sprite.self_modulate.a = 1
-			current_head_sprite.self_modulate.a = 1
+			player_hurtbox_collision.disabled = false
+			current_body_sprite.modulate.a = 1
+			current_head_sprite.modulate.a = 1
 		else:
-			current_body_sprite.self_modulate.a = 0.5
-			current_head_sprite.self_modulate.a = 0.5
+			player_hurtbox_collision.disabled = true
+			current_body_sprite.modulate.a = 0.25 + (1 - (i_frames.time_left / i_frames.wait_time)) * 0.75
+			current_head_sprite.modulate.a = 0.25 + (1 - (i_frames.time_left / i_frames.wait_time)) * 0.75
 		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		if input_direction == Vector2.ZERO:
@@ -386,8 +386,8 @@ func take_damage(_damage: int) -> void:
 
 
 func _on_change_sceen_to_start_screen_timeout() -> void:
-	for child in world.get_children():
-		child.queue_free()
+	#for child in world.get_children():
+		#child.queue_free()
 	world.fade_to_black()
 	
 func _on_hurtbox_body_entered(_body: Node2D) -> void:

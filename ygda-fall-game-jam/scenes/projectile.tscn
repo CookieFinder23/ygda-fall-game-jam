@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bojqiwewsvnfy"]
+[gd_scene load_steps=51 format=3 uid="uid://bojqiwewsvnfy"]
 
 [ext_resource type="Script" uid="uid://cwe2k8f5qxi06" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://bbcb2dhke14d6" path="res://assets/images/enemies/final_boss/big_projectile/Enemy - Dark Wizard - Homing Projectile-1.png.png" id="1_e1rfv"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dv81m8fvb03ky" path="res://assets/images/enemies/final_boss/big_projectile/Enemy - Dark Wizard - Homing Projectile-2.png.png" id="2_6b0e3"]
 [ext_resource type="Texture2D" uid="uid://ceddoakxr0xfa" path="res://assets/images/enemies/final_boss/projectile/Dark Wizard Projectile-1.png.png" id="2_6c2e5"]
 [ext_resource type="Texture2D" uid="uid://b8cfgstj1sclx" path="res://assets/images/enemies/imp/fireball1.png" id="2_byeak"]
-[ext_resource type="Texture2D" uid="uid://2mtseu10jeot" path="res://assets/images/placeholder_circle.png" id="2_softn"]
 [ext_resource type="Texture2D" uid="uid://c5hwku0rt221v" path="res://assets/images/enemies/final_boss/big_projectile/Enemy - Dark Wizard - Homing Projectile-3.png.png" id="3_iy0n7"]
 [ext_resource type="Texture2D" uid="uid://dcgiwhq24x47t" path="res://assets/images/enemies/imp/fireball2.png" id="3_jxwu6"]
 [ext_resource type="Texture2D" uid="uid://dqit3k8tmin6e" path="res://assets/images/enemies/final_boss/projectile/Dark Wizard Projectile-2.png.png" id="3_pl1gp"]
@@ -39,6 +38,11 @@
 [ext_resource type="Texture2D" uid="uid://dk7edfdhtx4pg" path="res://assets/images/enemies/imp/splash9.png" id="24_iy0n7"]
 [ext_resource type="Texture2D" uid="uid://cg7rkmgnbmmgj" path="res://assets/images/enemies/imp/splash10.png" id="25_0fujl"]
 [ext_resource type="Texture2D" uid="uid://dsv2dnqnknftv" path="res://assets/images/enemies/imp/splash11.png" id="26_851yy"]
+[ext_resource type="Texture2D" uid="uid://ciw4qbgw6mjp1" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-1.png.png" id="38_cees3"]
+[ext_resource type="Texture2D" uid="uid://chpbnvus6f1ad" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-2.png.png" id="39_gs484"]
+[ext_resource type="Texture2D" uid="uid://d2sbna41eodcx" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-3.png.png" id="40_7wdef"]
+[ext_resource type="Texture2D" uid="uid://641gcmtk17kc" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-4.png.png" id="41_pkmj5"]
+[ext_resource type="Texture2D" uid="uid://1k8j4xnpwebb" path="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-5.png.png" id="42_mn426"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3m7n"]
 animations = [{
@@ -269,11 +273,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_softn")
+"texture": ExtResource("38_cees3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_gs484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_7wdef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_pkmj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_mn426")
 }],
 "loop": true,
 "name": &"quietus",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_sbbd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g1ida")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xfonq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m0b1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mxgir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rimnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l47rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fooc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sbbd4")
+}],
+"loop": false,
+"name": &"quietus_impact",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_softn"]
@@ -282,8 +330,8 @@ size = Vector2(16, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q2a6"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_softn"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cees3"]
+size = Vector2(12, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c2e5"]
 size = Vector2(13, 16)
@@ -296,7 +344,7 @@ size = Vector2(16, 16)
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_q3m7n")
-animation = &"cultist_energy_impact"
+animation = &"quietus_impact"
 script = ExtResource("1_c8fcr")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -313,8 +361,8 @@ position = Vector2(7.23998e-06, 2)
 shape = SubResource("CircleShape2D_6q2a6")
 
 [node name="QuietusProjectileCollossion" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-shape = SubResource("CircleShape2D_softn")
+position = Vector2(-3.8147e-06, 1.66746e-13)
+shape = SubResource("RectangleShape2D_cees3")
 
 [node name="DarkEnergyCollissionShape" type="CollisionShape2D" parent="Hitbox"]
 visible = false
@@ -322,10 +370,12 @@ position = Vector2(0.5, 5.00002)
 shape = SubResource("RectangleShape2D_6c2e5")
 
 [node name="BigProjectileCollission" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(8, -2.89599e-05)
 shape = SubResource("RectangleShape2D_e1rfv")
 
 [node name="CultistEnergyCollission" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_f2g40")
 
 [node name="Lifetime" type="Timer" parent="."]
