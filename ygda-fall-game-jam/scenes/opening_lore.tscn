@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://chvycgdvbbihm"]
+[gd_scene load_steps=18 format=3 uid="uid://chvycgdvbbihm"]
 
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="1_hxyvn"]
 [ext_resource type="Script" uid="uid://crq1tgaiqbkxg" path="res://scripts/opening_lore.gd" id="1_ni3vs"]
 [ext_resource type="VideoStream" uid="uid://b8bid5emonwln" path="res://assets/images/UI/darkmage.ogv" id="3_mue4e"]
 [ext_resource type="VideoStream" uid="uid://20i7aoig1ebj" path="res://assets/images/UI/intro.ogv" id="4_f6osy"]
 [ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/menu.mp3" id="5_rufa8"]
+[ext_resource type="Texture2D" uid="uid://ccyx84iihkg3h" path="res://assets/images/UI/one_black_pixel.png" id="5_ynimr"]
 
 [sub_resource type="Animation" id="Animation_mue4e"]
 length = 0.001
@@ -200,6 +201,12 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_f6osy")
 metadata/_edit_use_anchors_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
+z_index = -999
+position = Vector2(320, 180)
+scale = Vector2(640, 360)
+texture = ExtResource("5_ynimr")
+
 [node name="FinalBossVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
 visible = false
 layout_mode = 1
@@ -223,7 +230,7 @@ stream = ExtResource("4_f6osy")
 expand = true
 
 [node name="Black" type="Panel" parent="."]
-z_index = 1
+z_index = 99
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
