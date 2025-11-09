@@ -8,15 +8,17 @@ extends Panel
 @onready var lore_lifetime: Timer = $LoreLifetime
 @onready var black: Panel = $Black
 @onready var end_timer: Timer = $EndTimer
+@onready var safety_timer: Timer = $SafetyTimer
+@onready var skip_fade_animation: AnimationPlayer = $SkipFadeAnimation
 
-var lore_text = ["You are an alien who\ndoesn't know its true form.",
-"The further you progress through\nthe dungeon, the more you shift\nbetween your forms",
-"This is the knight, who wields an\nepic sword and a shield that stuns\nenemies and blocks projectiles.",
-"This is the ice mage, who summons\nfreezing rings and a forcefield,\nblocking enemies and projectiles.",
-"This is the ninja, who throws\ndeadly ninja stars, and can\ndash faster than the eye can see.",
-"This is the hunter, who can shoot\narrows with pinpoint precision,\nand sprints with great speed.",
-"Legends say this dungeon can\nfind one's true form.",
-"All you have to do is slay\nthe dark wizard Eidolon."]
+var lore_text = ["You are an alien who doesn't know its true form.",
+"The further you progress through the dungeon, the more you shift between your forms",
+"This is the knight, who wields a powerful sword and a shield that blocks projectiles and stuns enemies.",
+"This is the ice mage, who summons freezing rings and a forcefield, freezing enemies in their tracks, and blocking projectiles.",
+"This is the ninja, who throws deadly ninja stars, and can dash faster than the eye can see.",
+"This is the hunter, who can shoot arrows with pinpoint precision, and sprints with great speed.",
+"Legends say this dungeon can find one's true form.",
+"All you have to do is slay the dark wizard Eidolon."]
 var current_lore := 0
 var end := false
 var true_end := false
@@ -50,12 +52,14 @@ func _process(delta: float) -> void:
 		true_end = true
 		black.z_index = 99
 		if not (black_animations.is_playing() and black_animations.assigned_animation == "fade_in"):
-			print('e')
 			black_animations.play("fade_in")
+		safety_timer.start()
 
 func _on_lore_waittime_timeout() -> void:
 	if end_timer.is_stopped():
 		lore_animations.play("fade_in")
+		if current_lore == 1:
+			skip_fade_animation.play("skip_fade")
 		if current_lore == 2:
 			lore_lifetime.wait_time = 6
 		if current_lore == 3:
@@ -80,3 +84,6 @@ func _on_black_animations_animation_finished(anim_name: StringName) -> void:
 func _on_end_timer_timeout() -> void:
 	true_end = true
 	black.z_index = 99
+
+func _on_safety_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

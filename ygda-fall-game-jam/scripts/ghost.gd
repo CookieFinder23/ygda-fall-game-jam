@@ -25,7 +25,7 @@ enum Phase {
 func _ready() -> void:
 	if weak:
 		speed_modifier = 0.7
-		health  = 6
+		health = 6
 		teleport_cooldown.wait_time = teleport_cooldown.wait_time * 1.5
 		
 	animation_player.play("disappear")

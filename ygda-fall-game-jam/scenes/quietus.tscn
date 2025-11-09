@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckk1maci1or0u"]
 
-[ext_resource type="Script" uid="uid://cy63oovoy8vvo" path="res://scripts/queitus.gd" id="1_cniuu"]
-[ext_resource type="Texture2D" uid="uid://c155mi3ninwow" path="res://assets/images/enemies/queitus/quietus_1.png" id="2_mdhng"]
-[ext_resource type="Texture2D" uid="uid://dxs3knt7xaw2p" path="res://assets/images/enemies/queitus/quietus_2.png" id="3_3d7nf"]
+[ext_resource type="Script" uid="uid://cy63oovoy8vvo" path="res://scripts/quietus.gd" id="1_cniuu"]
+[ext_resource type="Texture2D" uid="uid://c155mi3ninwow" path="res://assets/images/enemies/quietus/quietus_1.png" id="2_mdhng"]
+[ext_resource type="Texture2D" uid="uid://dxs3knt7xaw2p" path="res://assets/images/enemies/quietus/quietus_2.png" id="3_3d7nf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odggn"]
 animations = [{

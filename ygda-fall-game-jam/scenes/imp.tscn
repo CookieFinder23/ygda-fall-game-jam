@@ -43,7 +43,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_i53qi")
 
 [node name="ImpClock" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 1.25
 autostart = true
 
 [node name="StunTimer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chvycgdvbbihm"]
+[gd_scene load_steps=21 format=3 uid="uid://chvycgdvbbihm"]
 
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="1_hxyvn"]
 [ext_resource type="Script" uid="uid://crq1tgaiqbkxg" path="res://scripts/opening_lore.gd" id="1_ni3vs"]
@@ -120,7 +120,44 @@ _data = {
 &"fade_out": SubResource("Animation_mgrm8")
 }
 
+[sub_resource type="Animation" id="Animation_ynimr"]
+resource_name = "skip_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skip:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5tomd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skip:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mclpo"]
+_data = {
+&"RESET": SubResource("Animation_5tomd"),
+&"skip_fade": SubResource("Animation_ynimr")
+}
+
 [node name="OpeningLore" type="Panel"]
+self_modulate = Color(1, 0, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -131,19 +168,21 @@ script = ExtResource("1_ni3vs")
 [node name="Lore" type="Label" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -301.0
+offset_top = -93.0
 offset_right = 301.0
-offset_bottom = 93.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_hxyvn")
-theme_override_font_sizes/font_size = 36
-text = "In search for your true identity, 
-Dark Wizard Eidolon must be slain..."
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="LoreLifetime" type="Timer" parent="."]
 wait_time = 4.0
@@ -158,16 +197,13 @@ autoplay = "fade_in"
 [node name="Skip" type="Label" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -86.0
-offset_top = -23.0
-offset_right = 86.0
+offset_left = -89.0
+offset_right = 89.0
+offset_bottom = 23.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_hxyvn")
 text = "[Press any key to skip]"
 
@@ -202,8 +238,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_f6osy")
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
-z_index = -999
+[node name="Background" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
 position = Vector2(320, 180)
 scale = Vector2(640, 360)
 texture = ExtResource("5_ynimr")
@@ -253,8 +288,17 @@ autoplay = true
 wait_time = 3.0
 one_shot = true
 
+[node name="SafetyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SkipFadeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mclpo")
+}
+
 [connection signal="timeout" from="LoreLifetime" to="." method="_on_lore_lifetime_timeout"]
 [connection signal="animation_finished" from="LoreAnimations" to="." method="_on_lore_animations_animation_finished"]
 [connection signal="timeout" from="LoreWaittime" to="." method="_on_lore_waittime_timeout"]
 [connection signal="animation_finished" from="Black/BlackAnimations" to="." method="_on_black_animations_animation_finished"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="SafetyTimer" to="." method="_on_safety_timer_timeout"]

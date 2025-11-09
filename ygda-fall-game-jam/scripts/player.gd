@@ -81,7 +81,7 @@ enum MovementAbilityCooldownLength {
 }
 var movement_ability_cooldown_length_to_number = {
 	MovementAbilityCooldownLength.FAST: 0.25,
-	MovementAbilityCooldownLength.NORMAL: 1,
+	MovementAbilityCooldownLength.NORMAL: 0.75,
 	MovementAbilityCooldownLength.SLOW: 2
 }
 enum Character {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://641gcmtk17kc"
-path="res://.godot/imported/Enemy - Quietus -  Projectile-4.png.png-b1de2ada3754517947b36be0ff79d9f1.ctex"
+uid="uid://chpbnvus6f1ad"
+path="res://.godot/imported/Enemy - Quietus -  Projectile-2.png.png-6c5cb5e696cc6d1afe1de2327a47b207.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/queitus/Enemy - Quietus -  Projectile-4.png.png"
-dest_files=["res://.godot/imported/Enemy - Quietus -  Projectile-4.png.png-b1de2ada3754517947b36be0ff79d9f1.ctex"]
+source_file="res://assets/images/enemies/quietus/Enemy - Quietus -  Projectile-2.png.png"
+dest_files=["res://.godot/imported/Enemy - Quietus -  Projectile-2.png.png-6c5cb5e696cc6d1afe1de2327a47b207.ctex"]
 
 [params]
 
