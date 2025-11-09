@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wtlho878pgg0"
-path="res://.godot/imported/placeholder controls (3).png-92ced307dca51a247632557869ceb48e.ctex"
+uid="uid://re2nwrlc8axh"
+path="res://.godot/imported/controls.png-7bdca41e6845e15d53777576b612b093.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/UI/placeholder controls (3).png"
-dest_files=["res://.godot/imported/placeholder controls (3).png-92ced307dca51a247632557869ceb48e.ctex"]
+source_file="res://assets/images/UI/controls.png"
+dest_files=["res://.godot/imported/controls.png-7bdca41e6845e15d53777576b612b093.ctex"]
 
 [params]
 

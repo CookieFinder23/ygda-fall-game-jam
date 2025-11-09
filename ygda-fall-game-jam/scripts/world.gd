@@ -10,7 +10,6 @@ extends Node
 @onready var fire_audio: AudioStreamPlayer2D = $FireAudio
 @onready var miss_audio: AudioStreamPlayer2D = $MissAudio
 
-
 const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
 const IMP = preload("res://scenes/imp.tscn")
 const GHOST = preload("res://scenes/ghost.tscn")
