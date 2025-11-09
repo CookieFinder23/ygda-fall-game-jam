@@ -153,6 +153,7 @@ autostart = true
 libraries = {
 &"": SubResource("AnimationLibrary_f6osy")
 }
+autoplay = "fade_in"
 
 [node name="Skip" type="Label" parent="."]
 z_index = 1
@@ -230,7 +231,6 @@ stream = ExtResource("4_f6osy")
 expand = true
 
 [node name="Black" type="Panel" parent="."]
-z_index = 99
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

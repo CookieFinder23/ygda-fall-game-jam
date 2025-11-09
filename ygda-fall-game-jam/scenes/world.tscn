@@ -130,6 +130,10 @@ scale = Vector2(2, 2)
 [node name="MovementAbilityCooldown" parent="CanvasLayer" instance=ExtResource("14_xo05s")]
 position = Vector2(69, 120)
 
+[node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("15_xo05s")]
+z_index = 1
+position = Vector2(320, 341)
+
 [node name="FadeToBlack" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,10 +146,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_w7kh3")
 libraries = {
 &"": SubResource("AnimationLibrary_jhx03")
 }
-
-[node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("15_xo05s")]
-z_index = 1
-position = Vector2(320, 341)
 
 [node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
 
