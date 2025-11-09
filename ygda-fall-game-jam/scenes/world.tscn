@@ -135,6 +135,7 @@ z_index = 1
 position = Vector2(320, 341)
 
 [node name="FadeToBlack" type="Panel" parent="CanvasLayer"]
+z_index = 99
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
