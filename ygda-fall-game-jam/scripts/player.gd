@@ -490,3 +490,6 @@ func _on_sword_collision_area_body_entered(body: Node2D) -> void:
 		sword_hit_bodies.append(body)
 		body.take_damage(3)
 		deal_damage_audio.play()
+
+func _on_i_frames_timeout() -> void:
+	i_frames.wait_time = 2

@@ -827,5 +827,6 @@ stream = ExtResource("70_8f1cb")
 [connection signal="animation_finished" from="ReloadBar/ReloadBarVertical/ReloadBarAnimationPlayer" to="." method="_on_reload_bar_animation_player_animation_finished"]
 [connection signal="timeout" from="ChangeSceenToStartScreen" to="." method="_on_change_sceen_to_start_screen_timeout"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]
 [connection signal="body_entered" from="ShieldCollisionArea" to="." method="_on_shield_collision_area_body_entered"]
 [connection signal="body_entered" from="SwordCollisionArea" to="." method="_on_sword_collision_area_body_entered"]
