@@ -29,18 +29,28 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	get_cleared()
+		
 	if stun_timer.is_stopped() and slime_sprite.animation != "split":
 		if phase == Phase.CHASE:
 			if slime_sprite.animation == "lunge":
-				print("whoops!")
-			move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta * speed_modifier)
+				move_and_collide(position.direction_to(Global.player_reference.position) * LUNGE_SPEED * delta * speed_modifier)
+			else:
+				move_and_collide(position.direction_to(Global.player_reference.position) * CHASE_SPEED * delta * speed_modifier)
 			if lunge_range.overlaps_body(Global.player_reference) and lunge_cooldown.is_stopped():
 				lunge_cooldown.start()
 				slime_sprite.play("lunge_startup")
 				phase = Phase.LUNGE_STARTUP
-
 		elif phase == Phase.LUNGE:
 			move_and_collide(lunge_direction * LUNGE_SPEED * delta * speed_modifier)
+
+func get_cleared() -> void:
+	if Global.clear_screen:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.death = true
+		explosion_instance.global_position = global_position
+		world.add_child(explosion_instance)
+		queue_free()
 
 func take_damage(damage: int) -> void:
 	if slime_sprite.animation != "split":
@@ -51,6 +61,7 @@ func take_damage(damage: int) -> void:
 		world.add_child(explosion_instance)
 		if health <= 0:
 			slime_sprite.play("split")
+
 
 func _on_slime_sprite_animation_finished() -> void:
 	if slime_sprite.animation == "lunge_startup":

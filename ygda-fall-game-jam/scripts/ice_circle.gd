@@ -2,6 +2,9 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
 @onready var _3d: Sprite2D = $"3D"
+@onready var damage_audio: AudioStreamPlayer2D = $DamageAudio
+@onready var world: Node = $".."
+
 var is_attack: bool
 var stun_time: float
 
@@ -21,6 +24,7 @@ func _physics_process(delta: float) -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attack:
 		body.take_damage(3)
+		Global.deal_damage_audio_reference.play()
 		stun_time = 1
 	body.stun(stun_time)
 

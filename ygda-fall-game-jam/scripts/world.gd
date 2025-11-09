@@ -5,6 +5,10 @@ extends Node
 @onready var inbetween_wave_timer: Timer = $InbetweenWaveTimer
 @onready var wave_cooldown_timer: Timer = $WaveCooldownTimer
 @onready var fade_to_black_animation_player: AnimationPlayer = $CanvasLayer/FadeToBlack/FadeToBlackAnimationPlayer
+@onready var music: AudioStreamPlayer2D = $Music
+@onready var deal_damage_audio: AudioStreamPlayer2D = $DealDamageAudio
+@onready var fire_audio: AudioStreamPlayer2D = $FireAudio
+@onready var miss_audio: AudioStreamPlayer2D = $MissAudio
 
 
 const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
@@ -16,13 +20,19 @@ const CULTIST = preload("res://scenes/cultist.tscn")
 const CHARACTER_OPTION = preload("res://scenes/character_option.tscn")
 const FINAL_BOSS = preload("res://scenes/final_boss.tscn")
 
+var beat_game := false
+
 func _ready() -> void:
+	Global.deal_damage_audio_reference = deal_damage_audio
+	Global.fire_audio_reference = fire_audio
+	Global.miss_audio_reference = miss_audio
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Global.wave_number = 0
 	Global.picking_character = false
 	Global.enemies_left = 0
 	Global.begin_next_wave = true
 	Global.remaining_characters =  ["ice_mage", "knight", "ninja"]
+	Global.final_boss_health = 48
 	fade_to_black_animation_player.play("fade_out")
 
 func _on_inbetween_wave_timer_timeout() -> void:
@@ -42,7 +52,6 @@ func _on_inbetween_wave_timer_timeout() -> void:
 		add_child(enemy_instance)
 
 func _physics_process(_delta: float) -> void:
-	print(Global.enemies_left)
 	hearts_container.update_hearts(player.health)
 	if Global.begin_next_wave == true:
 		Global.player_reference.transformation_cooldown.start()
@@ -107,4 +116,11 @@ func fade_to_black()  -> void:
 	
 func _on_fade_to_black_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_in":
-		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+		if beat_game:
+			pass
+			print("!")
+		else:
+			get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+func _on_audio_stream_player_2d_finished() -> void: # since looping doesnt work on itch.io
+	music.play()

@@ -1,25 +1,44 @@
-[gd_scene load_steps=112 format=3 uid="uid://ck5ysb5s3qdps"]
+[gd_scene load_steps=132 format=3 uid="uid://ck5ysb5s3qdps"]
 
 [ext_resource type="Script" uid="uid://c6sbb3yfkgvks" path="res://scripts/final_boss.gd" id="1_owbfa"]
+[ext_resource type="Texture2D" uid="uid://b2ne6oo0lie1w" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -1.png.png" id="2_7ejhr"]
 [ext_resource type="Texture2D" uid="uid://dqafp0xxxivof" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-1.png.png" id="2_jpmj6"]
+[ext_resource type="Texture2D" uid="uid://0lwwwrk47o3l" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -2.png.png" id="3_3bb1k"]
 [ext_resource type="Texture2D" uid="uid://bjj6bfqmmmoh1" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-2.png.png" id="3_ydtcr"]
+[ext_resource type="Texture2D" uid="uid://b123kwtn6clgb" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -3.png.png" id="4_gtai1"]
 [ext_resource type="Texture2D" uid="uid://k5fvvg4t5fmt" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-3.png.png" id="4_l8x33"]
 [ext_resource type="Texture2D" uid="uid://c2w88p2thplmo" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-4.png.png" id="5_6h32r"]
+[ext_resource type="Texture2D" uid="uid://brbl3i6ptj48y" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -4.png.png" id="5_sia0w"]
 [ext_resource type="Texture2D" uid="uid://dseprqttjkleo" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-5.png.png" id="6_fokdh"]
+[ext_resource type="Texture2D" uid="uid://beqlsb5sc63ls" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -5.png.png" id="6_ggd73"]
+[ext_resource type="Texture2D" uid="uid://bs8ggxnxftuqb" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -6.png.png" id="7_7c75u"]
 [ext_resource type="Texture2D" uid="uid://b2q2b8iurr26v" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-6.png.png" id="7_46wfk"]
+[ext_resource type="Texture2D" uid="uid://c2j4ge2fv8p1j" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -7.png.png" id="8_1pjyh"]
 [ext_resource type="Texture2D" uid="uid://dadp8psh3vmsa" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-7.png.png" id="8_e30bg"]
+[ext_resource type="Texture2D" uid="uid://cx1hkjabc8syx" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -8.png.png" id="9_26c8s"]
 [ext_resource type="Texture2D" uid="uid://ddb4rxx3bex5o" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-8.png.png" id="9_ayevv"]
+[ext_resource type="Texture2D" uid="uid://dhi1kvgea7ird" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -9.png.png" id="10_2j36y"]
 [ext_resource type="Texture2D" uid="uid://eiyrkxbhjduv" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-9.png.png" id="10_ku7mj"]
+[ext_resource type="Texture2D" uid="uid://rdl2vr5ile71" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -10.png.png" id="11_gmxy6"]
 [ext_resource type="Texture2D" uid="uid://gnoy41vogdxr" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-10.png.png" id="11_kmidm"]
+[ext_resource type="Texture2D" uid="uid://yp1we7hg8ip1" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -11.png.png" id="12_f3bus"]
 [ext_resource type="Texture2D" uid="uid://bow5470rejmwh" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-11.png.png" id="12_ivi5x"]
 [ext_resource type="Texture2D" uid="uid://37eb81gbfa7b" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-12.png.png" id="13_5m3a7"]
+[ext_resource type="Texture2D" uid="uid://wbvg5sjot57l" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -12.png.png" id="13_scdw8"]
 [ext_resource type="Texture2D" uid="uid://eawk1hkqh5c6" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-13.png.png" id="14_y2hl5"]
+[ext_resource type="Texture2D" uid="uid://cqibndv3304wc" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -13.png.png" id="14_y37pi"]
+[ext_resource type="Texture2D" uid="uid://c181sfiw0dh1u" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -14.png.png" id="15_qntue"]
 [ext_resource type="Texture2D" uid="uid://d0wbeje3jwdtf" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-14.png.png" id="15_txlmr"]
+[ext_resource type="Texture2D" uid="uid://c302thncpxw75" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -15.png.png" id="16_k7mjq"]
 [ext_resource type="Texture2D" uid="uid://bkpmk3o58i1bx" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-15.png.png" id="16_q7so2"]
 [ext_resource type="Texture2D" uid="uid://bmqf02l4tm4aw" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-16.png.png" id="17_ggkem"]
+[ext_resource type="Texture2D" uid="uid://dfkwt3ldqcc1c" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -16.png.png" id="17_io3pg"]
 [ext_resource type="Texture2D" uid="uid://ce71eeh1b6d6l" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-17.png.png" id="18_h4c3w"]
+[ext_resource type="Texture2D" uid="uid://c1yra2u5pc70c" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -17.png.png" id="18_k5t87"]
 [ext_resource type="Texture2D" uid="uid://cjv4oucptnyk8" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-18.png.png" id="19_gh8hr"]
+[ext_resource type="Texture2D" uid="uid://bj7irm5bd5m0e" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -18.png.png" id="19_j0oto"]
 [ext_resource type="Texture2D" uid="uid://k1jsod68wjv0" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-19.png.png" id="20_1i36b"]
+[ext_resource type="Texture2D" uid="uid://cv0qoqjv5mmvu" path="res://assets/images/enemies/final_boss/death/Enemy - Dark Wizard - Death -19.png.png" id="20_p47au"]
 [ext_resource type="Texture2D" uid="uid://dkdleg8mux0a" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-20.png.png" id="21_s6xc8"]
 [ext_resource type="Texture2D" uid="uid://nasj2jri2mce" path="res://assets/images/enemies/final_boss/north/Enemy - Dark Wizard - North-21.png.png" id="22_7rlfh"]
 [ext_resource type="Texture2D" uid="uid://be5bvlw5r8js6" path="res://assets/images/enemies/final_boss/east/Enemy - Dark Wizard - East -1.png.png" id="23_owbfa"]
@@ -105,9 +124,72 @@
 [ext_resource type="Texture2D" uid="uid://ctlcwf1l81ar7" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -19.png.png" id="103_0eref"]
 [ext_resource type="Texture2D" uid="uid://c8tlftedcefdp" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -20.png.png" id="104_7ejhr"]
 [ext_resource type="Texture2D" uid="uid://clk6la7wt0w46" path="res://assets/images/enemies/final_boss/northeast/Enemy - Dark Wizard - Northeast -21.png.png" id="105_3bb1k"]
+[ext_resource type="AudioStream" uid="uid://cdu6xbrmgvcct" path="res://assets/audio/boss_death.wav" id="125_3bb1k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4w5h7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ejhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3bb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gtai1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sia0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ggd73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7c75u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1pjyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_26c8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2j36y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gmxy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f3bus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_scdw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_y37pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qntue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_k7mjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_io3pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_k5t87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_j0oto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_p47au")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("44_gtai1")
@@ -461,7 +543,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6kwtl"]
@@ -502,15 +584,18 @@ _data = {
 }
 
 [node name="FinalBoss" type="AnimatableBody2D" groups=["Enemy"]]
+visible = false
 scale = Vector2(2, 2)
 collision_layer = 4
 sync_to_physics = false
 script = ExtResource("1_owbfa")
 
 [node name="FinalBossSprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_4w5h7")
-animation = &"upright"
+animation = &"down"
+autoplay = "down"
 
 [node name="FinalBossCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -535,16 +620,14 @@ wait_time = 0.9
 one_shot = true
 
 [node name="WaitToAppearTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [node name="WaitForMiniWaveToEnd" type="Timer" parent="."]
 wait_time = 12.0
 one_shot = true
 
-[node name="RandomSummon" type="Timer" parent="."]
-wait_time = 9.0
-autostart = true
+[node name="DieAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("125_3bb1k")
 
 [connection signal="animation_finished" from="FinalBossSprite" to="." method="_on_final_boss_sprite_animation_finished"]
 [connection signal="timeout" from="TeleportCooldownTimer" to="." method="_on_teleport_cooldown_timer_timeout"]
@@ -552,4 +635,3 @@ autostart = true
 [connection signal="timeout" from="TimeFromAnimationStartToShoot" to="." method="_on_time_from_animation_start_to_shoot_timeout"]
 [connection signal="timeout" from="WaitToAppearTimer" to="." method="_on_wait_to_appear_timer_timeout"]
 [connection signal="timeout" from="WaitForMiniWaveToEnd" to="." method="_on_wait_for_mini_wave_to_end_timeout"]
-[connection signal="timeout" from="RandomSummon" to="." method="_on_random_summon_timeout"]

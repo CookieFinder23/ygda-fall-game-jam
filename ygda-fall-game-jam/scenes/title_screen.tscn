@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://my4u2iu7jwcr"]
+[gd_scene load_steps=16 format=3 uid="uid://my4u2iu7jwcr"]
 
 [ext_resource type="Script" uid="uid://ddfgyxp4vn13y" path="res://scripts/title_screen.gd" id="1_fgkus"]
-[ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/title screen thingy (4).mp3" id="3_dc4i4"]
+[ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/menu.mp3" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="3_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://ddmni3lunmw3y" path="res://assets/images/UI/placeholder controls (4).png" id="4_dc4i4"]
+[ext_resource type="VideoStream" uid="uid://diowitqof3ott" path="res://assets/images/UI/1108.ogv" id="4_mgrm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
 
@@ -20,6 +22,9 @@ shadow_offset = Vector2(0, 4)
 bg_color = Color(1, 1, 1, 0.498039)
 border_color = Color(0, 0, 0, 0.498039)
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
+texture = ExtResource("4_dc4i4")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc4i4"]
 bg_color = Color(0, 0, 0, 1)
@@ -116,7 +121,23 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
 text = "Start Game
 "
 
+[node name="ControlsButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Controls"
+
 [node name="OptionsButton" type="Button" parent="MainButtons"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -132,21 +153,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
 text = "Options
 "
 
-[node name="QuitButton" type="Button" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mgrm8")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
-theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
-text = "Quit"
-
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -159,16 +165,48 @@ offset_bottom = 101.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_mgrm8")
 theme_override_font_sizes/font_size = 64
-text = "Placeholder Name"
+text = "Eidolon's Dungeon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dc4i4")
 autoplay = true
-parameters/looping = true
 
 [node name="Options" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 101.0
+offset_right = 570.0
+offset_bottom = 351.0
+
+[node name="BackButton" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sa3yf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4lrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fgkus")
+text = "Back"
+
+[node name="Controls" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,30 +219,19 @@ offset_right = 250.0
 offset_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e54dn")
 
-[node name="OptionsLabel" type="Label" parent="Options"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 45.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_mgrm8")
-theme_override_font_sizes/font_size = 32
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" type="Button" parent="Options"]
+[node name="BackButton" type="Button" parent="Controls"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -108.0
-offset_top = -61.0
-offset_right = 108.0
-offset_bottom = -16.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
@@ -247,6 +274,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stream = ExtResource("4_mgrm8")
 autoplay = true
 expand = true
 loop = true
@@ -266,7 +294,9 @@ libraries = {
 }
 
 [connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Controls/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="animation_finished" from="Black/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

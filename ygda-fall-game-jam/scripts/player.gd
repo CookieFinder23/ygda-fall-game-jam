@@ -25,6 +25,11 @@ extends CharacterBody2D
 @onready var shield_collision_area: Area2D = $ShieldCollisionArea
 @onready var sword_collision: CollisionShape2D = $SwordCollisionArea/SwordCollision
 @onready var sword_collision_area: Area2D = $SwordCollisionArea
+@onready var take_damage_audio: AudioStreamPlayer2D = $TakeDamageAudio
+@onready var heal_audio: AudioStreamPlayer2D = $HealAudio
+@onready var deal_damage_audio: AudioStreamPlayer2D = $DealDamageAudio
+@onready var woosh_audio: AudioStreamPlayer2D = $WooshAudio
+@onready var smoke_dash_audio: AudioStreamPlayer2D = $SmokeDashAudio
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -41,6 +46,7 @@ var health = 5
 var next_character: Character
 var transformation_cycle = []
 var slash_start_degrees: int
+var sword_hit_bodies = []
 
 enum MovementDirection {
 	UP,
@@ -90,6 +96,7 @@ func _enter_tree() -> void:
 	Global.player_reference = self
 
 func add_character(character: String) -> void:
+	heal_audio.play()
 	if health < 5:
 		health += 1
 	if character == "ice_mage":
@@ -264,6 +271,7 @@ func attack():
 		projectile_instance.is_player_owned = true
 		projectile_instance.damage = 3
 		get_tree().root.add_child(projectile_instance)
+		woosh_audio.play()
 	elif current_character == Character.ICE_MAGE:
 		var ice_circle_instance = ICE_CIRCLE.instantiate()
 		ice_circle_instance.global_position.x = clamp(get_global_mouse_position().x, 188, 452)
@@ -271,6 +279,7 @@ func attack():
 		ice_circle_instance.is_attack = true
 		get_tree().root.add_child(ice_circle_instance)
 	elif current_character == Character.KNIGHT:
+		sword_hit_bodies = []
 		current_weapon.position.x *= 2
 		slash_timer.start()
 		slash_start_degrees = current_weapon.rotation_degrees
@@ -344,6 +353,10 @@ func set_head_direction() -> void:
 			current_head_sprite.position.y = -6
 	elif current_character == Character.NINJA:
 		if current_body_sprite.animation == "idle":
+			if current_body_sprite.frame == 1:
+				current_head_sprite.position.y = -12
+			else:
+				current_head_sprite.position.y = -11.5
 			current_head_sprite.position.x = 2
 			if current_body_sprite.flip_h:
 				current_body_sprite.position.x = 4
@@ -358,9 +371,15 @@ func set_head_direction() -> void:
 			else:
 				current_head_sprite.position.x = -8
 	elif current_character == Character.KNIGHT:
-		current_body_sprite.position = Vector2.ZERO
-		current_head_sprite.position = Vector2(0, -11.5)
-	
+		if current_body_sprite.animation == "idle":
+			current_body_sprite.position = Vector2(0, 4)
+			current_head_sprite.position = Vector2(0, -11)
+			if current_body_sprite.frame == 1:
+				current_body_sprite.position.y += 0.5
+				current_head_sprite.position.y += 1
+		else:
+			current_body_sprite.position = Vector2.ZERO
+			current_head_sprite.position = Vector2(0, -11.5)
 func _physics_process(delta: float) -> void:
 	if health > 0:
 		if i_frames.is_stopped():
@@ -371,8 +390,9 @@ func _physics_process(delta: float) -> void:
 			player_hurtbox_collision.disabled = true
 			current_body_sprite.modulate.a = 0.25 + (1 - (i_frames.time_left / i_frames.wait_time)) * 0.75
 			current_head_sprite.modulate.a = 0.25 + (1 - (i_frames.time_left / i_frames.wait_time)) * 0.75
-		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
+		if Global.animation_lock:
+			input_direction = Vector2.ZERO
 		if input_direction == Vector2.ZERO:
 			if current_character == Character.ICE_MAGE and global_position.y > get_global_mouse_position().y:
 				play_body_animation("idle_back")
@@ -429,6 +449,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(_damage: int) -> void:
 	if i_frames.is_stopped() and not (current_character == Character.NINJA and not movement_ability_in_action.is_stopped()):
+		take_damage_audio.play()
 		i_frames.start()
 		health -= 1
 		var explosion_instance = Global.EXPLOSION.instantiate()
@@ -441,10 +462,7 @@ func take_damage(_damage: int) -> void:
 			explosion_instance.death = false
 		get_tree().root.add_child(explosion_instance)
 
-
 func _on_change_sceen_to_start_screen_timeout() -> void:
-	#for child in world.get_children():
-		#child.queue_free()
 	world.fade_to_black()
 	
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
@@ -466,4 +484,7 @@ func _on_shield_collision_area_body_entered(body: Node2D) -> void:
 	body.stun(0.25)
 
 func _on_sword_collision_area_body_entered(body: Node2D) -> void:
-	body.take_damage(3)
+	if not sword_hit_bodies.has(body):
+		sword_hit_bodies.append(body)
+		body.take_damage(3)
+		deal_damage_audio.play()

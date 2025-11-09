@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://dqvdu3dys7bvv"]
+[gd_scene load_steps=102 format=3 uid="uid://dqvdu3dys7bvv"]
 
 [ext_resource type="Script" uid="uid://bi1ni5sleiwpy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dmk7ppasyvxx6" path="res://assets/images/characters/hunter/idle1.png" id="3_j2b1d"]
@@ -34,7 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://dkwim0i34mkde" path="res://assets/images/characters/ice_mage/backside.png" id="23_j2b1d"]
 [ext_resource type="Texture2D" uid="uid://8ejdkbhp5jdi" path="res://assets/images/characters/knight/head1.png" id="25_u2ulf"]
 [ext_resource type="Texture2D" uid="uid://dm5mm3tbplnqd" path="res://assets/images/characters/knight/head2.png" id="26_6e8lb"]
+[ext_resource type="Texture2D" uid="uid://bhflhocfsxvq3" path="res://assets/images/characters/knight/idlebody1.png" id="26_fuw3a"]
 [ext_resource type="Texture2D" uid="uid://dir5xwo5swkyc" path="res://assets/images/characters/knight/head3.png" id="27_2gdjj"]
+[ext_resource type="Texture2D" uid="uid://bsacabbc8c70k" path="res://assets/images/characters/knight/idlebody2.png" id="27_8txt3"]
 [ext_resource type="Texture2D" uid="uid://bnj0knfjxet2o" path="res://assets/images/characters/knight/head4.png" id="28_sc3ue"]
 [ext_resource type="Texture2D" uid="uid://bkpwgs855sd12" path="res://assets/images/characters/hunter/crossbow5.png" id="29_jc3p3"]
 [ext_resource type="Texture2D" uid="uid://bsc7xx6oycq8n" path="res://assets/images/characters/knight/head5.png" id="29_lxlsd"]
@@ -64,6 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://dbcaxbqx4ahmi" path="res://assets/images/characters/ninja/ninjahead8.png" id="54_vdulj"]
 [ext_resource type="Texture2D" uid="uid://mlt05jeofngn" path="res://assets/images/characters/ninja/ninjahead9.png" id="55_vau08"]
 [ext_resource type="Texture2D" uid="uid://b22rl1iuo8dic" path="res://assets/images/characters/ninja/ninjahead10.png" id="56_qsb7e"]
+[ext_resource type="AudioStream" uid="uid://dubgi7u7e6qa2" path="res://assets/audio/take_damage.wav" id="67_8txt3"]
+[ext_resource type="AudioStream" uid="uid://2gt1jc7l2gsi" path="res://assets/audio/heal.wav" id="68_2w11d"]
+[ext_resource type="AudioStream" uid="uid://dx5ugwcfvtwb0" path="res://assets/audio/deal_damage.wav" id="69_770dr"]
+[ext_resource type="AudioStream" uid="uid://0sd6yrap8cpq" path="res://assets/audio/woosh.wav" id="70_8f1cb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
@@ -230,11 +236,14 @@ load_path = "res://.godot/imported/legs4.png-5254b348c20edea29e45a69a7c13c07e.ct
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_4gjji")
+"texture": ExtResource("26_fuw3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_8txt3")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -681,7 +690,7 @@ autoplay = "idle"
 visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_smehm")
-animation = &"walk"
+animation = &"idle"
 
 [node name="KnightHeadSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -707,11 +716,13 @@ sprite_frames = SubResource("SpriteFrames_j2b1d")
 animation = &"0"
 
 [node name="NinjaHeadSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-4, -11.5)
 sprite_frames = SubResource("SpriteFrames_2gdjj")
 animation = &"8"
 
 [node name="NinjaBodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-4, 4)
 sprite_frames = SubResource("SpriteFrames_sc3ue")
 animation = &"idle"
@@ -781,7 +792,7 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_sc3ue")
 disabled = true
 
-[node name="SwordCollisionArea" type="Area2D" parent="." groups=["shield"]]
+[node name="SwordCollisionArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
 collision_mask = 4
@@ -794,6 +805,21 @@ disabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_u2ulf")
 }
+
+[node name="TakeDamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("67_8txt3")
+
+[node name="HealAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("68_2w11d")
+
+[node name="DealDamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("69_770dr")
+
+[node name="WooshAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("70_8f1cb")
+
+[node name="SmokeDashAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("70_8f1cb")
 
 [connection signal="animation_finished" from="HunterWeaponSprite" to="." method="_on_hunter_weapon_sprite_animation_finished"]
 [connection signal="timeout" from="TransformationCooldown" to="." method="_on_transformation_cooldown_timeout"]

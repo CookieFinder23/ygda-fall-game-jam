@@ -30,6 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	get_cleared()
 	if stun_timer.is_stopped():
 		look_at(Global.player_reference.position)
 		rotation_degrees += 115
@@ -41,6 +42,14 @@ func _physics_process(delta: float) -> void:
 		else:
 			move_and_collide(position.direction_to(Global.player_reference.position) * get_shoot_speed_offset(shoot_timer) * delta)
 
+func get_cleared() -> void:
+	if Global.clear_screen:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.death = true
+		explosion_instance.global_position = global_position
+		world.add_child(explosion_instance)
+		queue_free()
+		
 func _on_update_mode_timer_timeout() -> void:
 	if phase == Phase.SLASH:
 		phase = Phase.SHOOT

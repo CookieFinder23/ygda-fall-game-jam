@@ -25,12 +25,15 @@ enum Phase {
 func _ready() -> void:
 	if weak:
 		speed_modifier = 0.7
+		health  = 6
 		teleport_cooldown.wait_time = teleport_cooldown.wait_time * 1.5
 		
 	animation_player.play("disappear")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	get_cleared()
+	
 	if phase == Phase.HUNT and health > 0 and stun_timer.is_stopped():
 		move_and_collide(position.direction_to(Global.player_reference.position) * SPEED * delta * speed_modifier)
 
@@ -51,7 +54,14 @@ func _physics_process(delta: float) -> void:
 			ghost_sprite.play("down")
 		else:
 			ghost_sprite.play("up")
-			
+
+func get_cleared() -> void:
+	if Global.clear_screen:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.death = true
+		explosion_instance.global_position = global_position
+		world.add_child(explosion_instance)
+		queue_free()
 
 func _on_wait_clock_timeout() -> void:
 	phase = Phase.HUNT
@@ -80,9 +90,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			global_position.y = Global.player_reference.position.y + 50
 		else:
 			global_position.y = Global.player_reference.position.y - 50
-		if weak and health < 6:
-			Global.enemies_left -= 1
-			queue_free()
 		animation_player.play("appear")
 	elif anim_name == "appear":
 		phase = Phase.HUNT

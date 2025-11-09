@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf6y5ns3pye31"]
+[gd_scene load_steps=10 format=3 uid="uid://cf6y5ns3pye31"]
 
 [ext_resource type="Script" uid="uid://djgcu6pcpje6o" path="res://scripts/ice_circle.gd" id="1_3t4hb"]
 [ext_resource type="Texture2D" uid="uid://bkc4f3r3674su" path="res://assets/images/characters/ice_mage/outline.png" id="1_r16ak"]
 [ext_resource type="Texture2D" uid="uid://d30ypvnns4c8r" path="res://assets/images/characters/ice_mage/base.png" id="2_s2on2"]
 [ext_resource type="Texture2D" uid="uid://bpjyfxu8wmdwd" path="res://assets/images/characters/ice_mage/3d_layer.png" id="3_s2on2"]
+[ext_resource type="AudioStream" uid="uid://dubgi7u7e6qa2" path="res://assets/audio/take_damage.wav" id="5_5uyu1"]
 
 [sub_resource type="Animation" id="Animation_3t4hb"]
 tracks/0/type = "value"
@@ -145,6 +146,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_3t4hb")
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5uyu1")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

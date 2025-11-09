@@ -99,6 +99,7 @@ func _on_imp_clock_timeout() -> void:
 				current_action = Action.DOWN
 
 func _physics_process(delta: float) -> void:
+	get_cleared()
 	if stun_timer.is_stopped():
 		if current_action == Action.UP:
 			position.y -= DASH_DISTANCE / DASH_TIME * delta
@@ -120,7 +121,14 @@ func _physics_process(delta: float) -> void:
 			if position.x >= 452:
 				position.x = 452
 				current_action = Action.ATTACK
-		
+
+func get_cleared() -> void:
+	if Global.clear_screen:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.death = true
+		explosion_instance.global_position = global_position
+		world.add_child(explosion_instance)
+		queue_free()
 
 func take_damage(damage: int) -> void:
 	health -= damage

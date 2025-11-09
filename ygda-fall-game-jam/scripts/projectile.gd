@@ -11,6 +11,7 @@ extends AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var world: Node = $".."
 
+
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 var speed: int
 var type: String
@@ -19,6 +20,7 @@ var is_player_owned: bool
 var old_rotation
 var freeze: bool
 var right_rotation: bool
+var splashy: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var projectiles = {
@@ -35,6 +37,9 @@ func _ready() -> void:
 		projectiles[projectile].disabled = type != projectile
 	play(type)
 	old_rotation = rotation
+	if type == "fireball" or type == "dark_energy" or type == "big_projectile" or type == "cultist_energy":
+		splashy = true
+		Global.fire_audio_reference.play()
 
 	
 func _physics_process(delta: float) -> void:
@@ -51,12 +56,20 @@ func _physics_process(delta: float) -> void:
 				rotation_degrees += -90
 			if type == "quietus":
 				rotation_degrees += 90
+		if Global.clear_screen:
+			die()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if not freeze:
 		if body.is_in_group("Wall"):
+			if not splashy:
+				Global.miss_audio_reference.play()
 			die()
 		elif (body.is_in_group("Player") and not is_player_owned) or (body.is_in_group("Enemy") and is_player_owned):
+			if is_player_owned:
+				Global.deal_damage_audio_reference.play()
+			if not splashy and not body == Global.player_reference:
+				Global.miss_audio_reference.play()
 			body.take_damage(damage)
 			die()
 

@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://chvycgdvbbihm"]
+[gd_scene load_steps=17 format=3 uid="uid://chvycgdvbbihm"]
 
 [ext_resource type="FontFile" uid="uid://b025l836uihdr" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="1_hxyvn"]
 [ext_resource type="Script" uid="uid://crq1tgaiqbkxg" path="res://scripts/opening_lore.gd" id="1_ni3vs"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55uqw"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="VideoStream" uid="uid://b8bid5emonwln" path="res://assets/images/UI/darkmage.ogv" id="3_mue4e"]
+[ext_resource type="VideoStream" uid="uid://20i7aoig1ebj" path="res://assets/images/UI/intro.ogv" id="4_f6osy"]
+[ext_resource type="AudioStream" uid="uid://cv86wcqffl4yv" path="res://assets/audio/menu.mp3" id="5_rufa8"]
 
 [sub_resource type="Animation" id="Animation_mue4e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/path = NodePath("Lore:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,12 +21,27 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_rufa8"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lore:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ni3vs"]
 resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/path = NodePath("Lore:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,10 +51,72 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_f6osy"]
+resource_name = "fade_skip"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6osy"]
 _data = {
 &"RESET": SubResource("Animation_mue4e"),
-&"fade_out": SubResource("Animation_ni3vs")
+&"fade_in": SubResource("Animation_rufa8"),
+&"fade_out": SubResource("Animation_ni3vs"),
+&"fade_skip": SubResource("Animation_f6osy")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6osy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mue4e"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_dc4i4"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e54dn"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mgrm8"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dc4i4"]
+_data = {
+&"RESET": SubResource("Animation_dc4i4"),
+&"fade_in": SubResource("Animation_e54dn"),
+&"fade_out": SubResource("Animation_mgrm8")
 }
 
 [node name="OpeningLore" type="Panel"]
@@ -48,36 +125,127 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_55uqw")
 script = ExtResource("1_ni3vs")
 
-[node name="Label" type="Label" parent="."]
+[node name="Lore" type="Label" parent="."]
+z_index = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.5
-offset_top = -11.5
-offset_right = 29.5
-offset_bottom = 11.5
+offset_left = -301.0
+offset_right = 301.0
+offset_bottom = 93.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_hxyvn")
-text = "lore idk"
+theme_override_font_sizes/font_size = 36
+text = "In search for your true identity, 
+Dark Wizard Eidolon must be slain..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LoreLifetime" type="Timer" parent="."]
 wait_time = 4.0
-one_shot = true
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="LoreAnimations" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_f6osy")
 }
 
+[node name="Skip" type="Label" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -23.0
+offset_right = 86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_hxyvn")
+text = "[Press any key to skip]"
+
+[node name="LoreWaittime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Panel" type="Panel" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6osy")
+metadata/_edit_use_anchors_ = true
+
+[node name="FinalBossVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_mue4e")
+expand = true
+
+[node name="IntroVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer/SubViewportContainer/SubViewport/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_f6osy")
+expand = true
+
+[node name="Black" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mue4e")
+
+[node name="BlackAnimations" type="AnimationPlayer" parent="Black"]
+libraries = {
+&"": SubResource("AnimationLibrary_dc4i4")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rufa8")
+autoplay = true
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="LoreLifetime" to="." method="_on_lore_lifetime_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="LoreAnimations" to="." method="_on_lore_animations_animation_finished"]
+[connection signal="timeout" from="LoreWaittime" to="." method="_on_lore_waittime_timeout"]
+[connection signal="animation_finished" from="Black/BlackAnimations" to="." method="_on_black_animations_animation_finished"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

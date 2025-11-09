@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cc2fs8maasyhr" path="res://assets/images/characters/ice_mage/idle 1.png" id="1_lf5i1"]
 [ext_resource type="Script" uid="uid://bb7bwmxnp8438" path="res://scripts/character_option.gd" id="1_shq8t"]
 [ext_resource type="Texture2D" uid="uid://df54o1bwnpw0x" path="res://assets/images/characters/ice_mage/idle 2.png" id="2_ylst1"]
-[ext_resource type="Texture2D" uid="uid://cwh1ulcc7jc61" path="res://assets/images/characters/knight/legs1.png" id="3_shq8t"]
-[ext_resource type="Texture2D" uid="uid://jv856cgd4aqh" path="res://assets/images/characters/knight/legs2.png" id="4_f0x2q"]
+[ext_resource type="Texture2D" uid="uid://br13qcbrp3by4" path="res://assets/images/characters/knight/idle1.png" id="3_jw4di"]
+[ext_resource type="Texture2D" uid="uid://bxcsbct6im5yt" path="res://assets/images/characters/knight/idle2.png" id="4_liave"]
 [ext_resource type="Texture2D" uid="uid://b4rqtfdgd3p28" path="res://assets/images/characters/ninja/ninjaidle1.png" id="5_jw4di"]
 [ext_resource type="Texture2D" uid="uid://cd73srw5jthrp" path="res://assets/images/characters/ninja/ninjaidle2.png" id="6_liave"]
 
@@ -23,10 +23,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_shq8t")
+"texture": ExtResource("3_jw4di")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_f0x2q")
+"texture": ExtResource("4_liave")
 }],
 "loop": true,
 "name": &"knight",
@@ -49,8 +49,7 @@ size = Vector2(16, 32)
 
 [node name="CharacterOptionSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_lf5i1")
-animation = &"ninja"
-frame_progress = 0.628139
+animation = &"knight"
 script = ExtResource("1_shq8t")
 
 [node name="CharacterOptionArea" type="Area2D" parent="."]

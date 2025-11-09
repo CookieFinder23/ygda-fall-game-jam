@@ -9,18 +9,19 @@ extends AnimatableBody2D
 @onready var final_boss_collision: CollisionShape2D = $FinalBossCollision
 @onready var wait_to_appear_timer: Timer = $WaitToAppearTimer
 @onready var wait_for_mini_wave_to_end: Timer = $WaitForMiniWaveToEnd
+@onready var die_audio: AudioStreamPlayer2D = $DieAudio
 
 const CULTIST = preload("res://scenes/cultist.tscn")
 const QUIETUS = preload("res://scenes/quietus.tscn")
 const SLIME = preload("res://scenes/slime.tscn")
 const IMP = preload("res://scenes/imp.tscn")
 const GHOST = preload("res://scenes/ghost.tscn")
-
+const TROPHY = preload("res://scenes/trophy.tscn")
 const ENEMY_SPAWNER = preload("res://scenes/enemy_spawner.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 const ATTACK_SPREAD = 135
-var health: int = 24
+var health: int = 48
 var phase: Phase = Phase.TELEPORT
 var direction_degrees: int
 var head_direction: int
@@ -32,11 +33,19 @@ enum Phase {
 	TELEPORT
 }
 
+#func _ready() -> void:
+	#health = 1
+	#miniwave_count = 2
+
 func get_direction_to_player() -> void:
-	var head_angle_degrees: float = rad_to_deg(get_angle_to(Global.player_reference.position))
-	var head_increment: float = 180 / 4
-	head_direction = snapped(wrap(head_angle_degrees + 270, 0, 360), head_increment) / head_increment
-	direction_degrees = head_direction * head_increment
+	if miniwave_count == 3:
+		direction_degrees = 0
+		head_direction = 0
+	else:
+		var head_angle_degrees: float = rad_to_deg(get_angle_to(Global.player_reference.position))
+		var head_increment: float = 180 / 4
+		head_direction = snapped(wrap(head_angle_degrees + 270, 0, 360), head_increment) / head_increment
+		direction_degrees = head_direction * head_increment
 	final_boss_sprite.flip_h = head_direction < 5
 	if head_direction == 0 or head_direction == 8:
 		final_boss_sprite.play("down")
@@ -77,13 +86,16 @@ func _on_time_from_animation_start_to_shoot_timeout() -> void:
 		mad_dummy_attack()
 
 func _on_final_boss_sprite_animation_finished() -> void:
-	teleport_cooldown_timer.start()
+	if final_boss_sprite.animation == "death":
+		queue_free()
+	else:
+		teleport_cooldown_timer.start()
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "disappear":
-		if 24 - health >= (miniwave_count + 1) * 6:
+		if 48 - health >= (miniwave_count + 1) * 12:
 			miniwave_count += 1
-			wait_for_mini_wave_to_end.wait_time = miniwave_count * 4
+			wait_for_mini_wave_to_end.wait_time = miniwave_count * 2.5 + 0.5
 			wait_for_mini_wave_to_end.start()
 			summon_multiple_enemies(clamp(miniwave_count, 1, 4))
 		else:
@@ -93,23 +105,27 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 		
 func _on_teleport_cooldown_timer_timeout() -> void:
-	animation_player.play("disappear")
-	final_boss_collision.disabled = true
+	if not already_dead:
+		animation_player.play("disappear")
+		final_boss_collision.disabled = true
 
 func take_damage(damage: int) -> void:
 	health -= damage
-	var explosion_instance = Global.EXPLOSION.instantiate()
-	explosion_instance.global_position = global_position
 	if miniwave_count < 3 and health <= 0:
 		health = 1
+	Global.final_boss_health = health
 	if health <= 0 and not already_dead:
-		explosion_instance.global_position = global_position
-		explosion_instance.death = true
-		world.add_child(explosion_instance)
-		Global.enemies_left -= 0.5
 		already_dead = true
-		queue_free()
+		final_boss_sprite.play("death")
+		var trophy_instance = TROPHY.instantiate()
+		trophy_instance.global_position = global_position
+		trophy_instance.z_index = -1
+		world.add_child(trophy_instance)
+		Global.clear_screen = true
+		die_audio.play()
 	else:
+		var explosion_instance = Global.EXPLOSION.instantiate()
+		explosion_instance.global_position = global_position
 		explosion_instance.death = false
 		world.add_child(explosion_instance)
 
@@ -117,11 +133,14 @@ func stun(stun_time: int) -> void:
 	stun_timer.wait_time = stun_time
 	stun_timer.start()
 
-
 func _on_wait_to_appear_timer_timeout() -> void:
-	var proposed_spawn_position = Vector2(randi_range(236, 372), randi_range(96, 264))
-	while proposed_spawn_position.distance_to(Global.player_reference.position) < 64:
+	var proposed_spawn_position: Vector2
+	if miniwave_count == 3:
+		proposed_spawn_position = Vector2(304, randi_range(200, 96))
+	else:
 		proposed_spawn_position = Vector2(randi_range(236, 372), randi_range(96, 264))
+		while proposed_spawn_position.distance_to(Global.player_reference.position) < 64:
+			proposed_spawn_position = Vector2(randi_range(236, 372), randi_range(96, 264))
 	position = proposed_spawn_position
 	get_direction_to_player()
 	visible = true
