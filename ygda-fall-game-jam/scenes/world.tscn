@@ -143,6 +143,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_jhx03")
 }
 
+[node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("15_xo05s")]
+z_index = 1
+position = Vector2(320, 341)
+
 [node name="BattleRoom" parent="." instance=ExtResource("1_nnsk1")]
 
 [node name="Player" parent="." instance=ExtResource("2_rwgxs")]
@@ -168,9 +172,6 @@ stream = ExtResource("13_jhx03")
 
 [node name="MissAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_o8fc1")
-
-[node name="BossHealthBar" parent="." instance=ExtResource("15_xo05s")]
-position = Vector2(320, 341)
 
 [connection signal="animation_finished" from="CanvasLayer/FadeToBlack/FadeToBlackAnimationPlayer" to="." method="_on_fade_to_black_animation_player_animation_finished"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_2d_finished"]

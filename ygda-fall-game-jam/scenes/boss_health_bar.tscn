@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvu488blwniun"]
+[gd_scene load_steps=24 format=3 uid="uid://dvu488blwniun"]
 
 [ext_resource type="Texture2D" uid="uid://cdivi2emdo1gg" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-1.png.png" id="1_qh5vu"]
 [ext_resource type="Texture2D" uid="uid://bkq3333ojr6lp" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-2.png.png" id="2_pw2hf"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://x1cg81dbnqhs" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-14.png.png" id="14_uwol6"]
 [ext_resource type="Texture2D" uid="uid://b017or0sqkag5" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-15.png.png" id="15_58wqq"]
 [ext_resource type="Texture2D" uid="uid://bwumeb4ahrvmh" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-16.png.png" id="16_l8itn"]
+[ext_resource type="Texture2D" uid="uid://d2mjjj43jbia4" path="res://assets/images/UI/boss_health_bar/Enemy - Dark Wizard - Boss Health Bar-17.png.png" id="17_pw2hf"]
 [ext_resource type="Script" uid="uid://buvs03gyu3uxi" path="res://scripts/boss_health_bar.gd" id="18_pw2hf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gfwjt"]
@@ -68,6 +69,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("16_l8itn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pw2hf")
 }],
 "loop": false,
 "name": &"default",
@@ -104,10 +108,14 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_k4xya"]
+resource_name = "fade_out"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4xya"]
 _data = {
 &"RESET": SubResource("Animation_pw2hf"),
-&"fade_in": SubResource("Animation_qh5vu")
+&"fade_in": SubResource("Animation_qh5vu"),
+&"fade_out": SubResource("Animation_k4xya")
 }
 
 [node name="BossHealthBar" type="AnimatedSprite2D"]

@@ -12,7 +12,7 @@ extends AnimatableBody2D
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 const ATTACK_SPREAD = 90
-var health: int = 9
+var health: int = 12
 var phase: Phase = Phase.TELEPORT
 var weak: bool = false
 var already_dead: bool = false
