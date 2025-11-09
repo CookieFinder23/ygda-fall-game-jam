@@ -5,6 +5,7 @@ extends Control
 @onready var animation_player: AnimationPlayer = $Black/AnimationPlayer
 @onready var video_stream_player: VideoStreamPlayer = $CanvasLayer/SubViewportContainer/SubViewport/Panel/VideoStreamPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var credits: Panel = $Credits
 
 var start_game := true
 
@@ -26,6 +27,7 @@ func _on_controls_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	main_buttons.visible = true
 	controls.visible = false
+	credits.visible = false
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
@@ -43,3 +45,7 @@ func _on_replay_button_pressed() -> void:
 	start_game = false
 	black.visible = true
 	animation_player.play("fade_in")
+
+func _on_credits_button_pressed() -> void:
+	credits.visible = true
+	main_buttons.visible = false

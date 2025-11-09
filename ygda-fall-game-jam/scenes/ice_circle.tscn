@@ -141,7 +141,7 @@ libraries = {
 
 [node name="Hitbox" type="Area2D" parent="." groups=["shield"]]
 visible = false
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["shield"]]

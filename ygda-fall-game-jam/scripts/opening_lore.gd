@@ -5,15 +5,13 @@ extends Panel
 @onready var lore: Label = $Lore
 @onready var final_boss_video_player: VideoStreamPlayer = $CanvasLayer/SubViewportContainer/SubViewport/Panel/FinalBossVideoPlayer
 @onready var intro_video_player: VideoStreamPlayer = $CanvasLayer/SubViewportContainer/SubViewport/Panel/IntroVideoPlayer
-@onready var small_stagger: Timer = $SmallStagger
 @onready var lore_lifetime: Timer = $LoreLifetime
 @onready var black: Panel = $Black
 @onready var end_timer: Timer = $EndTimer
 
-
 var lore_text = ["You are an alien who\ndoesn't know its true form.",
 "The further you progress through\nthe dungeon, the more you shift\nbetween your forms",
-"This is the knight, who wields an\nepic sword and a shield that stuns\n enemies and blocks projectiles.",
+"This is the knight, who wields an\nepic sword and a shield that stuns\nenemies and blocks projectiles.",
 "This is the ice mage, who summons\nfreezing rings and a forcefield,\nblocking enemies and projectiles.",
 "This is the ninja, who throws\ndeadly ninja stars, and can\ndash faster than the eye can see.",
 "This is the hunter, who can shoot\narrows with pinpoint precision,\nand sprints with great speed.",
@@ -52,6 +50,7 @@ func _process(delta: float) -> void:
 		true_end = true
 		black.z_index = 99
 		if not (black_animations.is_playing() and black_animations.assigned_animation == "fade_in"):
+			print('e')
 			black_animations.play("fade_in")
 
 func _on_lore_waittime_timeout() -> void:
