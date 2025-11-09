@@ -26,7 +26,7 @@ func _ready() -> void:
 	Global.fire_audio_reference = fire_audio
 	Global.miss_audio_reference = miss_audio
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	Global.wave_number = 3
+	Global.wave_number = 0
 	Global.picking_character = false
 	Global.enemies_left = 0
 	Global.begin_next_wave = true

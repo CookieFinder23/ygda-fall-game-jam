@@ -223,6 +223,7 @@ stream = ExtResource("4_f6osy")
 expand = true
 
 [node name="Black" type="Panel" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,6 +236,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mue4e")
 libraries = {
 &"": SubResource("AnimationLibrary_dc4i4")
 }
+autoplay = "fade_out"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_rufa8")
