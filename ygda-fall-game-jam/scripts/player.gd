@@ -42,7 +42,7 @@ var current_weapon: AnimatedSprite2D
 var current_character: Character
 var movement_speed: int
 var movement_direction: MovementDirection
-var health = 5
+var health = 6
 var next_character: Character
 var transformation_cycle = []
 var slash_start_degrees: int
@@ -97,7 +97,7 @@ func _enter_tree() -> void:
 
 func add_character(character: String) -> void:
 	heal_audio.play()
-	if health < 5:
+	if health < 6:
 		health += 1
 	if character == "ice_mage":
 		transformation_cycle.append(Character.ICE_MAGE)
@@ -204,6 +204,8 @@ func _on_movement_ability_in_action_timeout() -> void:
 		world.add_child(explosion_instance)
 		current_body_sprite.visible = true
 		current_head_sprite.visible = true
+		if i_frames.time_left < 0.2:
+			i_frames.start(0.2)
 
 func do_knight_slash() -> void:
 	var time_to_use: float

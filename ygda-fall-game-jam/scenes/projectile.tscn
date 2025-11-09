@@ -378,9 +378,10 @@ radius = 4.0
 size = Vector2(12, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c2e5"]
-size = Vector2(13, 16)
+size = Vector2(6.99999, 4.75001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1rfv"]
+size = Vector2(15, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2g40"]
 size = Vector2(16, 16)
@@ -428,7 +429,7 @@ _data = {
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_q3m7n")
-animation = &"cultist_energy_impact"
+animation = &"big_projectile"
 script = ExtResource("1_c8fcr")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -451,12 +452,11 @@ shape = SubResource("RectangleShape2D_cees3")
 
 [node name="DarkEnergyCollissionShape" type="CollisionShape2D" parent="Hitbox"]
 visible = false
-position = Vector2(0.5, 5.00002)
+position = Vector2(0.500025, 8.37499)
 shape = SubResource("RectangleShape2D_6c2e5")
 
 [node name="BigProjectileCollission" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-position = Vector2(8, -2.89599e-05)
+position = Vector2(7.5, -2.89599e-05)
 shape = SubResource("RectangleShape2D_e1rfv")
 
 [node name="CultistEnergyCollission" type="CollisionShape2D" parent="Hitbox"]
@@ -464,6 +464,7 @@ visible = false
 shape = SubResource("RectangleShape2D_f2g40")
 
 [node name="NinjaStarCollission" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_7ytrm")
 
 [node name="HomingLifetime" type="Timer" parent="."]
