@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://v35gp5mvgpm6" path="res://assets/images/UI/bg1.png" id="2_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dqvdu3dys7bvv" path="res://scenes/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://bakod478lp1wq" path="res://scenes/crosshair.tscn" id="2_w7kh3"]
-[ext_resource type="AudioStream" uid="uid://t8idrfp2lffg" path="res://assets/audio/placeholder_battle.mp3" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://b1cd4x4mqh4ha" path="res://scenes/wave_number_display.tscn" id="3_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://48bo86ql8hxt" path="res://scenes/transformation_clock.tscn" id="5_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bqpogym1ai8ab" path="res://scenes/next_character.tscn" id="6_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
 [ext_resource type="AudioStream" uid="uid://dx5ugwcfvtwb0" path="res://assets/audio/deal_damage.wav" id="12_q5onr"]
+[ext_resource type="AudioStream" uid="uid://b4td8qrae5uvr" path="res://assets/audio/new one.wav" id="12_xo05s"]
 [ext_resource type="AudioStream" uid="uid://b10fqxiii87q6" path="res://assets/audio/fire.wav" id="13_jhx03"]
 [ext_resource type="AudioStream" uid="uid://behqtyskfo40v" path="res://assets/audio/miss.wav" id="14_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://1orlg5c3rse1" path="res://scenes/movement_ability_cooldown.tscn" id="14_xo05s"]
@@ -154,7 +154,7 @@ libraries = {
 position = Vector2(320, 180)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_4wyf3")
+stream = ExtResource("12_xo05s")
 autoplay = true
 
 [node name="InbetweenWaveTimer" type="Timer" parent="."]

@@ -30,6 +30,7 @@ extends CharacterBody2D
 @onready var deal_damage_audio: AudioStreamPlayer2D = $DealDamageAudio
 @onready var woosh_audio: AudioStreamPlayer2D = $WooshAudio
 @onready var smoke_dash_audio: AudioStreamPlayer2D = $SmokeDashAudio
+@onready var transform_audio: AudioStreamPlayer2D = $TransformAudio
 
 const ICE_CIRCLE = preload("res://scenes/ice_circle.tscn")
 const PROJECTILE = preload("res://scenes/projectile.tscn")
@@ -194,6 +195,7 @@ func do_movement_ability(character: Character) -> void:
 		position += velocity * 0.75
 		movement_ability_in_action.wait_time = 0.1
 		movement_ability_in_action.start()
+		woosh_audio.play()
 	
 func _on_movement_ability_in_action_timeout() -> void:
 	movement_ability_cooldown.start()
@@ -472,6 +474,7 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 
 func _on_transformation_cooldown_timeout() -> void:
 	if transformation_cycle.size() > 1:
+		transform_audio.play(0.2)
 		set_character(next_character)
 		if transformation_cycle.find(current_character) == transformation_cycle.size() - 1:
 			next_character = transformation_cycle[0]

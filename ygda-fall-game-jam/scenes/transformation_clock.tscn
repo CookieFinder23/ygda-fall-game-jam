@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://daj76go3gxks2" path="res://assets/images/UI/clock/sprite_14.png" id="15_ovwvt"]
 [ext_resource type="Texture2D" uid="uid://cwm6k1hvl3iuh" path="res://assets/images/UI/clock/sprite_15.png" id="16_xu8hb"]
 [ext_resource type="Texture2D" uid="uid://cjwvxjjosvben" path="res://assets/images/UI/clock/sprite_16.png" id="17_xnnpt"]
-[ext_resource type="AudioStream" uid="uid://ctpxw8m17o2f0" path="res://assets/audio/timer.wav" id="22_gquw2"]
+[ext_resource type="AudioStream" uid="uid://bpr5cjc8byy8a" path="res://assets/audio/clocktick.mp3" id="19_mgfp6"]
 [ext_resource type="Script" uid="uid://bsecl7n6k7si3" path="res://scripts/transformation_clock.gd" id="34_2phvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jb6s7"]
@@ -84,5 +84,5 @@ sprite_frames = SubResource("SpriteFrames_jb6s7")
 frame_progress = 1.0
 script = ExtResource("34_2phvv")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_gquw2")
+[node name="TickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_mgfp6")

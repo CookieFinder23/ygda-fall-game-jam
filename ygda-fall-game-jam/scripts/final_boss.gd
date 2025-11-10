@@ -33,10 +33,6 @@ enum Phase {
 	TELEPORT
 }
 
-#func _ready() -> void:
-	#health = 1
-	#miniwave_count = 2
-
 func get_direction_to_player() -> void:
 	if miniwave_count == 3:
 		direction_degrees = 0
@@ -116,13 +112,14 @@ func take_damage(damage: int) -> void:
 	Global.final_boss_health = health
 	if health <= 0 and not already_dead:
 		already_dead = true
-		final_boss_sprite.play("death")
-		var trophy_instance = TROPHY.instantiate()
-		trophy_instance.global_position = global_position
-		trophy_instance.z_index = -1
-		world.add_child(trophy_instance)
-		Global.clear_screen = true
-		die_audio.play()
+		get_tree().change_scene_to_file("res://scenes/closing_lore.tscn")
+		#final_boss_sprite.play("death")
+		#var trophy_instance = TROPHY.instantiate()
+		#trophy_instance.global_position = global_position
+		#trophy_instance.z_index = -1
+		#world.add_child(trophy_instance)
+		#Global.clear_screen = true
+		#die_audio.play()
 	else:
 		var explosion_instance = Global.EXPLOSION.instantiate()
 		explosion_instance.global_position = global_position
