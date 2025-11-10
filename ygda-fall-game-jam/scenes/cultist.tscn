@@ -1,31 +1,57 @@
-[gd_scene load_steps=72 format=3 uid="uid://ctgcbrf8g882i"]
+[gd_scene load_steps=98 format=3 uid="uid://ctgcbrf8g882i"]
 
 [ext_resource type="Script" uid="uid://dkrj45mu623v3" path="res://scripts/cultist.gd" id="1_6kwtl"]
+[ext_resource type="Texture2D" uid="uid://62qr4b0td8l" path="res://scenes/Enemy - Cultist - North Death-1.png.png" id="2_1iogb"]
 [ext_resource type="Texture2D" uid="uid://dkrs8un2as0gq" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-1.png.png" id="2_1lq4g"]
+[ext_resource type="Texture2D" uid="uid://cvaalhl7v6e76" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-1.png.png" id="2_3ipjn"]
 [ext_resource type="Texture2D" uid="uid://dm1eot247kyg8" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-1.png.png" id="2_dxquc"]
+[ext_resource type="Texture2D" uid="uid://odigomv7thk4" path="res://scenes/Enemy - Cultist - North Death-2.png.png" id="3_37lls"]
 [ext_resource type="Texture2D" uid="uid://cooarl7ulo2nn" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-2.png.png" id="3_id7ot"]
+[ext_resource type="Texture2D" uid="uid://iv1406ly02vk" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-2.png.png" id="3_lhmqk"]
 [ext_resource type="Texture2D" uid="uid://u0ggep1ie45d" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-2.png.png" id="3_pyv3w"]
 [ext_resource type="Texture2D" uid="uid://fcvflq83beni" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-3.png.png" id="4_dxivb"]
+[ext_resource type="Texture2D" uid="uid://v31jw4jp4gi2" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-3.png.png" id="4_popmc"]
+[ext_resource type="Texture2D" uid="uid://c68imx2prbcp6" path="res://scenes/Enemy - Cultist - North Death-3.png.png" id="4_vo4i8"]
 [ext_resource type="Texture2D" uid="uid://do1copj6rvq64" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-3.png.png" id="4_wt7ld"]
 [ext_resource type="Texture2D" uid="uid://jifhgpc0hmkd" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-4.png.png" id="5_1c5rv"]
+[ext_resource type="Texture2D" uid="uid://dfm04eea2eqxu" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-4.png.png" id="5_58lv8"]
+[ext_resource type="Texture2D" uid="uid://d60n50ajfhps" path="res://scenes/Enemy - Cultist - North Death-4.png.png" id="5_bkd2s"]
 [ext_resource type="Texture2D" uid="uid://dyajv5rgcydpq" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-4.png.png" id="5_jdybb"]
+[ext_resource type="Texture2D" uid="uid://2npvkeypyjpe" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-5.png.png" id="6_0bnfe"]
 [ext_resource type="Texture2D" uid="uid://s2hibc47ine2" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-5.png.png" id="6_js5lg"]
+[ext_resource type="Texture2D" uid="uid://cy4csicgt74tl" path="res://scenes/Enemy - Cultist - North Death-5.png.png" id="6_p0wmr"]
 [ext_resource type="Texture2D" uid="uid://isbfstny5mmy" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-5.png.png" id="6_tlr24"]
 [ext_resource type="Texture2D" uid="uid://d33t1o0e2va1t" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-6.png.png" id="7_a60xw"]
+[ext_resource type="Texture2D" uid="uid://ir66bc82iijh" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-6.png.png" id="7_bukt1"]
 [ext_resource type="Texture2D" uid="uid://cxkaqy3wkndas" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-6.png.png" id="7_kofwa"]
+[ext_resource type="Texture2D" uid="uid://n6b8icknc2pa" path="res://scenes/Enemy - Cultist - North Death-6.png.png" id="7_xg2ek"]
 [ext_resource type="Texture2D" uid="uid://irhf0gmnaba2" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-7.png.png" id="8_4q85e"]
+[ext_resource type="Texture2D" uid="uid://bx08dhbavcqtl" path="res://scenes/Enemy - Cultist - North Death-7.png.png" id="8_7asht"]
+[ext_resource type="Texture2D" uid="uid://b3yfyd5omqx5c" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-7.png.png" id="8_8kcyv"]
 [ext_resource type="Texture2D" uid="uid://wg07q48cxwwl" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-7.png.png" id="8_t6fe7"]
 [ext_resource type="Texture2D" uid="uid://byt76jkvlun2f" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-8.png.png" id="9_30xti"]
 [ext_resource type="Texture2D" uid="uid://byh6dqr7gneu6" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-8.png.png" id="9_mxile"]
+[ext_resource type="Texture2D" uid="uid://bnwbo5ppo3v6o" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-8.png.png" id="9_ni5vk"]
+[ext_resource type="Texture2D" uid="uid://7hnl564woboc" path="res://scenes/Enemy - Cultist - North Death-8.png.png" id="9_rbk4y"]
+[ext_resource type="Texture2D" uid="uid://cu31siq33l6j0" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-9.png.png" id="10_0cils"]
+[ext_resource type="Texture2D" uid="uid://coh5nlqvp87x5" path="res://scenes/Enemy - Cultist - North Death-9.png.png" id="10_gvsbd"]
 [ext_resource type="Texture2D" uid="uid://cj1pxi4pif8yp" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-9.png.png" id="10_mw6cn"]
 [ext_resource type="Texture2D" uid="uid://5tc4q4rpkiq8" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-9.png.png" id="10_sgnok"]
 [ext_resource type="Texture2D" uid="uid://5i0ufbws7tid" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-10.png.png" id="11_8hko1"]
 [ext_resource type="Texture2D" uid="uid://c0j3t0jld0tnr" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-10.png.png" id="11_1464t"]
+[ext_resource type="Texture2D" uid="uid://fr0eqiunl8kh" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-10.png.png" id="11_ddt2k"]
+[ext_resource type="Texture2D" uid="uid://0kfhxtslucyp" path="res://scenes/Enemy - Cultist - North Death-10.png.png" id="11_u0ntt"]
 [ext_resource type="Texture2D" uid="uid://bep4q4mj5ppnr" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-11.png.png" id="12_iyudf"]
+[ext_resource type="Texture2D" uid="uid://dyvdyec3brdd8" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-11.png.png" id="12_lirxq"]
 [ext_resource type="Texture2D" uid="uid://mb388en1qnfb" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-11.png.png" id="12_mcsx2"]
+[ext_resource type="Texture2D" uid="uid://tkq8wflklg6s" path="res://scenes/Enemy - Cultist - North Death-11.png.png" id="12_oceik"]
+[ext_resource type="Texture2D" uid="uid://c0fqtr0cxjqd1" path="res://scenes/Enemy - Cultist - North Death-12.png.png" id="13_3f4y3"]
+[ext_resource type="Texture2D" uid="uid://cj0mxvnlrvk2f" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-12.png.png" id="13_433n2"]
 [ext_resource type="Texture2D" uid="uid://dn3xuikn67hae" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-12.png.png" id="13_hn4c2"]
 [ext_resource type="Texture2D" uid="uid://cpcnfi81b1ij8" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-12.png.png" id="13_xgsac"]
+[ext_resource type="Texture2D" uid="uid://lggrtdseta74" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - East Death-13.png.png" id="14_6gkck"]
 [ext_resource type="Texture2D" uid="uid://df53velegqrjn" path="res://assets/images/enemies/cultist/death/Enemy - Cultist - South Death-13.png.png" id="14_alve7"]
+[ext_resource type="Texture2D" uid="uid://dj8xcvmeetse0" path="res://scenes/Enemy - Cultist - North Death-13.png.png" id="14_lqlo2"]
 [ext_resource type="Texture2D" uid="uid://bkeiuxq5wjhup" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-13.png.png" id="14_m12nw"]
 [ext_resource type="Texture2D" uid="uid://bfwhdcejowut3" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-14.png.png" id="15_dxquc"]
 [ext_resource type="Texture2D" uid="uid://dwk1jicvba8tm" path="res://assets/images/enemies/cultist/down/Enemy - Cultist - South-15.png.png" id="16_id7ot"]
@@ -70,6 +96,94 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_3ipjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lhmqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_popmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_58lv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0bnfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bukt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8kcyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ni5vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0cils")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ddt2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lirxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_433n2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6gkck")
+}],
+"loop": false,
+"name": &"death_east",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1iogb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_37lls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vo4i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bkd2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p0wmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xg2ek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7asht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rbk4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gvsbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u0ntt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_oceik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3f4y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lqlo2")
+}],
+"loop": false,
+"name": &"death_north",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_dxquc")
 }, {
 "duration": 1.0,
@@ -109,7 +223,7 @@ animations = [{
 "texture": ExtResource("14_alve7")
 }],
 "loop": false,
-"name": &"death",
+"name": &"death_south",
 "speed": 10.0
 }, {
 "frames": [{
@@ -352,7 +466,7 @@ script = ExtResource("1_6kwtl")
 [node name="CultistSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_odggn")
-animation = &"spawn"
+animation = &"death_south"
 autoplay = "spawn"
 
 [node name="CultistCollision" type="CollisionShape2D" parent="."]

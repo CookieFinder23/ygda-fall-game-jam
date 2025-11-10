@@ -29,12 +29,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	get_cleared()
-	cultist_collision.disabled = animation_player.is_playing() or cultist_sprite.animation == "death"
+	cultist_collision.disabled = animation_player.is_playing() or cultist_sprite.animation == "death_south"
 
 func get_cleared() -> void:
 	if Global.clear_screen and not already_dead:
 		already_dead = true
-		cultist_sprite.play("death")
+		cultist_sprite.play("death_south")
 
 func attack(direction: String) -> void:
 	if not already_dead:
@@ -103,7 +103,7 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0 and not already_dead:
 		already_dead = true
-		cultist_sprite.play("death")
+		cultist_sprite.play("death_south")
 	else:
 		var explosion_instance = Global.EXPLOSION.instantiate()
 		explosion_instance.global_position = global_position

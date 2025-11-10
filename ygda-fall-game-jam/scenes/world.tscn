@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bqpogym1ai8ab" path="res://scenes/next_character.tscn" id="6_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://brnyxey3t73c6" path="res://scenes/hearts_container.tscn" id="8_4mrxx"]
 [ext_resource type="AudioStream" uid="uid://dx5ugwcfvtwb0" path="res://assets/audio/deal_damage.wav" id="12_q5onr"]
-[ext_resource type="AudioStream" uid="uid://b4td8qrae5uvr" path="res://assets/audio/new one.wav" id="12_xo05s"]
+[ext_resource type="AudioStream" uid="uid://h18nttw0mqoa" path="res://assets/audio/New_Project (1).mp3" id="12_xo05s"]
 [ext_resource type="AudioStream" uid="uid://b10fqxiii87q6" path="res://assets/audio/fire.wav" id="13_jhx03"]
 [ext_resource type="AudioStream" uid="uid://behqtyskfo40v" path="res://assets/audio/miss.wav" id="14_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://1orlg5c3rse1" path="res://scenes/movement_ability_cooldown.tscn" id="14_xo05s"]

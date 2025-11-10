@@ -279,11 +279,7 @@ offset_top = 5.0
 offset_right = 495.0
 offset_bottom = 184.0
 theme_override_font_sizes/font_size = 14
-text = "Combat Song:
-https://www.youtube.com/watch?v=XkiUoOi-uTc 
-Undertale Yellow OST: 004 - Enemy Approaching (Yellow)
-
-Mouse in controls:
+text = "Mouse in controls:
 https://www.svgrepo.com/svg/69012/mouse-left-button
 
 Sound effects:

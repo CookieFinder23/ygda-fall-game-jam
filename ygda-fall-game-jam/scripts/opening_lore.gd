@@ -14,7 +14,7 @@ extends Panel
 var lore_text = ["You are an alien who doesn't know its true form.",
 "The further you progress through the dungeon, the more you shift between your forms",
 "This is the knight, who wields a powerful sword and a shield that blocks projectiles and stuns enemies.",
-"This is the ice mage, who summons freezing rings and a forcefield, freezing enemies in their tracks, and blocking projectiles.",
+"This is the ice mage, who summons rings of ice and a forcefield, which both freeze enemies in their tracks, and block projectiles.",
 "This is the ninja, who throws deadly ninja stars, and can dash faster than the eye can see.",
 "This is the hunter, who can shoot arrows with pinpoint precision, and sprints with great speed.",
 "Legends say this dungeon can find one's true form.",

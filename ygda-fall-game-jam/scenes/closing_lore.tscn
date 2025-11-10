@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3fkdnxbbhrvq" path="res://scripts/closing_lore.gd" id="1_gchw4"]
 [ext_resource type="VideoStream" uid="uid://b0kjw1ricwc3f" path="res://assets/images/UI/end.ogv" id="2_0d1qs"]
 [ext_resource type="VideoStream" uid="uid://cc3a5fbgf0yx" path="res://assets/images/UI/1109_1.ogv" id="3_pt5vn"]
-[ext_resource type="AudioStream" uid="uid://b4td8qrae5uvr" path="res://assets/audio/new one.wav" id="4_pt5vn"]
+[ext_resource type="AudioStream" uid="uid://h18nttw0mqoa" path="res://assets/audio/New_Project (1).mp3" id="4_pt5vn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jryo0"]
 bg_color = Color(0, 0, 0, 1)
